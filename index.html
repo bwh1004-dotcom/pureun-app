@@ -329,17 +329,17 @@ function BubbleRow({b}){
 }
 
 const ILLUST_MAP={
-  '삽화 1':'ep01.jpg','삽화 2':'ep02.jpg','삽화 3':'ep03.jpg',
-  '삽화 4':'ep04.jpg','삽화 5':'ep05.jpg','삽화 6':'ep06.jpg',
-  '삽화 7':'ep07.jpg','삽화 8':'ep08.jpg','삽화 9':'ep09.jpg',
-  '삽화 10':'ep010.jpg','삽화 11':'ep011.jpg','삽화 12':'ep012.jpg',
-  '삽화 13':'ep013.jpg','삽화 14':'ep014.jpg','삽화 15':'ep015.jpg',
-  '삽화 16':'ep016.jpg','삽화 17':'ep017.jpg','삽화 18':'ep018.jpg',
-  '삽화 19':'ep019.jpg','삽화 20':'ep020.jpg','삽화 21':'ep021.jpg',
+  '삽화 1':'ep1-1.jpg','삽화 2':'ep1-2.jpg','삽화 3':'ep1-3.jpg',
+  '삽화 4':'ep1-4.jpg','삽화 5':'ep1-5.jpg','삽화 6':'ep2-1.jpg',
+  '삽화 7':'ep2-2.jpg','삽화 8':'ep2-3.jpg','삽화 9':'ep2-4.jpg',
+  '삽화 10':'ep2-5.jpg','삽화 11':'ep3-1.jpg','삽화 12':'ep3-2.jpg',
+  '삽화 13':'ep3-3.jpg','삽화 14':'ep4-1.jpg','삽화 15':'ep4-2.jpg',
+  '삽화 16':'ep4-3.jpg','삽화 17':'ep4-4.jpg','삽화 18':'ep4-5.jpg',
+  '삽화 19':'ep5-1.jpg','삽화 20':'ep5-2.jpg','삽화 21':'ep5-3.jpg',
 };
-function IllustPH({illust,caption}){
-  const imgFile=ILLUST_MAP[illust.label];
-  const imgSrc=imgFile?('./illust/'+imgFile):null;
+function IllustPH({illust,caption,epNum,sceneIdx}){
+  const imgSrc=(epNum&&sceneIdx)?('./illust/ep'+epNum+'-'+sceneIdx+'.jpg')
+    :(ILLUST_MAP[illust.label]?('./illust/'+ILLUST_MAP[illust.label]):null);
   return e('div',{className:'illust-box'},
     imgSrc
       ?e('img',{src:imgSrc,style:{width:'100%',borderRadius:14,display:'block'},onError:(ev)=>{ev.target.style.display='none';ev.target.nextSibling.style.display='flex';}})
@@ -556,7 +556,7 @@ function App(){
           return e('div',{key:i,className:'ep-card'+(done?' done':''),onClick:()=>startEp(i)},
             e('div',{className:'ep-thumb',style:{borderRight:'1px dashed '+ep.color+'40',overflow:'hidden',padding:0}},
               e('img',{
-                src:'./illust/ep'+String(ep.num).padStart(2,'0')+'.jpg',
+                src:'./illust/ep'+ep.num+'-1.jpg',
                 style:{width:88,height:88,objectFit:'cover',display:'block'},
                 onError:(ev)=>{
                   ev.target.style.display='none';
@@ -601,7 +601,7 @@ function App(){
       e('div',{className:'page',key:page,style:{animation:'slideIn .25s ease'}},
 
         P.type==='scene'&&e(React.Fragment,null,
-          e(IllustPH,{illust:P.illust,caption:P.caption}),
+          e(IllustPH,{illust:P.illust,caption:P.caption,epNum:ep.num,sceneIdx:EP.filter((p,i)=>i<=page&&p.type==='scene').length}),
           e('div',{className:'bubbles'},P.bubbles.map((b,i)=>e(BubbleRow,{key:i,b})))
         ),
 
@@ -615,7 +615,7 @@ function App(){
         ),
 
         P.type==='deep'&&e(React.Fragment,null,
-          e(IllustPH,{illust:P.illust,caption:P.caption}),
+          e(IllustPH,{illust:P.illust,caption:P.caption,epNum:ep.num,sceneIdx:EP.filter((p,i)=>i<=page&&(p.type==='scene'||p.type==='deep')).length}),
           e('div',{className:'bubbles'},P.bubbles.map((b,i)=>e(BubbleRow,{key:i,b}))),
           e('div',{className:'deep-note'},
             e('div',{className:'deep-note-title'},'🔍 더 깊이'),

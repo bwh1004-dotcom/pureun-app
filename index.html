@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>푸른시점 반도체편</title>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -11,19 +10,20 @@
 <meta name="theme-color" content="#FF8C42">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon.png">
+<title>푸른시점 반도체편</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-:root{--warm:#FFF8F0;--warm2:#FFE8CC;--text:#3D2B1F;--text2:#8B6347;--text3:#C4A882;--border:#FFD6A5}
+:root{--warm:#FFF8F0;--warm2:#FFE8CC;--text:#3D2B1F;--text2:#8B6347;--text3:#C4A882;--border:#FFD6A5;--orange:#FF8C42;--green:#5DBB63;--blue:#4A90E2}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--warm);height:100dvh;display:flex;flex-direction:column;max-width:420px;margin:0 auto;overflow:hidden}
 #root{flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden}
 
-/* ONBOARDING */
-.ob{flex:1;display:flex;flex-direction:column;align-items:center;padding:28px 20px 32px;background:linear-gradient(160deg,var(--warm),var(--warm2));overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;animation:fadeUp .35s ease;text-align:center}
+/* 온보딩 */
+.ob{flex:1;display:flex;flex-direction:column;align-items:center;padding:28px 20px 32px;background:linear-gradient(160deg,var(--warm),var(--warm2));overflow-y:auto;-webkit-overflow-scrolling:touch;text-align:center}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.ob-logo{font-size:60px;margin-bottom:12px;animation:bounce 2s infinite}
-.ob-title{font-size:26px;font-weight:800;color:#D4611A;margin-bottom:3px;letter-spacing:-.5px}
-.ob-sub{font-size:11px;color:#E8934A;font-weight:700;margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase}
+.ob-logo{margin-bottom:12px}
+.ob-title{font-size:26px;font-weight:800;color:#D4611A;margin-bottom:3px}
+.ob-sub{font-size:11px;color:#E8934A;font-weight:700;margin-bottom:8px;letter-spacing:.5px}
 .ob-desc{font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:18px;white-space:pre-line}
 .ob-char-row{display:flex;justify-content:center;gap:10px;margin-bottom:18px;width:100%}
 .ob-char{background:#fff;border-radius:16px;padding:14px 10px;border:2px solid var(--border);flex:1;display:flex;flex-direction:column;align-items:center;gap:5px}
@@ -37,7 +37,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .ob-how-t{font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px}
 .ob-how-d{font-size:11px;color:var(--text2);line-height:1.4}
 .ob-ep-preview{width:100%;background:#fff;border-radius:14px;padding:14px;border:2px solid var(--border);margin-bottom:16px;text-align:left}
-.ob-ep-preview-title{font-size:11px;font-weight:800;color:#FF8C42;margin-bottom:10px;letter-spacing:.3px}
+.ob-ep-preview-title{font-size:11px;font-weight:800;color:#FF8C42;margin-bottom:10px}
 .ob-ep-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px dashed #FFE8CC}
 .ob-ep-row:last-child{border:none}
 .ob-footer{width:100%;display:flex;flex-direction:column;gap:6px;padding-top:4px}
@@ -48,157 +48,158 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .ob-btn{width:100%;padding:14px;border-radius:14px;border:none;cursor:pointer;font-size:14px;font-weight:800;background:linear-gradient(135deg,#FF8C42,#FF6B6B);color:#fff;box-shadow:0 4px 14px rgba(255,107,107,.3)}
 .ob-skip{background:none;border:none;color:var(--text3);font-size:11px;cursor:pointer;padding:4px}
 
-/* SPLASH */
-.splash{flex:1;display:flex;flex-direction:column;align-items:center;padding:22px 18px 32px;background:linear-gradient(160deg,var(--warm),var(--warm2));overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0}
-.splash-logo{font-size:52px;margin-bottom:10px;animation:bounce 2s infinite}
-.splash-title{font-size:24px;font-weight:800;color:#D4611A;margin-bottom:2px}
-.splash-sub{font-size:11px;color:#E8934A;font-weight:700;margin-bottom:12px}
-.splash-chars{display:flex;justify-content:center;gap:14px;margin-bottom:14px}
-.splash-char{display:flex;flex-direction:column;align-items:center;gap:3px}
-.char-bubble{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:23px;border:2.5px solid rgba(0,0,0,.07)}
-.char-name{font-size:9px;font-weight:700;color:var(--text2);text-align:center}
-.ep-card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:11px 13px;cursor:pointer;display:flex;align-items:center;gap:10px;width:100%;margin-bottom:7px;transition:all .2s}
-.ep-card.done{background:rgba(93,187,99,.07);border-color:#5DBB63}
-.ep-card.locked{opacity:.5;cursor:default}
-.ep-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.ep-num{font-size:9px;font-weight:700;margin-bottom:1px}
-.ep-title{font-size:12px;font-weight:800;color:var(--text);line-height:1.3}
-.ep-arrow{font-size:15px;margin-left:auto;flex-shrink:0}
-.splash-progress{width:100%;background:#FFE8CC;border-radius:8px;padding:10px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-.splash-prog-txt{font-size:12px;font-weight:700;color:#D4611A}
-.splash-prog-bar{flex:1;height:6px;background:rgba(255,255,255,.6);border-radius:3px;margin:0 10px;overflow:hidden}
-.splash-prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#FF8C42,#FF6B6B);transition:width .4s ease}
+/* 홈화면 */
+.home{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--warm)}
+.home-header{padding:14px 16px 10px;background:var(--warm);border-bottom:1px solid #FFE8CC;flex-shrink:0}
+.home-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.home-logo{cursor:pointer}
+.home-title{font-size:18px;font-weight:900;color:#D4611A;letter-spacing:-.5px;display:block}
+.home-sub{font-size:9px;color:#E8934A;font-weight:700;letter-spacing:1px;display:block}
+.prog-track{height:5px;background:#FFE8CC;border-radius:3px;overflow:hidden;margin-bottom:3px}
+.prog-fill{height:100%;background:linear-gradient(90deg,#FF8C42,#FFB347);border-radius:3px;transition:width .4s}
+.prog-info{display:flex;justify-content:space-between}
+.tabs{display:flex;border-bottom:2px solid #FFE8CC;flex-shrink:0}
+.tab{flex:1;padding:9px 4px;text-align:center;font-size:11px;font-weight:700;color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tab.act{color:#FF8C42;border-bottom-color:#FF8C42}
+.ep-list{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:10px 12px 24px}
+.ep-card{background:#fff;border-radius:14px;margin-bottom:8px;display:flex;overflow:hidden;border:1.5px solid #FFE0C0;box-shadow:0 2px 8px rgba(0,0,0,.05);cursor:pointer;transition:all .2s}
+.ep-card.done{background:#F0FFF5;border-color:#5DBB63}
+.ep-thumb{width:88px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 6px;border-right:1px dashed var(--border);gap:4px;background:var(--warm)}
+.ep-thumb-emoji{font-size:32px}
+.ep-thumb-label{font-size:7px;font-weight:700;padding:2px 5px;border-radius:5px;text-align:center}
+.ep-body{flex:1;padding:10px 12px;display:flex;flex-direction:column;justify-content:center}
+.ep-tags{display:flex;gap:4px;margin-bottom:4px;align-items:center}
+.ep-num-tag{font-size:9px;font-weight:800;padding:2px 6px;border-radius:6px}
+.ep-section-tag{font-size:8px;color:var(--text3);margin-left:auto}
+.ep-title{font-size:12px;font-weight:800;color:var(--text);line-height:1.35;margin-bottom:3px}
+.ep-meta{font-size:10px;color:var(--text3)}
 
-/* READER */
+/* 잠금화면 */
+.lock-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;background:linear-gradient(160deg,var(--warm),var(--warm2));overflow-y:auto}
+.lock-box{background:#fff;border-radius:14px;padding:14px;border:1.5px solid var(--border);width:100%;margin-bottom:16px;text-align:left}
+.lock-list-title{font-size:10px;font-weight:800;color:#FF8C42;margin-bottom:10px;letter-spacing:.3px}
+.lock-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text);margin-bottom:7px}
+.lock-price-box{background:linear-gradient(135deg,#FF8C42,#FF6B6B);border-radius:16px;padding:16px;width:100%;margin-bottom:12px;color:#fff;text-align:center}
+.lock-btn{width:100%;padding:14px;border-radius:14px;border:none;cursor:pointer;font-size:14px;font-weight:800;background:linear-gradient(135deg,#FF8C42,#FF6B6B);color:#fff;box-shadow:0 4px 16px rgba(255,107,107,.3);margin-bottom:8px}
+.lock-btn2{width:100%;padding:11px;border-radius:14px;border:2px solid #FF8C42;background:#fff;color:#FF8C42;font-size:12px;font-weight:700;cursor:pointer}
+
+/* 리더 */
 .reader{flex:1;display:flex;flex-direction:column;overflow:hidden}
-.reader-header{padding:10px 13px;display:flex;align-items:center;gap:9px;background:var(--warm);border-bottom:2px dashed var(--border);flex-shrink:0}
-.back-btn{background:none;border:none;font-size:20px;cursor:pointer;padding:2px;line-height:1}
-.ep-info{flex:1}
-.ep-num-hd{font-size:9px;font-weight:700;letter-spacing:.5px}
-.ep-title-hd{font-size:12px;font-weight:800;color:var(--text)}
-.prog-dots{display:flex;gap:4px;align-items:center}
-.prog-dot{height:5px;border-radius:3px;background:var(--border);transition:all .3s}
-.prog-dot.act{width:16px}
-.prog-dot:not(.act){width:5px}
+.reader-hd{padding:10px 13px;display:flex;align-items:center;gap:9px;background:var(--warm);border-bottom:2px dashed var(--border);flex-shrink:0}
+.back-btn{background:none;border:none;font-size:20px;cursor:pointer}
+.ep-hd-info{flex:1}
+.ep-hd-num{font-size:9px;font-weight:700;letter-spacing:.5px}
+.ep-hd-title{font-size:12px;font-weight:800;color:var(--text)}
+.prog-dots{display:flex;gap:3px;align-items:center}
+.prog-dot{height:4px;border-radius:2px;background:var(--border);transition:all .3s}
+.prog-dot.act{width:14px}
+.prog-dot:not(.act){width:4px}
 .page-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.page{padding:14px;animation:slideIn .25s ease}
-@keyframes slideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
-.scene-box{border-radius:16px;padding:16px;margin-bottom:12px;text-align:center;min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.scene-emoji{font-size:50px;margin-bottom:7px;display:block;animation:pop .4s ease}
-@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
-.scene-caption{font-size:13px;font-weight:700;color:rgba(0,0,0,.65);line-height:1.55}
+.page{padding:14px}
+@keyframes slideIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
+
+/* 삽화 */
+.illust-box{border-radius:14px;overflow:hidden;margin-bottom:12px}
+.illust-ph{height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:2px dashed var(--border)}
+.illust-caption{padding:7px 12px;background:rgba(0,0,0,.03);font-size:11px;font-weight:700;color:var(--text2);text-align:center;border-top:1px solid var(--border)}
+
+/* 말풍선 */
 .bubbles{display:flex;flex-direction:column;gap:9px;margin-bottom:12px}
-.bubble-row{display:flex;gap:9px;align-items:flex-end}
-.bubble-row.right{flex-direction:row-reverse}
-.avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border:2px solid rgba(0,0,0,.07)}
+.brow{display:flex;gap:9px;align-items:flex-end}
+.brow.right{flex-direction:row-reverse}
+.avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,0,0,.07);flex-shrink:0}
+.avatar-emoji{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border:2px solid rgba(0,0,0,.07)}
 .bubble{max-width:76%;padding:9px 12px;border-radius:13px;font-size:14px;line-height:1.7;font-weight:500}
 .bubble.left{background:#fff;border:1.5px solid var(--border);border-bottom-left-radius:3px;color:var(--text)}
 .bubble.right{border-bottom-right-radius:3px;color:#fff}
 .bname{font-size:9px;font-weight:700;margin-bottom:3px;opacity:.75}
-.fact-title-row{font-size:13px;font-weight:800;color:#D4611A;margin-bottom:10px;text-align:center}
+
+/* 팩트 */
+.fact-title{font-size:13px;font-weight:800;color:#D4611A;margin-bottom:10px;text-align:center}
 .fact-box{border-radius:12px;padding:12px 14px;margin-bottom:8px;border-left:4px solid}
 .fact-ico{font-size:18px;margin-bottom:3px;display:block}
 .fact-t{font-size:12px;font-weight:800;margin-bottom:3px}
 .fact-d{font-size:13px;line-height:1.7;color:var(--text)}
-.quiz-title-row{font-size:13px;font-weight:800;color:#D4467A;margin-bottom:10px;text-align:center}
-.quiz-box{background:#FFF0F5;border-radius:13px;padding:14px;border:2px solid #FFB3C8}
-.quiz-q{font-size:14px;font-weight:800;color:#D4467A;margin-bottom:11px;line-height:1.5}
-.quiz-opts{display:flex;flex-direction:column;gap:7px}
-.quiz-opt{background:#fff;border:2px solid #FFD6E7;border-radius:11px;padding:10px 13px;font-size:13px;font-weight:600;cursor:pointer;color:var(--text);text-align:left;transition:all .2s}
-.quiz-opt.correct{background:#E8F8E8;border-color:#5DBB63;color:#2D7A32}
-.quiz-opt.wrong{background:#FFF0F0;border-color:#FF8080;color:#CC3333;animation:shake .3s ease}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-.quiz-result{font-size:12px;font-weight:700;text-align:center;padding:8px;border-radius:9px;margin-top:8px}
 
-/* COMPLETE */
-.complete-box{text-align:center;padding:28px 14px;position:relative;overflow:hidden}
-.confetti-wrap{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
-.confetti-dot{position:absolute;width:8px;height:8px;border-radius:50%;animation:confettiFall linear forwards}
+/* 퀴즈 */
+.quiz-title{font-size:13px;font-weight:800;color:#D4467A;text-align:center}
+.quiz-prog{display:flex;gap:4px;justify-content:center;margin:8px 0 12px}
+.quiz-prog-dot{width:8px;height:8px;border-radius:50%;background:var(--border)}
+.quiz-prog-dot.done{background:#5DBB63}
+.quiz-prog-dot.curr{background:#D4467A;transform:scale(1.3)}
+.quiz-box{background:#FFF0F5;border-radius:13px;padding:13px;border:2px solid #FFB3C8}
+.quiz-q{font-size:13px;font-weight:800;color:#D4467A;margin-bottom:10px;line-height:1.5}
+.quiz-opts{display:flex;flex-direction:column;gap:6px}
+.quiz-opt{background:#fff;border:2px solid #FFD6E7;border-radius:10px;padding:9px 13px;font-size:13px;font-weight:600;cursor:pointer;color:var(--text);text-align:left;transition:all .2s}
+@keyframes correct-pop{0%{transform:scale(1)}30%{transform:scale(1.05)}100%{transform:scale(1)}}
+@keyframes wrong-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.quiz-opt.correct{background:#E8F8E8;border-color:#5DBB63;color:#2D7A32;animation:correct-pop .4s ease}
+.quiz-opt.wrong{background:#FFF0F0;border-color:#FF8080;color:#CC3333;animation:wrong-shake .35s ease}
+.quiz-result{font-size:12px;font-weight:700;text-align:center;padding:8px;border-radius:9px;margin-top:7px}
+
+/* 심화 */
+.deep-note{background:linear-gradient(135deg,#FFF3E0,#FFE8CC);border-radius:12px;padding:12px 14px;border:1.5px solid var(--border);margin-top:8px}
+.deep-note-title{font-size:11px;font-weight:800;color:#FF8C42;margin-bottom:6px}
+.deep-note-text{font-size:13px;color:var(--text);line-height:1.75}
+
+/* 완료 */
+.complete-box{text-align:center;padding:24px 14px;position:relative;overflow:hidden}
 @keyframes confettiFall{0%{transform:translateY(-10px) rotate(0deg);opacity:1}100%{transform:translateY(400px) rotate(720deg);opacity:0}}
-.complete-star{font-size:52px;margin-bottom:10px;animation:spin .6s ease}
+.confetti-dot{position:absolute;width:8px;height:8px;border-radius:50%;animation:confettiFall linear forwards;pointer-events:none}
 @keyframes spin{from{transform:rotate(-20deg)scale(.5)}to{transform:rotate(0)scale(1)}}
+.complete-star{font-size:52px;margin-bottom:10px;display:block;animation:spin .6s ease}
 .complete-title{font-size:20px;font-weight:800;color:#D4611A;margin-bottom:5px}
-.complete-sub{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;white-space:pre-line}
-.complete-review{background:#FFF3E0;border-radius:12px;padding:13px;text-align:left;margin-bottom:14px}
-.review-title{font-size:10px;font-weight:800;color:#FF8C42;margin-bottom:7px;letter-spacing:.3px}
-.review-item{display:flex;gap:6px;font-size:13px;color:#5C3D1E;margin-bottom:5px;line-height:1.55}
-.next-ep-btn{font-size:13px;font-weight:800;padding:11px 14px;background:none;border:2px solid;border-radius:12px;cursor:pointer;margin-bottom:8px;width:100%;transition:all .2s}
+.complete-sub{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px}
+.review-card{background:#fff;border-radius:14px;padding:14px;border:2px solid var(--border);margin-bottom:14px;text-align:left}
+.review-card-title{font-size:10px;font-weight:800;color:#FF8C42;margin-bottom:8px}
+.review-item{display:flex;gap:7px;font-size:13px;color:var(--text);margin-bottom:6px;line-height:1.55;align-items:flex-start}
+.review-num{width:20px;height:20px;border-radius:50%;color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.next-box{border-radius:14px;padding:14px;margin-bottom:12px;color:#fff;text-align:left}
+.next-label{font-size:9px;font-weight:700;opacity:.75;margin-bottom:4px;letter-spacing:1px}
+.next-title{font-size:14px;font-weight:800;margin-bottom:5px}
+.next-preview{font-size:12px;opacity:.85;line-height:1.5;white-space:pre-line;margin-bottom:10px}
+.next-btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:6px 12px;font-size:11px;font-weight:700;color:#fff;cursor:pointer}
 
-/* ALL COMPLETE */
-.all-complete{text-align:center;padding:32px 16px;display:flex;flex-direction:column;align-items:center}
-.cert-box{background:#fff;border-radius:20px;padding:24px 20px;border:3px solid #FFD6A5;width:100%;margin-bottom:20px;position:relative}
+/* 수료증 */
+.cert-screen{flex:1;overflow-y:auto;background:linear-gradient(160deg,var(--warm),var(--warm2));padding:24px 16px}
+.cert-box{background:#fff;border-radius:20px;padding:24px 20px;border:3px solid var(--border);margin-bottom:20px;position:relative;text-align:center}
+.cert-stamp{position:absolute;top:16px;right:16px;font-size:28px;transform:rotate(15deg);opacity:.8}
 .cert-top{font-size:10px;font-weight:700;color:#FF8C42;letter-spacing:1px;margin-bottom:12px}
 .cert-logo{font-size:40px;margin-bottom:8px}
 .cert-title{font-size:18px;font-weight:800;color:#D4611A;margin-bottom:4px}
-.cert-name{font-size:15px;color:var(--text2);margin-bottom:12px}
+.cert-name{font-size:14px;color:var(--text2);margin-bottom:14px}
 .cert-list{display:flex;flex-direction:column;gap:5px;text-align:left;margin-bottom:12px}
-.cert-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text);background:#FFF8F0;border-radius:8px;padding:6px 10px}
-.cert-stamp{position:absolute;top:16px;right:16px;font-size:28px;transform:rotate(15deg);opacity:.8}
+.cert-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text);background:var(--warm);border-radius:8px;padding:6px 10px}
 .cert-bottom{font-size:10px;color:var(--text3)}
+.cert-restart-btn{width:100%;padding:13px;border-radius:14px;border:none;cursor:pointer;font-size:14px;font-weight:800;background:linear-gradient(135deg,#FF8C42,#FF6B6B);color:#fff;box-shadow:0 4px 14px rgba(255,107,107,.3)}
 
-/* NAV */
+/* 네비 */
 .page-nav{display:flex;gap:7px;padding:10px 13px;border-top:2px dashed var(--border);background:var(--warm);flex-shrink:0}
 .nav-btn{flex:1;padding:12px;border-radius:12px;border:none;cursor:pointer;font-size:13px;font-weight:800;transition:all .2s}
 .nav-prev{background:#FFE8CC;color:#C4733A}
 .nav-next{color:#fff;box-shadow:0 3px 10px rgba(255,107,107,.25)}
 .nav-btn:disabled{opacity:.28;cursor:default;box-shadow:none}
 
+/* 배경 파티클 */
 .bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.ob,.splash,.all-complete{position:relative;z-index:1}
-
-/* 잠금 */
-.lock-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,248,240,.92);backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;border-radius:14px}
-.lock-icon{font-size:36px;margin-bottom:10px}
-.lock-title{font-size:15px;font-weight:800;color:#3D2B1F;margin-bottom:4px}
-.lock-sub{font-size:11px;color:#8B6347;margin-bottom:16px;text-align:center;line-height:1.6}
-.lock-price{font-size:22px;font-weight:900;color:#FF8C42;margin-bottom:4px}
-.lock-price-sub{font-size:10px;color:#C4A882;margin-bottom:16px}
-.lock-btn{background:linear-gradient(135deg,#FF8C42,#FF6B6B);color:#fff;border:none;border-radius:14px;padding:13px 32px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(255,107,107,.3);margin-bottom:10px;width:200px}
-.lock-free{font-size:10px;color:#C4A882;cursor:pointer;text-decoration:underline}
-.ep-card-lock{position:relative;overflow:visible}
-.ep-card-blur{filter:blur(2px);pointer-events:none;opacity:.6}
-.lock-badge{position:absolute;top:8px;right:8px;background:#FF8C42;color:#fff;font-size:9px;font-weight:700;padding:3px 7px;border-radius:10px;z-index:2}
-/* 구독 탭 잠금 */
-.tab-lock-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;background:linear-gradient(160deg,#FFF8F0,#FFE8CC)}
-.tab-lock-emoji{font-size:52px;margin-bottom:12px}
-.tab-lock-title{font-size:18px;font-weight:800;color:#D4611A;margin-bottom:6px}
-.tab-lock-desc{font-size:12px;color:#8B6347;line-height:1.75;margin-bottom:20px;white-space:pre-line}
-.tab-lock-list{background:#fff;border-radius:14px;padding:14px;border:1.5px solid #FFD6A5;width:100%;margin-bottom:20px;text-align:left}
-.tab-lock-list-title{font-size:10px;font-weight:800;color:#FF8C42;margin-bottom:10px;letter-spacing:.3px}
-.tab-lock-item{display:flex;align-items:center;gap:8px;font-size:12px;color:#3D2B1F;margin-bottom:7px}
-.tab-lock-price-box{background:linear-gradient(135deg,#FF8C42,#FF6B6B);border-radius:16px;padding:16px;width:100%;margin-bottom:12px;color:#fff;text-align:center}
-.tab-lock-price-label{font-size:10px;opacity:.85;margin-bottom:4px;letter-spacing:.5px}
-.tab-lock-price-num{font-size:28px;font-weight:900;margin-bottom:2px}
-.tab-lock-price-desc{font-size:10px;opacity:.85}
-.tab-lock-btn{background:linear-gradient(135deg,#FF8C42,#FF6B6B);color:#fff;border:none;border-radius:14px;padding:14px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(255,107,107,.3);width:100%;margin-bottom:8px}
-.tab-lock-btn2{background:#fff;color:#FF8C42;border:2px solid #FF8C42;border-radius:14px;padding:11px;font-size:12px;font-weight:700;cursor:pointer;width:100%}
-
-/* 퀴즈 피드백 강화 */
-@keyframes correct-bounce{0%{transform:scale(1)}30%{transform:scale(1.08)}60%{transform:scale(.96)}100%{transform:scale(1)}}
-@keyframes wrong-shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
-.quiz-opt.correct{animation:correct-bounce .4s ease!important;background:#E8F8E8;border-color:#5DBB63;color:#2D7A32}
-.quiz-opt.wrong{animation:wrong-shake .4s ease!important;background:#FFF0F0;border-color:#FF8080;color:#CC3333}
-.quiz-result.ok{background:linear-gradient(135deg,#E8F8E8,#D4EDDA);border:1.5px solid #5DBB63;color:#2D7A32;padding:10px;border-radius:10px;font-size:12px;font-weight:700;text-align:center;margin-top:8px;animation:correct-bounce .4s ease}
-.quiz-result.ng{background:linear-gradient(135deg,#FFF0F0,#FFE0E0);border:1.5px solid #FF8080;color:#CC3333;padding:10px;border-radius:10px;font-size:12px;font-weight:700;text-align:center;margin-top:8px}
+.ob,.home,.lock-screen,.cert-screen{position:relative;z-index:1}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 </head>
 <body>
 <div id="root"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <script>
 const{useState,useEffect,useRef}=React;
-const LOTTIE_DATA={"v":"5.5.7","meta":{"g":"LottieFiles AE 0.1.20","a":"","k":"","d":"","tc":""},"fr":48,"ip":0,"op":96,"w":418,"h":418,"nm":"plant","ddd":0,"assets":[],"layers":[{"ddd":0,"ind":1,"ty":4,"nm":"Layer 11 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[244.11,166.388,0],"ix":2},"a":{"a":0,"k":[62.879,54.267,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[-26.519,-62.985]],"o":[[0,0],[0,0]],"v":[[40.105,-28.502],[-13.586,31.493]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[62.879,54.267],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":0,"k":100,"ix":1},"e":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":22,"s":[100]},{"t":43,"s":[0]}],"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":2,"ty":4,"nm":"Layer 10 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[257.413,180.678,0],"ix":2},"a":{"a":0,"k":[49.663,63.652,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[0,0]],"o":[[0.088,81.755],[0,0]],"v":[[26.801,-40.878],[-26.889,17.202]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[49.663,63.652],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":22,"s":[100]},{"t":43,"s":[0]}],"ix":1},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":3,"ty":4,"nm":"Layer 9 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[163.591,114.991,0],"ix":2},"a":{"a":0,"k":[55.944,63.204,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[-66.339,21.023]],"o":[[0,0],[0,0]],"v":[[-27.786,-40.429],[33.17,19.406]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[55.944,63.204],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":0,"k":100,"ix":1},"e":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":31,"s":[100]},{"t":46,"s":[0]}],"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":4,"ty":4,"nm":"Layer 8 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[185.399,104.095,0],"ix":2},"a":{"a":0,"k":[72.37,53.077,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[0,0]],"o":[[99.19,-0.769],[0,0]],"v":[[-49.595,-29.533],[11.361,30.302]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[72.37,53.077],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":0,"k":100,"ix":1},"e":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":31,"s":[100]},{"t":46,"s":[0]}],"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":5,"ty":4,"nm":"Layer 7 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[198.138,181.671,0],"ix":2},"a":{"a":0,"k":[57.112,100.383,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[68.674,33.474]],"o":[[0,0],[0,0]],"v":[[16.646,77.608],[-34.337,-77.608]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[57.112,100.383],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":0,"k":0,"ix":1},"e":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":0,"s":[0]},{"t":48,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":6,"ty":4,"nm":"Layer 6 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[236.65,212.439,0],"ix":2},"a":{"a":0,"k":[44.528,72.638,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[-43.397,36.919]],"o":[[0.184,3.023],[0,0]],"v":[[-21.753,46.84],[21.753,-49.864]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[44.528,72.638],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":0,"k":0,"ix":1},"e":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":0,"s":[0]},{"t":48,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":7,"ty":4,"nm":"Layer 5 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[180.304,113.643,0],"ix":2},"a":{"a":0,"k":[48.623,44.834,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":31,"s":[0,0,100]},{"t":43,"s":[100,100,100]}],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[31.917,-65.339],[-3.872,83.665]],"o":[[0,0],[0,0]],"v":[[16.456,20.754],[-44.501,-39.081]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0.513999968884,0.847000002394,0.086000001197,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[48.622,44.835],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":8,"ty":4,"nm":"Layer 4 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[247.064,178.997,0],"ix":2},"a":{"a":0,"k":[40.43,44.658,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":24,"s":[0,0,100]},{"t":36,"s":[100,100,100]}],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[59.212,29.604],[-76.129,-4.23]],"o":[[0,0],[0,0]],"v":[[-19.032,14.804],[35.949,-40.178]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0.513999968884,0.847000002394,0.086000001197,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[40.43,44.658],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":9,"ty":4,"nm":"Layer 3 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[209.122,277.559,0],"ix":2},"a":{"a":0,"k":[146.829,71.863,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[0,0],[-17.25,-7.5],[0,0],[-16.078,6.431],[0,0],[-0.21,0.052],[0,0],[-6.508,14.803],[0,0],[5.037,-6.713],[0,0],[0,-0.188],[11.96,0],[0,0],[7.771,-2.589],[0,0],[0,0],[0,0],[-9.221,0],[0,0],[0,6.698],[6.697,0],[0,0],[9.789,6.071],[21.525,4.788],[4.758,-5.629],[0,0]],"o":[[0,0],[18.718,1.871],[0,0],[15.879,6.904],[0,0],[0.202,-0.079],[0,0],[15.696,-3.925],[0,0],[-8.216,1.21],[0,0],[0.005,0.186],[0,11.96],[0,0],[-8.191,0],[0,0],[0,0],[0,0],[8.721,-2.907],[0,0],[6.694,0],[0,-6.696],[0,0],[-11.862,0],[-10.772,-6.684],[-30.748,-6.819],[0,0],[0,0]],"v":[[-137.031,21.883],[-126.501,22.938],[-72.297,37.064],[-27.139,56.696],[23.131,57.438],[59.429,42.919],[60.046,42.723],[66.55,41.095],[102.014,11.185],[134.101,-61.735],[113.288,-49.385],[70.201,0.274],[70.209,0.831],[48.518,22.523],[-14.491,22.523],[-38.548,26.424],[-40.301,21.974],[-41.784,17.437],[-41.541,17.358],[-14.491,12.974],[48.518,12.974],[60.664,0.827],[48.518,-11.317],[3.359,-11.317],[-29.737,-20.597],[-79.398,-41.036],[-137.03,-18.63],[-137.03,21.883]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ind":1,"ty":"sh","ix":2,"ks":{"a":0,"k":{"i":[[9.456,0],[9.445,4.109],[0,0],[17.731,1.772],[0,0],[0,2.452],[0,0],[-0.62,0.825],[-40.602,-9.036],[-11.403,-7.074],[-10.081,0],[0,0],[-3.826,-6.178],[0,0],[-12.916,0],[0,0],[-0.879,-1.35],[0.647,-1.475],[0,0],[18.538,-4.635],[0,0],[0,0]],"o":[[-10.203,0],[0,0],[-16.338,-7.107],[0,0],[-2.441,-0.242],[0,0],[0,-1.033],[1.109,-1.483],[22.835,5.074],[8.278,5.135],[0,0],[7.783,0],[0,0],[7.541,-10.069],[0,0],[1.613,0],[0.883,1.349],[0,0],[-7.691,17.486],[0,0],[0,0],[-8.86,3.542]],"v":[[-1.1,71.613],[-30.947,65.447],[-76.107,45.817],[-127.451,32.437],[-142.281,30.952],[-146.579,26.204],[-146.579,-20.316],[-145.624,-23.179],[-77.333,-50.352],[-24.708,-28.707],[3.355,-20.86],[48.516,-20.86],[66.967,-10.563],[105.863,-55.376],[138.656,-71.613],[141.564,-71.613],[145.559,-69.449],[145.932,-64.917],[110.754,15.03],[68.865,50.359],[62.677,51.904],[26.674,66.307]],"c":true},"ix":2},"nm":"Path 2","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"mm","mm":1,"nm":"Merge Paths 1","mn":"ADBE Vector Filter - Merge","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[146.829,71.863],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":4,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":10,"ty":4,"nm":"Layer 2 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[208.998,278.549,0],"ix":2},"a":{"a":0,"k":[141.934,68.08,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[0,0],[-8.688,0],[0,0],[0,9.344],[9.343,0],[0,0],[9.165,5.686],[22.204,4.936],[0,0],[0,0],[0,0],[-16.773,-7.292],[0,0],[-17.366,6.946],[0,0],[0,0],[-7.158,16.267],[0,0],[0,0],[6.888,-9.185],[0,0]],"o":[[0,0],[8.245,-2.748],[0,0],[9.343,0],[0,-9.343],[0,0],[-10.783,0],[-11.051,-6.852],[-38.065,-8.458],[0,0],[0,0],[18.198,1.821],[0,0],[17.155,7.459],[0,0],[0,0],[17.243,-4.31],[0,0],[0,0],[-11.483,0],[0,0],[0,0]],"v":[[-40.176,20.984],[-39.938,20.905],[-14.368,16.755],[48.641,16.755],[65.558,-0.162],[48.641,-17.079],[3.477,-17.079],[-27.101,-25.646],[-78.243,-46.686],[-141.684,-21.307],[-141.684,25.214],[-126.853,26.698],[-74.078,40.449],[-28.921,60.083],[25.024,60.883],[61.326,46.362],[67.83,44.737],[106.506,12.118],[141.684,-67.829],[138.782,-67.829],[109.596,-53.238],[66.298,-3.36]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0.917999985639,0.773000021542,0.513999968884,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[141.934,68.08],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":96,"st":0,"bm":0}],"markers":[]};
-
 const e=React.createElement;
+const LOTTIE_DATA={"v":"5.5.7","meta":{"g":"LottieFiles AE 0.1.20","a":"","k":"","d":"","tc":""},"fr":48,"ip":0,"op":96,"w":418,"h":418,"nm":"plant","ddd":0,"assets":[],"layers":[{"ddd":0,"ind":1,"ty":4,"nm":"Layer 11 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[244.11,166.388,0],"ix":2},"a":{"a":0,"k":[62.879,54.267,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[-26.519,-62.985]],"o":[[0,0],[0,0]],"v":[[40.105,-28.502],[-13.586,31.493]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[62.879,54.267],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":0,"k":100,"ix":1},"e":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":22,"s":[100]},{"t":43,"s":[0]}],"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":2,"ty":4,"nm":"Layer 10 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[257.413,180.678,0],"ix":2},"a":{"a":0,"k":[49.663,63.652,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[0,0]],"o":[[0.088,81.755],[0,0]],"v":[[26.801,-40.878],[-26.889,17.202]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[49.663,63.652],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":22,"s":[100]},{"t":43,"s":[0]}],"ix":1},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":3,"ty":4,"nm":"Layer 9 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[163.591,114.991,0],"ix":2},"a":{"a":0,"k":[55.944,63.204,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[-66.339,21.023]],"o":[[0,0],[0,0]],"v":[[-27.786,-40.429],[33.17,19.406]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[55.944,63.204],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":0,"k":100,"ix":1},"e":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":31,"s":[100]},{"t":46,"s":[0]}],"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":4,"ty":4,"nm":"Layer 8 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[185.399,104.095,0],"ix":2},"a":{"a":0,"k":[72.37,53.077,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[0,0]],"o":[[99.19,-0.769],[0,0]],"v":[[-49.595,-29.533],[11.361,30.302]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[72.37,53.077],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":0,"k":100,"ix":1},"e":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":31,"s":[100]},{"t":46,"s":[0]}],"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":5,"ty":4,"nm":"Layer 7 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[198.138,181.671,0],"ix":2},"a":{"a":0,"k":[57.112,100.383,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[68.674,33.474]],"o":[[0,0],[0,0]],"v":[[16.646,77.608],[-34.337,-77.608]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[57.112,100.383],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":0,"k":0,"ix":1},"e":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":0,"s":[0]},{"t":48,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":6,"ty":4,"nm":"Layer 6 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[236.65,212.439,0],"ix":2},"a":{"a":0,"k":[44.528,72.638,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[-43.397,36.919]],"o":[[0.184,3.023],[0,0]],"v":[[-21.753,46.84],[21.753,-49.864]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"st","c":{"a":0,"k":[0,0,0,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":9.11,"ix":5},"lc":2,"lj":1,"ml":10,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false},{"ty":"tr","p":{"a":0,"k":[44.528,72.638],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tm","s":{"a":0,"k":0,"ix":1},"e":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":0,"s":[0]},{"t":48,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":3},"m":1,"ix":2,"nm":"Trim Paths 1","mn":"ADBE Vector Filter - Trim","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":7,"ty":4,"nm":"Layer 5 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[180.304,113.643,0],"ix":2},"a":{"a":0,"k":[48.623,44.834,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":31,"s":[0,0,100]},{"t":43,"s":[100,100,100]}],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[31.917,-65.339],[-3.872,83.665]],"o":[[0,0],[0,0]],"v":[[16.456,20.754],[-44.501,-39.081]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0.513999968884,0.847000002394,0.086000001197,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[48.622,44.835],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":8,"ty":4,"nm":"Layer 4 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[247.064,178.997,0],"ix":2},"a":{"a":0,"k":[40.43,44.658,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":24,"s":[0,0,100]},{"t":36,"s":[100,100,100]}],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[59.212,29.604],[-76.129,-4.23]],"o":[[0,0],[0,0]],"v":[[-19.032,14.804],[35.949,-40.178]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0.513999968884,0.847000002394,0.086000001197,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[40.43,44.658],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":9,"ty":4,"nm":"Layer 3 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[209.122,277.559,0],"ix":2},"a":{"a":0,"k":[146.829,71.863,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[0,0],[-17.25,-7.5],[0,0],[-16.078,6.431],[0,0],[-0.21,0.052],[0,0],[-6.508,14.803],[0,0],[5.037,-6.713],[0,0],[0,-0.188],[11.96,0],[0,0],[7.771,-2.589],[0,0],[0,0],[0,0],[-9.221,0],[0,0],[0,6.698],[6.697,0],[0,0],[9.789,6.071],[21.525,4.788],[4.758,-5.629],[0,0]],"o":[[0,0],[18.718,1.871],[0,0],[15.879,6.904],[0,0],[0.202,-0.079],[0,0],[15.696,-3.925],[0,0],[-8.216,1.21],[0,0],[0.005,0.186],[0,11.96],[0,0],[-8.191,0],[0,0],[0,0],[0,0],[8.721,-2.907],[0,0],[6.694,0],[0,-6.696],[0,0],[-11.862,0],[-10.772,-6.684],[-30.748,-6.819],[0,0],[0,0]],"v":[[-137.031,21.883],[-126.501,22.938],[-72.297,37.064],[-27.139,56.696],[23.131,57.438],[59.429,42.919],[60.046,42.723],[66.55,41.095],[102.014,11.185],[134.101,-61.735],[113.288,-49.385],[70.201,0.274],[70.209,0.831],[48.518,22.523],[-14.491,22.523],[-38.548,26.424],[-40.301,21.974],[-41.784,17.437],[-41.541,17.358],[-14.491,12.974],[48.518,12.974],[60.664,0.827],[48.518,-11.317],[3.359,-11.317],[-29.737,-20.597],[-79.398,-41.036],[-137.03,-18.63],[-137.03,21.883]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ind":1,"ty":"sh","ix":2,"ks":{"a":0,"k":{"i":[[9.456,0],[9.445,4.109],[0,0],[17.731,1.772],[0,0],[0,2.452],[0,0],[-0.62,0.825],[-40.602,-9.036],[-11.403,-7.074],[-10.081,0],[0,0],[-3.826,-6.178],[0,0],[-12.916,0],[0,0],[-0.879,-1.35],[0.647,-1.475],[0,0],[18.538,-4.635],[0,0],[0,0]],"o":[[-10.203,0],[0,0],[-16.338,-7.107],[0,0],[-2.441,-0.242],[0,0],[0,-1.033],[1.109,-1.483],[22.835,5.074],[8.278,5.135],[0,0],[7.783,0],[0,0],[7.541,-10.069],[0,0],[1.613,0],[0.883,1.349],[0,0],[-7.691,17.486],[0,0],[0,0],[-8.86,3.542]],"v":[[-1.1,71.613],[-30.947,65.447],[-76.107,45.817],[-127.451,32.437],[-142.281,30.952],[-146.579,26.204],[-146.579,-20.316],[-145.624,-23.179],[-77.333,-50.352],[-24.708,-28.707],[3.355,-20.86],[48.516,-20.86],[66.967,-10.563],[105.863,-55.376],[138.656,-71.613],[141.564,-71.613],[145.559,-69.449],[145.932,-64.917],[110.754,15.03],[68.865,50.359],[62.677,51.904],[26.674,66.307]],"c":true},"ix":2},"nm":"Path 2","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"mm","mm":1,"nm":"Merge Paths 1","mn":"ADBE Vector Filter - Merge","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[146.829,71.863],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":4,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":96,"st":0,"bm":0},{"ddd":0,"ind":10,"ty":4,"nm":"Layer 2 Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[208.998,278.549,0],"ix":2},"a":{"a":0,"k":[141.934,68.08,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[0,0],[-8.688,0],[0,0],[0,9.344],[9.343,0],[0,0],[9.165,5.686],[22.204,4.936],[0,0],[0,0],[0,0],[-16.773,-7.292],[0,0],[-17.366,6.946],[0,0],[0,0],[-7.158,16.267],[0,0],[0,0],[6.888,-9.185],[0,0]],"o":[[0,0],[8.245,-2.748],[0,0],[9.343,0],[0,-9.343],[0,0],[-10.783,0],[-11.051,-6.852],[-38.065,-8.458],[0,0],[0,0],[18.198,1.821],[0,0],[17.155,7.459],[0,0],[0,0],[17.243,-4.31],[0,0],[0,0],[-11.483,0],[0,0],[0,0]],"v":[[-40.176,20.984],[-39.938,20.905],[-14.368,16.755],[48.641,16.755],[65.558,-0.162],[48.641,-17.079],[3.477,-17.079],[-27.101,-25.646],[-78.243,-46.686],[-141.684,-21.307],[-141.684,25.214],[-126.853,26.698],[-74.078,40.449],[-28.921,60.083],[25.024,60.883],[61.326,46.362],[67.83,44.737],[106.506,12.118],[141.684,-67.829],[138.782,-67.829],[109.596,-53.238],[66.298,-3.36]],"c":false},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0.917999985639,0.773000021542,0.513999968884,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[141.934,68.08],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":96,"st":0,"bm":0}],"markers":[]};
 
 const CHARS={
   uno:{emoji:'🐧',img:'data:image/jpeg;base64,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',name:'우노짱',role:'아빠',color:'#4A90E2',bg:'#EEF4FF'},
   ojjang:{emoji:'🦁',img:'data:image/jpeg;base64,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',name:'오짱',role:'엄마',color:'#FF8C42',bg:'#FFF3E0'},
   pureun:{emoji:'🌱',img:'data:image/jpeg;base64,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',name:'푸른이',role:'아이',color:'#5DBB63',bg:'#F0FFF0'},
 };
-
 const EP1=[{"type":"scene","illust":{"emoji":"🏖️","label":"삽화 1","desc":"해변 모래놀이","bg":"linear-gradient(135deg,#FFE8CC,#FFD4A0)"},"caption":"주말, 가족이 해변에 놀러 왔어요","bubbles":[{"char":"pureun","text":"아빠! 모래성 다 무너졌어~ 😭","side":"left"},{"char":"uno","text":"하하, 파도가 가져갔네. 근데 푸른아, 이 모래가 사실 엄청 대단한 거야.","side":"right"},{"char":"pureun","text":"모래가요? 그냥 모래잖아요 🤔","side":"left"},{"char":"uno","text":"아빠 핸드폰 보이지? 이게 다 이 모래로 만들어진 거야.","side":"right"},{"char":"pureun","text":"네?! 이 모래로 폰을?! 어떻게요?! 😲","side":"left"},{"char":"ojjang","text":"나도 처음 들었을 때 진짜 신기했어. 아빠한테 설명 들어봐! 🤩","side":"right"}]},{"type":"scene","illust":{"emoji":"🔬","label":"삽화 2","desc":"실리콘 정제 과정","bg":"linear-gradient(135deg,#E8F4FF,#CCE8FF)"},"caption":"모래에서 실리콘을 뽑아내는 과정","bubbles":[{"char":"uno","text":"이 모래 안에 '실리콘(Si)'이라는 성분이 있어. 지구에서 두 번째로 많은 원소야.","side":"right"},{"char":"pureun","text":"실리콘? 그게 뭐예요?","side":"left"},{"char":"uno","text":"전기를 흐르게도, 막을 수도 있는 특별한 재료야. 이걸 뽑아서 엄청 깨끗하게 정제하면 반도체가 돼.","side":"right"},{"char":"pureun","text":"얼마나 깨끗하게요? 🧼","side":"left"},{"char":"uno","text":"불순물이 10억분의 1 이하여야 해. 수영장 물보다 수십만 배 더 깨끗해야 하는 거야.","side":"right"},{"char":"ojjang","text":"그래서 반도체 공장 직원들이 우주복 같은 방진복을 입는 거야. 먼지 하나가 칩을 망가뜨리거든. 👨‍🚀","side":"left"}]},{"type":"scene","illust":{"emoji":"💿","label":"삽화 5","desc":"동그란 웨이퍼","bg":"linear-gradient(135deg,#F3E5F5,#E1BEE7)"},"caption":"정제된 실리콘으로 웨이퍼를 만들어요","bubbles":[{"char":"pureun","text":"그래서 실리콘으로 뭘 만들어요?","side":"left"},{"char":"uno","text":"실리콘을 고열로 녹여서 단결정으로 성장시키고, 얇게 잘라서 동그란 판을 만들어. 이게 '웨이퍼'야.","side":"right"},{"char":"pureun","text":"피자처럼 생겼어요? 🍕","side":"left"},{"char":"uno","text":"딱 맞아! 그 피자판 위에 칩을 수백 개 동시에 새기는 거야. 한 판에서 폰 칩이 수백 개 나와.","side":"right"},{"char":"pureun","text":"그럼 피자 한 판이 핸드폰 수백 개가 되는 거예요?! 😮","side":"left"},{"char":"ojjang","text":"그래서 웨이퍼 수율이 중요해. 100개 중 몇 개가 정상이냐에 따라 수익이 완전히 달라지거든.","side":"right"}]},{"type":"fact","facts":[{"icon":"🌾","color":"#FF8C42","bg":"#FFF3E0","title":"모래 → 실리콘 → 웨이퍼","text":"모래(SiO₂)에서 실리콘(Si)을 추출해 단결정으로 성장시키고 얇게 잘라 웨이퍼를 만들어요. 웨이퍼 1장에 칩 수백 개를 동시에 새겨요."},{"icon":"🏭","color":"#4A90E2","bg":"#EEF4FF","title":"클린룸 — 수술실보다 1만배 깨끗","text":"반도체 공장 클린룸은 먼지 입자가 1세제곱피트당 10개 이하예요. 일반 공기의 수백만분의 1 수준. 방진복 없이는 단 1초도 들어갈 수 없어요."},{"icon":"📱","color":"#5DBB63","bg":"#F0FFF0","title":"트랜지스터 800억 개의 의미","text":"최신 스마트폰 칩 하나에 트랜지스터 800억 개. 1초에 수십억 번 켜고 꺼지며 모든 연산 처리. 이 속도가 AI도 가능하게 해요."}]},{"type":"quiz","quizIdx":0,"q":"반도체의 핵심 원료인 실리콘은 어디서 왔을까요?","opts":["🌊 바닷물","🌾 모래(SiO₂)","🌳 나무","🪨 돌"],"ans":1,"correct":"정확해요! 🎉 모래 속 SiO₂에서 실리콘을 추출해요. 지구에서 두 번째로 풍부한 원소예요.","wrong":"힌트: 해변에서 밟고 있는 그것 속에 숨어있어요 🏖️"},{"type":"deep","illust":{"emoji":"⚗️","label":"삽화 2","desc":"차세대 반도체 소재","bg":"linear-gradient(135deg,#E0F7FA,#B2EBF2)"},"caption":"왜 하필 실리콘일까요?","bubbles":[{"char":"pureun","text":"아빠, 왜 다른 재료 말고 실리콘으로 만들어요?","side":"left"},{"char":"uno","text":"세 가지 이유가 있어. 첫째, 모래가 지천이라 재료가 풍부해. 둘째, 전기를 조절하기 딱 좋아. 셋째, 정제 기술이 이미 수십 년 쌓였어.","side":"right"},{"char":"pureun","text":"그럼 다른 재료도 있어요?","side":"left"},{"char":"uno","text":"있어! 탄화규소(SiC)는 전기차 배터리 제어에 쓰이기 시작했어. 요즘 전기차가 많아지면서 SiC 회사들이 뜨고 있거든.","side":"right"},{"char":"ojjang","text":"그래서 인피니언, 온세미 같은 회사들이 주목받는 거야. 새로운 소재 전쟁이 시작된 거지.","side":"left"},{"char":"pureun","text":"모래 하나가 이렇게 많은 걸 연결하고 있었구나! 🌟","side":"left"}],"deepNote":"📌 심화: SiC(탄화규소)는 고온·고전압 환경에서 실리콘보다 강해요. 전기차 전력 반도체로 각광받으며 인피니언·온세미가 시장을 선점 중이에요."},{"type":"scene","illust":{"emoji":"🌙","label":"삽화 1","desc":"저녁 귀갓길","bg":"linear-gradient(135deg,#E8EAF6,#C5CAE9)"},"caption":"해변에서 돌아오는 차 안에서","bubbles":[{"char":"pureun","text":"아빠, 오늘 모래 엄청 집어 왔는데 이게 다 반도체가 될 수 있는 거예요? 😄","side":"left"},{"char":"uno","text":"하하! 가능은 해. 근데 이 모래를 실리콘으로 정제하고 웨이퍼 만드는 데만 엄청난 기술이 필요해.","side":"right"},{"char":"ojjang","text":"그 기술을 가진 회사들이 세계를 움직이는 거야. 삼성, SK하이닉스, TSMC처럼.","side":"left"},{"char":"pureun","text":"우리 해변 모래가 언젠가 내 폰이 될 수도 있는 거네요! 🌱","side":"left"}]},{"type":"quiz","quizIdx":1,"q":"반도체 클린룸이 극도로 깨끗해야 하는 이유는?","opts":["직원 건강을 위해","회로가 너무 작아 먼지 하나가 치명적이라","온도를 유지하려고","냄새를 없애려고"],"ans":1,"correct":"맞아요! 🎉 나노미터 회로에 먼지 하나는 재앙이에요. 그래서 우주복 같은 방진복이 필요해요.","wrong":"힌트: 머리카락의 5만분의 1 크기 회로 옆에 먼지가 있다면 어떻게 될까요? 🔬"},{"type":"quiz","quizIdx":2,"q":"웨이퍼(Wafer) 1장에서 칩이 몇 개나 만들어질까요?","opts":["1개","10개","수백 개","1만 개 이상"],"ans":2,"correct":"정확해요! 🎉 웨이퍼 1장에 칩 수백 개를 동시에 새겨서 효율적이에요.","wrong":"힌트: 피자 한 판에서 조각을 여러 개 자르듯이 ___개를 동시에 만들어요 💿"},{"type":"complete","review":["모래 속 실리콘이 반도체의 핵심 원료 (지구 2위 풍부 원소)","불순물 10억분의 1 이하로 정제 → 웨이퍼 제작","웨이퍼 1장에 칩 수백 개 동시 제작 → 수율이 수익 결정","클린룸은 수술실보다 1만배 깨끗 → 방진복 필수","SiC 같은 차세대 소재 전쟁도 시작됐어요 🌱"],"nextNum":2,"nextTitle":"세상에서 제일 작은 스위치","nextPreview":"트랜지스터가 뭔지, 0이랑 1이\n어떻게 사진이 되는지 알아봐요!"}];
 const EP2=[{"type":"scene","illust":{"emoji":"💡","label":"삽화 6","desc":"전등 스위치 장면","bg":"linear-gradient(135deg,#E8F4FF,#D4ECFF)"},"caption":"저녁, 전등 스위치 앞에서 생긴 궁금증","bubbles":[{"char":"pureun","text":"아빠, 이 스위치 누르면 왜 불이 켜지는 거야? 🤔","side":"left"},{"char":"uno","text":"스위치가 전기가 흐르는 길을 열어주는 거야. 반도체도 이 원리랑 같아.","side":"right"},{"char":"ojjang","text":"반도체 안에도 스위치가 있어?","side":"right"},{"char":"uno","text":"응! '트랜지스터'라는 초소형 전기 스위치가 있어. 이게 반도체의 핵심이야.","side":"right"}]},{"type":"scene","illust":{"emoji":"🔬","label":"삽화 7","desc":"트랜지스터 크기 비교","bg":"linear-gradient(135deg,#F3E5F5,#E1BEE7)"},"caption":"트랜지스터, 얼마나 작을까요?","bubbles":[{"char":"pureun","text":"트랜지스터가 얼마나 작아요?","side":"left"},{"char":"uno","text":"우리 머리카락보다 5만 배 더 작아. 현미경으로도 보기 어려울 만큼.","side":"right"},{"char":"pureun","text":"그런 게 폰 하나에 얼마나 들어가요?","side":"left"},{"char":"uno","text":"최신 스마트폰 칩에는 800억 개. 전 세계 인구의 10배야.","side":"right"},{"char":"ojjang","text":"그게 다 제어되고 있다는 게 신기해... 😲","side":"left"}]},{"type":"scene","illust":{"emoji":"🔢","label":"삽화 8","desc":"0과 1 디지털 세계","bg":"linear-gradient(135deg,#E8F5E9,#C8E6C9)"},"caption":"0과 1로 모든 것을 표현해요","bubbles":[{"char":"pureun","text":"켜면 1, 끄면 0이라고요? 그럼 0이랑 1로 어떻게 사진이 돼요?","side":"left"},{"char":"uno","text":"빨간색은 특정 숫자 조합, 파란색은 다른 숫자 조합이야. 소리도, 영상도 다 숫자야.","side":"right"},{"char":"ojjang","text":"세상 모든 정보가 0과 1의 패턴이라는 거네.","side":"right"},{"char":"uno","text":"그 패턴을 수십억 번 처리하는 게 반도체가 하는 일이야.","side":"right"}]},{"type":"fact","facts":[{"icon":"⚡","color":"#4A90E2","bg":"#EEF4FF","title":"트랜지스터 = 전기 스위치","text":"트랜지스터는 켜면 1, 끄면 0을 표현해요. 1초에 수십억 번 켜고 꺼질 수 있어요. 이 속도가 컴퓨터의 연산 속도예요."},{"icon":"📱","color":"#FF8C42","bg":"#FFF3E0","title":"800억 개의 협연","text":"최신 스마트폰 칩 하나에 800억 개. 앱 실행, 카메라, 통신이 모두 이것들의 협연이에요."},{"icon":"🔢","color":"#5DBB63","bg":"#F0FFF0","title":"디지털의 본질: 이진법","text":"모든 디지털 정보는 결국 0과 1의 조합이에요. 이 단순한 체계가 디지털 세상 전체의 기반이에요."}]},{"type":"quiz","quizIdx":0,"q":"트랜지스터가 하는 핵심 역할은?","opts":["🎵 음악을 재생해요","⚡ 전기를 켜고 끄는 스위치 역할","🌈 화면에 색을 입혀요","🔋 배터리를 충전해요"],"ans":1,"correct":"정확해요! 🎉 트랜지스터는 초소형 전기 스위치예요.","wrong":"힌트: 전등 스위치처럼 전기를 ___하는 역할이에요 💡"},{"type":"deep","illust":{"emoji":"🔮","label":"삽화 9","desc":"무어의 법칙 그래프","bg":"linear-gradient(135deg,#EDE7F6,#D1C4E9)"},"caption":"트랜지스터는 계속 작아져 왔어요","bubbles":[{"char":"pureun","text":"트랜지스터가 더 작아질 수 있어요?","side":"left"},{"char":"uno","text":"'무어의 법칙'이라는 게 있어. 2년마다 트랜지스터 수가 2배씩 늘어왔어.","side":"right"},{"char":"ojjang","text":"근데 요즘 그게 한계에 왔다고 하던데.","side":"right"},{"char":"uno","text":"맞아! 원자 몇 개 수준까지 왔거든. 이제는 더 얇게 아닌 3D로 쌓는 방향으로 가고 있어.","side":"right"}],"deepNote":"📌 심화: 무어의 법칙은 1965년 인텔 창업자 고든 무어가 제안. 약 60년간 맞아왔지만 이제 물리적 한계에 근접. 3D 적층이 대안이에요."},{"type":"scene","illust":{"emoji":"😴","label":"삽화 6","desc":"잠자리 장면","bg":"linear-gradient(135deg,#E8EAF6,#C5CAE9)"},"caption":"잠자리에 들면서...","bubbles":[{"char":"pureun","text":"아빠, 폰 안에 스위치가 800억 개가 있다는 거 진짜 신기해! 😄","side":"left"},{"char":"uno","text":"이제 폰 볼 때마다 '안에 800억 개 있지' 생각해봐.","side":"right"},{"char":"pureun","text":"응! 근데 그 스위치들이 어떻게 칩이 돼요?","side":"left"},{"char":"uno","text":"다음에 반도체 공장 얘기할 때 알려줄게~","side":"right"}]},{"type":"quiz","quizIdx":1,"q":"트랜지스터가 머리카락보다 얼마나 작을까요?","opts":["2배","100배","5,000배","50,000배"],"ans":3,"correct":"맞아요! 🎉 머리카락보다 5만 배 작아요.","wrong":"힌트: 엄청 작아요! 머리카락을 _만 번 쪼개야 해요 🔬"},{"type":"quiz","quizIdx":2,"q":"0과 1로 사진을 표현할 수 있는 이유는?","opts":["사진은 0과 1이 아니에요","색깔마다 고유한 숫자 조합이 있어서","카메라가 알아서 변환해서","화면이 알아서 색을 만들어서"],"ans":1,"correct":"정확해요! 🎉 모든 색은 고유한 이진수 조합으로 표현돼요.","wrong":"힌트: 빨강=특정 숫자, 파랑=다른 숫자 🔢"},{"type":"complete","review":["트랜지스터 = 전기를 켜고 끄는 초소형 스위치","머리카락보다 5만 배 작아요","스마트폰 칩 하나에 800억 개 들어가요","켜면 1, 끄면 0 → 이게 모여 모든 디지털 정보가 돼요","무어의 법칙: 2년마다 2배 → 이제 물리적 한계"],"nextNum":3,"nextTitle":"단 하나뿐인 기계의 비밀","nextPreview":"전 세계 반도체의 열쇠를 쥔 ASML.\n왜 네덜란드 한 회사만 만들 수 있을까요?"}];
 const EP3=[{"type":"scene","illust":{"emoji":"📺","label":"삽화 10","desc":"뉴스 보는 가족","bg":"linear-gradient(135deg,#E8EAF6,#C5CAE9)"},"caption":"뉴스에서 ASML 소식이 나왔어요","bubbles":[{"char":"uno","text":"오, ASML 주가가 또 올랐네!","side":"right"},{"char":"pureun","text":"아빠, ASML이 뭐야? 왜 대단해? 🤔","side":"left"},{"char":"uno","text":"전 세계에서 단 하나만 만들 수 있는 기계를 만드는 회사야. 네덜란드에 있어.","side":"right"},{"char":"ojjang","text":"하나만? 다른 나라는 왜 못 만들어? 😮","side":"left"}]},{"type":"scene","illust":{"emoji":"✏️","label":"삽화 11","desc":"EUV 빛으로 회로 그리기","bg":"linear-gradient(135deg,#FFF3E0,#FFE0B2)"},"caption":"EUV는 빛으로 회로를 그려요","bubbles":[{"char":"uno","text":"EUV 노광기라는 기계야. 웨이퍼에 아주 작은 회로를 빛으로 그려주는 기계야.","side":"right"},{"char":"pureun","text":"빛으로 그림을 그린다고요? 🎨","side":"left"},{"char":"uno","text":"13.5나노미터 파장의 빛을 써. 일반 빛보다 14배 더 짧아서 훨씬 세밀하게 그릴 수 있어.","side":"right"},{"char":"ojjang","text":"그 기계가 얼마예요?","side":"left"},{"char":"uno","text":"한 대에 약 3,500억원이야. 그래도 전 세계 반도체 회사들이 줄 서서 기다려.","side":"right"}]},{"type":"scene","illust":{"emoji":"🔒","label":"삽화 12","desc":"수출통제 지도","bg":"linear-gradient(135deg,#E3F2FD,#BBDEFB)"},"caption":"왜 ASML만 만들 수 있을까요?","bubbles":[{"char":"pureun","text":"왜 다른 나라는 못 만들어요?","side":"left"},{"char":"uno","text":"이 기계 하나에 전 세계 수천 개 회사 기술이 들어가 있어. 10만 개 넘는 부품이 완벽하게 조립돼야 해.","side":"right"},{"char":"ojjang","text":"30년 넘게 연구하면서 쌓은 기술이라 아무도 따라 못 하는 거야.","side":"right"},{"char":"pureun","text":"그래서 이게 진짜 무기가 되는 거구나! 😲","side":"left"}]},{"type":"fact","facts":[{"icon":"🏭","color":"#5C6BC0","bg":"#E8EAF6","title":"ASML이 반도체 지정학의 핵심인 이유","text":"미국이 ASML의 EUV 기계를 중국에 수출 못 하게 막았어요. 이 기계 없이는 7nm 이하 선단 공정이 불가능해요."},{"icon":"🔬","color":"#4A90E2","bg":"#EEF4FF","title":"EUV 기계 내부의 경이로움","text":"진공 상태에서 작동하고 미세한 진동도 허용하지 않아요. 10만 개 이상의 부품, 내부 청정도가 우주 수준이에요."},{"icon":"🇰🇷","color":"#5DBB63","bg":"#F0FFF0","title":"삼성·SK하이닉스도 이 기계를 사요","text":"한국이 반도체 강국인 이유 중 하나는 ASML EUV를 가장 많이 구매하는 국가 중 하나이기 때문이에요."}]},{"type":"quiz","quizIdx":0,"q":"ASML EUV 기계의 핵심 역할은?","opts":["🌊 웨이퍼를 세척해요","✏️ 빛으로 웨이퍼에 초미세 회로를 그려요","🔥 칩을 열처리해요","📦 칩을 포장해요"],"ans":1,"correct":"정확해요! 🎉 EUV는 빛으로 나노미터 수준의 회로를 그려요.","wrong":"힌트: 아주 가는 빛으로 초정밀 ___을 그리는 기계예요 ✏️"},{"type":"deep","illust":{"emoji":"🌍","label":"삽화 13","desc":"반도체 지정학 세계지도","bg":"linear-gradient(135deg,#E8F5E9,#C8E6C9)"},"caption":"EUV가 왜 외교 무기가 됐을까요?","bubbles":[{"char":"pureun","text":"미국이 왜 중국한테 이 기계를 못 팔게 해요?","side":"left"},{"char":"uno","text":"반도체 기술 격차가 군사력 격차야. 좋은 칩 없이는 AI 무기도, 첨단 전투기도 못 만들거든.","side":"right"},{"char":"ojjang","text":"그래서 EUV 하나가 미국의 가장 강력한 무역 카드가 된 거야.","side":"right"},{"char":"pureun","text":"기계 하나가 그렇게 중요한 거구나... 😮","side":"left"}],"deepNote":"📌 심화: 네덜란드는 미국·EU 동맹이에요. 미국이 동맹국인 네덜란드를 통해 중국 반도체 굴기를 견제하는 구조예요."},{"type":"scene","illust":{"emoji":"💰","label":"삽화 11","desc":"투자 관심 장면","bg":"linear-gradient(135deg,#FFF8E1,#FFECB3)"},"caption":"아빠의 투자 이야기","bubbles":[{"char":"pureun","text":"아빠, 그럼 ASML 주식 사면 돈 벌어요? 😄","side":"left"},{"char":"uno","text":"하하! 아빠도 관심 있어. ASML은 독점 기업이라 진입장벽이 엄청 높거든.","side":"right"},{"char":"ojjang","text":"근데 주가가 이미 많이 올라서 비싸기도 해.","side":"right"},{"char":"uno","text":"투자는 싸게 사서 비싸게 파는 거야. 좋은 회사를 싸게 살 기회를 기다리는 거지.","side":"right"}]},{"type":"quiz","quizIdx":1,"q":"ASML EUV 기계 한 대의 가격은?","opts":["약 35억원","약 350억원","약 3,500억원","약 3조 5,000억원"],"ans":2,"correct":"맞아요! 🎉 약 3,500억원. 그래도 전 세계가 줄 서서 기다려요.","wrong":"힌트: 집 수천 채를 살 수 있는 가격이에요 💰"},{"type":"quiz","quizIdx":2,"q":"미국이 ASML EUV를 중국에 수출 못 하게 막은 이유는?","opts":["환경 오염 때문에","반도체 기술 격차 = 군사·경제력 격차이기 때문에","기계가 너무 무거워서","특허 문제 때문에"],"ans":1,"correct":"정확해요! 🎉 반도체 기술이 곧 국가 경쟁력이에요.","wrong":"힌트: 좋은 칩 없이는 AI 무기도, 첨단 전투기도 못 만들어요 🔒"},{"type":"complete","review":["ASML은 EUV 노광기를 전 세계 유일하게 만들어요","한 대에 약 3,500억원, 10만 개 이상의 부품","미국이 중국 수출을 막은 지정학 핵심 기술","삼성·SK하이닉스도 이 기계 없으면 첨단 칩 불가","독점 기업 → 높은 진입장벽 → 투자 관심 대상"],"nextNum":4,"nextTitle":"한국이 메모리 강국이 된 이유","nextPreview":"삼성전자와 SK하이닉스가 어떻게\n세계 1·2위가 됐는지 알아봐요!"}];
@@ -214,13 +215,9 @@ const EP12=[{"type":"scene","illust":{"emoji":"📺","label":"삽화 1","desc":"
 const EP13=[{"type":"scene","illust":{"emoji":"💻","label":"삽화 1","desc":"애플 실리콘 발표","bg":"linear-gradient(135deg,#E8F5E9,#C8E6C9)"},"caption":"애플이 직접 칩을 만든다는 게 무슨 의미일까요?","bubbles":[{"char":"pureun","text":"아빠, 아이패드에 'Apple M4'라고 써있어. 애플이 칩도 만들어요? 🤔","side":"left"},{"char":"uno","text":"응! 애플이 2020년부터 인텔 CPU 대신 직접 설계한 칩을 쓰기 시작했어.","side":"right"},{"char":"ojjang","text":"왜 직접 만드는 거야? 사다 쓰면 편하지 않아?","side":"right"},{"char":"uno","text":"직접 만들면 자기 제품에 딱 맞게 최적화할 수 있거든. 성능은 올리고 전력은 낮추고.","side":"right"}]},{"type":"scene","illust":{"emoji":"🏭","label":"삽화 2","desc":"팹리스 전략 도식","bg":"linear-gradient(135deg,#E3F2FD,#BBDEFB)"},"caption":"팹리스 전략이 왜 강력할까요?","bubbles":[{"char":"pureun","text":"그럼 애플이 공장도 갖고 있어요?","side":"left"},{"char":"uno","text":"아니! 설계만 해. 제조는 TSMC에 맡겨. 이걸 '팹리스' 전략이라고 해.","side":"right"},{"char":"pureun","text":"공장 없이 설계만 해도 돼요?","side":"left"},{"char":"uno","text":"오히려 더 좋아. 공장 수십조원 투자 없이 설계에만 집중할 수 있으니까. NVIDIA도 같은 방식이야.","side":"right"},{"char":"ojjang","text":"그래서 애플 M시리즈가 인텔보다 성능도 좋고 배터리도 오래 가는 거구나!","side":"left"}]},{"type":"scene","illust":{"emoji":"🔗","label":"삽화 3","desc":"TSMC 의존 구조","bg":"linear-gradient(135deg,#FFF3E0,#FFE0B2)"},"caption":"TSMC 의존도의 리스크도 있어요","bubbles":[{"char":"pureun","text":"그럼 애플이랑 NVIDIA가 다 TSMC한테 만들어달라고 해요?","side":"left"},{"char":"uno","text":"응! 그래서 TSMC가 파운드리 시장의 60%를 점유하는 거야.","side":"right"},{"char":"ojjang","text":"대만에 집중된 게 리스크이기도 해. 그래서 미국·일본에 TSMC 공장을 짓는 거야.","side":"right"},{"char":"pureun","text":"하나의 회사에 너무 의존하면 위험하구나! 😮","side":"left"}]},{"type":"fact","facts":[{"icon":"🍎","color":"#5DBB63","bg":"#F0FFF0","title":"애플 실리콘 혁명","text":"2020년 M1 출시로 인텔 대비 성능 2~3배, 전력 소비 절반 달성. M4(2024)는 AI 연산용 Neural Engine이 더욱 강화됐어요."},{"icon":"🏭","color":"#4A90E2","bg":"#EEF4FF","title":"팹리스의 장점","text":"설계에만 집중해 혁신 속도 극대화. 제조는 TSMC 최고 공정에 맡김. NVIDIA, Qualcomm, AMD, Apple 모두 팹리스예요."},{"icon":"🔗","color":"#FF8C42","bg":"#FFF3E0","title":"TSMC 의존도의 리스크","text":"애플·NVIDIA 등 주요 팹리스가 모두 TSMC에 의존. 대만 지정학 리스크가 커지면 전 세계 공급망이 흔들려요."}]},{"type":"quiz","quizIdx":0,"q":"애플이 직접 칩(M시리즈)을 설계하는 핵심 이유는?","opts":["비용을 아끼려고","자사 제품에 최적화해 성능·효율을 극대화","공장을 갖고 싶어서","중국 의존도를 줄이려고"],"ans":1,"correct":"정확해요! 🎉 직접 설계하면 하드웨어·소프트웨어 최적화로 압도적 성능을 낼 수 있어요.","wrong":"힌트: 자기 제품에 딱 ___해서 성능은 올리고 전력은 낮추는 게 목표예요 ⚡"},{"type":"deep","illust":{"emoji":"🌍","label":"삽화 4","desc":"팹리스 세계 지도","bg":"linear-gradient(135deg,#E8EAF6,#C5CAE9)"},"caption":"팹리스 전략이 왜 미래인가요?","bubbles":[{"char":"pureun","text":"설계만 하는 회사가 제조도 하는 회사보다 더 잘나가요?","side":"left"},{"char":"uno","text":"꼭 그렇진 않아. 근데 NVIDIA는 설계만 해서 세계 최고가 됐어. 집중의 힘이야.","side":"right"},{"char":"ojjang","text":"IDM(설계+제조)은 삼성처럼 유연성은 있지만 투자가 엄청 많이 필요해.","side":"right"},{"char":"pureun","text":"그럼 한국도 팹리스 회사가 더 많아져야 해요?","side":"left"},{"char":"uno","text":"맞아! 그게 한국 반도체 산업의 숙제야. 비메모리 팹리스를 키워야 해.","side":"right"}],"deepNote":"📌 심화: 한국 팹리스 생태계는 아직 초기 단계. 가온칩스·오픈엣지테크·퀄리타스반도체 등 AI·차량용 칩 개발사들이 성장 중. 장기적으로 중요한 분야예요."},{"type":"scene","illust":{"emoji":"📱","label":"삽화 5","desc":"스마트폰 칩 비교","bg":"linear-gradient(135deg,#F3E5F5,#E1BEE7)"},"caption":"스마트폰 칩 전쟁","bubbles":[{"char":"pureun","text":"스마트폰에도 다 다른 칩이 들어가요?","side":"left"},{"char":"uno","text":"응! 애플 A시리즈, 퀄컴 스냅드래곤, 삼성 엑시노스, 미디어텍이 경쟁해.","side":"right"},{"char":"ojjang","text":"애플 A시리즈가 제일 빠르다고 알려져 있어. 직접 설계해서 최적화했거든.","side":"right"},{"char":"pureun","text":"그래서 아이폰이 비싼 거구나! 😄","side":"left"}]},{"type":"quiz","quizIdx":1,"q":"팹리스(Fabless)가 공장을 갖지 않는 주된 이유는?","opts":["환경보호","수십조원 공장 투자 없이 설계에 집중 가능","정부 규제 때문에","기술이 없어서"],"ans":1,"correct":"맞아요! 🎉 공장 없이 설계에만 집중해서 빠른 혁신과 고마진을 달성해요.","wrong":"힌트: 공장에 수십조원 쓰는 대신 설계에만 ___할 수 있어요 🏭"},{"type":"quiz","quizIdx":2,"q":"TSMC가 파운드리 시장의 60%를 점유하는 이유는?","opts":["가격이 싸서","압도적인 공정 기술력과 수율로 애플·NVIDIA 등을 확보","한국에 있어서","미국 회사여서"],"ans":1,"correct":"정확해요! 🎉 최고의 공정 기술로 세계 최고 팹리스 고객들을 독점해요.","wrong":"힌트: 애플·NVIDIA가 다 TSMC를 선택한 건 ___과 성능 때문이에요 🏭"},{"type":"complete","review":["애플은 2020년부터 자체 M시리즈 칩 설계 (팹리스)","공장은 TSMC에 맡겨서 최고 공정 활용","M1 출시로 인텔 대비 성능 2~3배, 전력 절반 달성","NVIDIA·Qualcomm·AMD도 같은 팹리스 전략","한국도 팹리스 생태계 육성이 장기 과제예요"],"nextNum":14,"nextTitle":"자동차가 스마트해지는 이유","nextPreview":"전기차와 자율주행이 반도체를\n얼마나 많이 필요로 하는지 알아봐요!"}];
 const EP14=[{"type":"scene","illust":{"emoji":"🚗","label":"삽화 1","desc":"스마트 자동차 화면","bg":"linear-gradient(135deg,#FBE9E7,#FFCCBC)"},"caption":"요즘 자동차가 점점 스마트해지고 있어요","bubbles":[{"char":"pureun","text":"아빠 차에 화면이 엄청 커졌어! 예전엔 이런 거 없었잖아요 😮","side":"left"},{"char":"uno","text":"맞아. 요즘 자동차는 바퀴 달린 컴퓨터야. 반도체가 핵심이야.","side":"right"},{"char":"ojjang","text":"전기차는 더 심해. 테슬라는 아예 자체 AI 칩을 만들어서 자율주행을 구현해.","side":"right"},{"char":"pureun","text":"자동차에 반도체가 얼마나 들어가요? 🤔","side":"left"}]},{"type":"scene","illust":{"emoji":"⚡","label":"삽화 2","desc":"전기차 반도체 구조","bg":"linear-gradient(135deg,#E8F5E9,#C8E6C9)"},"caption":"전기차가 반도체 수요를 키우고 있어요","bubbles":[{"char":"uno","text":"일반 자동차에 칩이 수백 개, 전기차엔 수천 개가 들어가. 자율주행 차는 더 많아.","side":"right"},{"char":"pureun","text":"왜 전기차에 더 많이 필요해요?","side":"left"},{"char":"uno","text":"배터리 관리, 모터 제어, 자율주행 인식, 인포테인먼트까지 전부 반도체가 처리하거든.","side":"right"},{"char":"ojjang","text":"그래서 자동차 반도체 시장이 빠르게 크고 있어.","side":"left"}]},{"type":"scene","illust":{"emoji":"🔮","label":"삽화 3","desc":"자율주행 AI 칩","bg":"linear-gradient(135deg,#E8EAF6,#C5CAE9)"},"caption":"자율주행에는 AI 칩이 필요해요","bubbles":[{"char":"pureun","text":"자율주행이 어떻게 작동해요?","side":"left"},{"char":"uno","text":"카메라, 레이더, 라이다로 주변을 인식해서 AI가 즉시 판단하는 거야.","side":"right"},{"char":"ojjang","text":"NVIDIA Drive 플랫폼이나 테슬라 FSD 칩이 그 역할을 해.","side":"right"},{"char":"pureun","text":"자동차도 AI가 운전하는 거구나! 😲","side":"left"},{"char":"uno","text":"맞아! 그래서 자동차에도 AI 반도체가 들어가는 거야.","side":"right"}]},{"type":"fact","facts":[{"icon":"🚗","color":"#FF5722","bg":"#FBE9E7","title":"자동차 반도체 시장 성장","text":"2024년 자동차용 반도체 시장 약 80조원, 2030년 150조원 예상. 전기차·자율주행 확산으로 차량 1대당 반도체 탑재량이 계속 증가 중."},{"icon":"🤖","color":"#4A90E2","bg":"#EEF4FF","title":"자율주행과 AI 반도체","text":"테슬라 FSD 칩, NVIDIA Drive가 핵심. 차량 주변 데이터를 실시간 처리해야 해서 고성능 AI 반도체가 필수예요."},{"icon":"⚡","color":"#5DBB63","bg":"#F0FFF0","title":"전기차와 전력 반도체","text":"SiC(탄화규소) 전력 반도체는 전기차 배터리 제어에 필수. 인피니언·온세미가 강자예요."}]},{"type":"quiz","quizIdx":0,"q":"전기차에 일반 자동차보다 반도체가 더 많이 필요한 이유는?","opts":["오디오 시스템 때문에","배터리 관리·모터 제어·자율주행 등 모든 것이 반도체로 처리돼서","에어컨이 더 좋아서","전구가 더 많아서"],"ans":1,"correct":"정확해요! 🎉 전기차는 배터리부터 자율주행까지 모든 시스템이 반도체로 작동해요.","wrong":"힌트: 배터리 관리, 모터 제어, ___주행까지 전부 반도체가 담당해요 🚗"},{"type":"deep","illust":{"emoji":"💼","label":"삽화 4","desc":"자동차 반도체 투자 기회","bg":"linear-gradient(135deg,#FFF3E0,#FFE0B2)"},"caption":"자동차 반도체 투자 어떻게 볼까요?","bubbles":[{"char":"pureun","text":"자동차 반도체도 투자 기회가 있어요?","side":"left"},{"char":"uno","text":"있어! NXP, 르네사스, 인피니언 같은 차량용 반도체 전문 기업들이 주목받고 있어.","side":"right"},{"char":"ojjang","text":"근데 자동차 사이클도 있어. 자동차 판매가 줄면 칩 수요도 줄거든.","side":"right"},{"char":"pureun","text":"그럼 자동차 판매량을 봐야 해요?","side":"left"},{"char":"uno","text":"맞아! 그리고 전기차 보급률. 전기차가 많아질수록 반도체 수요가 늘어.","side":"right"}],"deepNote":"📌 심화: 한국은 차량용 반도체 내재화를 추진 중. 삼성·SK하이닉스·DB하이텍 등이 차량용 칩 개발 확대. 미래 성장 동력 중 하나예요."},{"type":"scene","illust":{"emoji":"🌱","label":"삽화 5","desc":"미래 자동차 상상","bg":"linear-gradient(135deg,#E8F5E9,#C8E6C9)"},"caption":"미래 자동차는 어떤 모습일까요?","bubbles":[{"char":"pureun","text":"나중에 내가 탈 자동차는 어떨까요?","side":"left"},{"char":"uno","text":"아마 완전 자율주행이 될 거야. 스스로 운전하고, AI가 음악도 골라주고, 목적지도 알아서 가는 거지.","side":"right"},{"char":"ojjang","text":"그 모든 게 다 반도체 덕분이야.","side":"right"},{"char":"pureun","text":"그럼 반도체 공부가 정말 중요한 거네요! 😄","side":"left"}]},{"type":"quiz","quizIdx":1,"q":"SiC(탄화규소) 전력 반도체가 전기차에서 중요한 이유는?","opts":["저렴해서","고온·고전압에서도 안정적으로 배터리를 제어할 수 있어서","가벼워서","한국이 잘 만들어서"],"ans":1,"correct":"맞아요! 🎉 SiC는 고온·고전압에 강해서 전기차 배터리 제어에 최적이에요.","wrong":"힌트: 일반 반도체보다 고온·고___에서 더 잘 작동하는 특수 소재예요 ⚡"},{"type":"quiz","quizIdx":2,"q":"자동차 반도체 시장이 2030년 얼마로 성장할 것으로 예상되나요?","opts":["약 20조원","약 50조원","약 150조원","약 500조원"],"ans":2,"correct":"정확해요! 🎉 전기차·자율주행 확산으로 2030년 약 150조원 예상이에요.","wrong":"힌트: 지금(80조원)보다 거의 2배 가까이 성장해요 🚗"},{"type":"complete","review":["전기차 1대에 반도체 수천 개, 자율주행차는 더 많아요","배터리 관리·모터 제어·자율주행 모두 반도체가 핵심","자동차 반도체 시장 2030년 150조원 예상","SiC 전력 반도체: 전기차 배터리 제어 필수 소재","나중에 탈 자동차는 반도체가 완전히 운전해줄 거예요 🌱"],"nextNum":15,"nextTitle":"반도체 강대국 지도가 바뀐다","nextPreview":"미국·한국·대만·일본·네덜란드·중국의\n반도체 패권 경쟁을 알아봐요!"}];
 const EP15=[{"type":"scene","illust":{"emoji":"🌏","label":"삽화 1","desc":"반도체 세계 지도","bg":"linear-gradient(135deg,#E0F2F1,#B2DFDB)"},"caption":"반도체 강대국 지도가 다시 그려지고 있어요","bubbles":[{"char":"pureun","text":"아빠, 반도체 때문에 나라들이 싸운다는 게 진짜예요? 🤔","side":"left"},{"char":"uno","text":"싸운다기보다 치열하게 경쟁하는 거야. 반도체가 국가 경쟁력 그 자체거든.","side":"right"},{"char":"ojjang","text":"미국, 중국, 한국, 대만, 일본, 유럽이 다 반도체 주도권을 갖고 싶어해.","side":"right"},{"char":"pureun","text":"각 나라가 어디서 강해요? 🌍","side":"left"}]},{"type":"scene","illust":{"emoji":"🗺️","label":"삽화 2","desc":"나라별 강점 지도","bg":"linear-gradient(135deg,#E8EAF6,#C5CAE9)"},"caption":"나라마다 강점이 달라요","bubbles":[{"char":"uno","text":"미국은 설계·EDA·장비·AI 소프트웨어. NVIDIA, Qualcomm, AMAT, KLA가 다 미국이야.","side":"right"},{"char":"pureun","text":"한국은요?","side":"left"},{"char":"uno","text":"메모리 세계 1·2위. 삼성·SK하이닉스. AI 시대 HBM으로 더 중요해졌어.","side":"right"},{"char":"ojjang","text":"대만은 TSMC 하나로 파운드리 60%+ 독점. 일본은 소재·부품·장비. 네덜란드는 ASML.","side":"left"},{"char":"pureun","text":"유럽이랑 중국은요?","side":"left"},{"char":"uno","text":"유럽은 차량용 반도체 강세. 중국은 성숙 공정 대량 생산과 내재화 추진 중이야.","side":"right"}]},{"type":"scene","illust":{"emoji":"💪","label":"삽화 3","desc":"한국의 포지션","bg":"linear-gradient(135deg,#E8F5E9,#C8E6C9)"},"caption":"한국의 포지션이 중요한 이유","bubbles":[{"char":"pureun","text":"한국은 앞으로도 강국이 될 수 있어요?","side":"left"},{"char":"uno","text":"메모리에서 AI 반도체 핵심 파트너로 진화하고 있어. HBM이 그 증거야.","side":"right"},{"char":"ojjang","text":"비메모리 팹리스를 키우는 게 한국의 장기 과제야. 설계 역량을 키워야 해.","side":"right"},{"char":"pureun","text":"한국 화이팅! 우리가 더 강해질 수 있어요! 🇰🇷","side":"left"}]},{"type":"fact","facts":[{"icon":"🌍","color":"#009688","bg":"#E0F2F1","title":"글로벌 반도체 분업 구조","text":"미국(설계·IP) → 한국·대만(제조) → 일본·네덜란드(소재·장비) → 전 세계(수요처). 이 협력 구조가 흔들리면 전 세계 공급망이 위협받아요."},{"icon":"🏗️","color":"#FF8C42","bg":"#FFF3E0","title":"각국의 반도체 자국 생산 경쟁","text":"미국 CHIPS Act, 일본 TSMC 유치, 유럽 EU 칩법. 각국이 공급망 내재화를 국가 전략으로 추진 중이에요."},{"icon":"🇰🇷","color":"#4A90E2","bg":"#EEF4FF","title":"한국의 포지션","text":"메모리 강국에서 AI 반도체 핵심 파트너로 진화 중. HBM·첨단 패키징에서 기술 격차를 유지하는 것이 한국의 핵심 과제예요."}]},{"type":"quiz","quizIdx":0,"q":"현재 파운드리(위탁 제조) 시장을 60% 이상 점유하는 기업은?","opts":["삼성전자","TSMC","인텔","SK하이닉스"],"ans":1,"correct":"정확해요! 🎉 대만 TSMC가 전 세계 파운드리의 60% 이상을 점유해요.","wrong":"힌트: 애플·NVIDIA의 칩을 대신 만들어주는 대만 회사예요 🇹🇼"},{"type":"deep","illust":{"emoji":"🔮","label":"삽화 4","desc":"반도체 미래 패권","bg":"linear-gradient(135deg,#F3E5F5,#E1BEE7)"},"caption":"앞으로 반도체 패권은 누가 가져갈까요?","bubbles":[{"char":"pureun","text":"앞으로 반도체 1등 나라는 어디가 될까요?","side":"left"},{"char":"uno","text":"아마 미국이 설계·AI 소프트웨어에서 계속 앞설 거야. NVIDIA, 퀄컴, AMD가 다 미국이거든.","side":"right"},{"char":"ojjang","text":"제조는 한국·대만이 계속 강세겠지. 중국이 빠르게 쫓아오고 있지만.","side":"right"},{"char":"pureun","text":"그럼 한국이 어떻게 해야 해요?","side":"left"},{"char":"uno","text":"첨단에서 계속 앞서가야 해. 메모리에서 HBM, 파운드리 개선, 팹리스 육성. 쉬면 안 돼.","side":"right"}],"deepNote":"📌 심화: 반도체는 군사·경제·AI 모든 분야의 기반. 앞으로 10~20년이 반도체 패권 경쟁의 결정적 시기예요. 한국이 어떤 선택을 하느냐가 미래를 결정해요."},{"type":"scene","illust":{"emoji":"🌱","label":"삽화 5","desc":"아빠와 딸의 마지막 이야기","bg":"linear-gradient(135deg,#FFF8E1,#FFECB3)"},"caption":"15화를 마치며","bubbles":[{"char":"pureun","text":"아빠, 15화를 다 봤어요! 이제 반도체 다 알았어요? 😄","side":"left"},{"char":"uno","text":"하하! 이게 시작이야. 뉴스 보면서 계속 업데이트해야 해.","side":"right"},{"char":"ojjang","text":"근데 이제 뉴스에서 반도체 얘기 나오면 어느 정도 이해가 되지 않아?","side":"right"},{"char":"pureun","text":"응! NVIDIA 나오면 GPU·HBM 생각나고, ASML 나오면 EUV 생각나! 😊","side":"left"},{"char":"uno","text":"그게 바로 이 앱을 만든 이유야. 나중에 아빠가 왜 이 주식 샀는지도 이해하게 될 거야.","side":"right"},{"char":"pureun","text":"아빠가 나를 위해 공부하고 만든 거잖아요~ 고마워요! 🌱","side":"left"}]},{"type":"quiz","quizIdx":1,"q":"글로벌 반도체 분업에서 한국의 핵심 역할은?","opts":["반도체 설계(팹리스)","메모리 생산과 AI 시대 HBM 공급","반도체 장비 제조","EDA 소프트웨어"],"ans":1,"correct":"맞아요! 🎉 메모리 강국에서 AI 시대 HBM 핵심 공급자로 진화하고 있어요.","wrong":"힌트: 삼성·SK하이닉스가 세계 1·2위인 분야예요 🇰🇷"},{"type":"quiz","quizIdx":2,"q":"반도체 패권 경쟁에서 각국이 자국 내 공장을 유치하려는 핵심 이유는?","opts":["세금 수입 때문에","반도체 공급망 의존을 줄이고 국가 안보를 강화하기 위해","일자리 창출을 위해","관광객 유치를 위해"],"ans":1,"correct":"정확해요! 🎉 반도체 공급이 끊기면 군사·경제 모든 것이 멈추기 때문이에요.","wrong":"힌트: 반도체는 국가 ___의 핵심 인프라예요 🌍"},{"type":"complete","review":["미국(설계)·한국·대만(제조)·일본·네덜란드(장비)의 분업 구조","TSMC 파운드리 60%+, 삼성·SK하이닉스 메모리 70%+ 점유","각국이 공급망 내재화를 위해 수십조원씩 투자 중","한국은 메모리에서 AI HBM 핵심 파트너로 진화 중","아빠가 공부한 이유 = 푸른이에게 투자 이유를 설명해주기 위해 🌱"],"nextNum":-1,"nextTitle":"","nextPreview":""}];
-
 const EP16=[{"type":"scene","illust":{"emoji":"📺","label":"삽화 1","desc":"뉴스 보는 장면","bg":"linear-gradient(135deg,#FFF3E0,#FFE0B2)"},"caption":"아빠가 AI 뉴스를 보다가 놀랐어요","bubbles":[{"char":"uno","text":"오! Anthropic이 흑자 전환 임박이래. AI 회사가 드디어 돈을 버는 거야!","side":"right"},{"char":"pureun","text":"앤쓰로픽이요? 그게 뭐예요? 🤔","side":"left"},{"char":"uno","text":"지금 우리가 대화하는 Claude AI를 만든 회사야!","side":"right"},{"char":"pureun","text":"클로드 아빠 회사가 돈을 버는 거예요?! 😲","side":"left"}]},{"type":"scene","illust":{"emoji":"🏢","label":"삽화 2","desc":"AI 회사 비교","bg":"linear-gradient(135deg,#E8EAF6,#C5CAE9)"},"caption":"Anthropic vs OpenAI, 어떻게 다를까요?","bubbles":[{"char":"pureun","text":"AI 회사가 어떻게 돈을 벌어요? 🤔","side":"left"},{"char":"uno","text":"기업들한테 AI를 빌려주고 돈을 받는 거야. 마치 수도처럼 AI를 쓴 만큼 내는 거지.","side":"right"},{"char":"ojjang","text":"Anthropic은 2분기에 약 15조원 매출이 예상된대. 1년 전만 해도 상상 못 했던 숫자야.","side":"left"},{"char":"pureun","text":"15조원이요?! 그게 얼마나 큰 거예요? 😮","side":"left"},{"char":"uno","text":"광주광역시 1년 예산이 약 8조원이야. 그 두 배 가까이 되는 돈이야.","side":"right"}]},{"type":"scene","illust":{"emoji":"💡","label":"삽화 3","desc":"칩 전략 비교","bg":"linear-gradient(135deg,#E3F2FD,#BBDEFB)"},"caption":"수익성의 비밀은 칩 전략이에요","bubbles":[{"char":"pureun","text":"그럼 OpenAI는요?","side":"left"},{"char":"uno","text":"OpenAI는 NVIDIA GPU에 많이 의존해. 비싸거든. 근데 Anthropic은 Google TPU랑 Amazon 칩을 써서 비용을 낮췄어.","side":"right"},{"char":"ojjang","text":"같은 AI 서비스인데 어떤 칩을 쓰느냐가 수익에 큰 차이를 만드는 거구나.","side":"left"},{"char":"uno","text":"맞아! 그래서 반도체가 AI 비즈니스의 핵심인 거야. 칩 비용이 곧 이익이거든.","side":"right"}]},{"type":"fact","facts":[{"icon":"💰","color":"#FF8C42","bg":"#FFF3E0","title":"Anthropic 수익 현황","text":"2026년 2분기 매출 약 15조원 예상. 기존 '2028년 전 흑자 불가'를 완전히 뒤집는 수치. 연간 환산 약 60조원으로 OpenAI 연간 32조원을 크게 웃돌아요."},{"icon":"🔑","color":"#4A90E2","bg":"#EEF4FF","title":"수익성 차이의 핵심: 칩 전략","text":"Anthropic: Google TPU·Amazon Trainium 활용 → 비용 절감. OpenAI: NVIDIA GPU 의존 → 인프라 비용 부담. 같은 AI 서비스도 어떤 칩을 쓰느냐가 수익을 결정해요."},{"icon":"🚀","color":"#9C27B0","bg":"#F3E5F5","title":"IPO 레이스 시작","text":"Anthropic 기업가치 약 1,200조원, OpenAI 약 1,100조원. 두 회사 모두 상장(IPO)을 준비 중. AI 역사상 최대 규모 상장 이벤트가 될 가능성이 높아요."}]},{"type":"quiz","quizIdx":0,"q":"Anthropic이 OpenAI보다 수익성이 높은 핵심 이유는?","opts":["직원이 적어서","Google TPU·Amazon 칩으로 인프라 비용을 낮춰서","사용자가 더 많아서","정부 보조금을 받아서"],"ans":1,"correct":"정확해요! 🎉 어떤 칩을 쓰느냐가 AI 회사 수익의 핵심이에요.","wrong":"힌트: 같은 AI 서비스인데 ___비용을 낮추는 칩 전략이 달랐어요 💡"},{"type":"deep","illust":{"emoji":"📊","label":"삽화 4","desc":"IPO 설명 그림","bg":"linear-gradient(135deg,#E8F5E9,#C8E6C9)"},"caption":"IPO가 뭔지 알아봐요","bubbles":[{"char":"pureun","text":"아빠, IPO가 뭐예요?","side":"left"},{"char":"uno","text":"회사가 주식시장에 처음 상장하는 거야. 그러면 우리 같은 일반인도 그 회사 주식을 살 수 있어.","side":"right"},{"char":"pureun","text":"그럼 아빠도 Anthropic 주식 살 수 있어요?","side":"left"},{"char":"uno","text":"IPO 되면 가능해! 지금은 아직 비상장이라 살 수 없어. 그래서 상장 소식이 뉴스가 되는 거야.","side":"right"},{"char":"ojjang","text":"우리가 쓰는 Claude AI 회사를 직접 투자할 수 있게 되는 거네! 😊","side":"left"}],"deepNote":"📌 심화: Anthropic에는 Google·Amazon이 이미 수십조원 투자. IPO 시 기업가치 1,200조원이면 삼성전자 시가총액(약 400조원)의 3배 수준이에요."},{"type":"scene","illust":{"emoji":"🌱","label":"삽화 5","desc":"아빠 딸 투자 대화","bg":"linear-gradient(135deg,#FFF8E1,#FFECB3)"},"caption":"아빠의 투자 생각","bubbles":[{"char":"pureun","text":"아빠, 클로드 회사가 상장되면 살 거예요?","side":"left"},{"char":"uno","text":"진지하게 고민해볼 거야. 근데 상장 때 너무 비쌀 수 있어. 좋은 회사라도 가격이 중요하거든.","side":"right"},{"char":"ojjang","text":"AI 산업이 성장하면 Anthropic 말고 NVIDIA, SK하이닉스 같은 인프라 회사들도 같이 커지는 거잖아.","side":"left"},{"char":"uno","text":"맞아! 그래서 아빠가 SK하이닉스를 이미 갖고 있는 거야. AI 수요가 클수록 HBM이 필요하니까.","side":"right"},{"char":"pureun","text":"아빠 투자가 다 연결돼있구나! 😄","side":"left"}]},{"type":"quiz","quizIdx":1,"q":"IPO란 무엇인가요?","opts":["AI 칩의 한 종류","회사가 주식시장에 처음 상장하는 것","투자 전략의 이름","반도체 공정 방식"],"ans":1,"correct":"맞아요! 🎉 IPO 후엔 일반인도 그 회사 주식을 살 수 있어요.","wrong":"힌트: 회사가 ___시장에 처음 나오는 이벤트예요 📈"},{"type":"quiz","quizIdx":2,"q":"AI 회사의 수익성에 가장 큰 영향을 미치는 비용은?","opts":["직원 월급","반도체(칩) 인프라 비용","마케팅 비용","건물 임대료"],"ans":1,"correct":"정확해요! 🎉 AI 연산에 쓰이는 칩 비용이 AI 회사 수익의 핵심이에요.","wrong":"힌트: AI가 생각할 때 GPU 같은 ___를 엄청 많이 써요 💻"},{"type":"complete","review":["Anthropic = Claude AI 만든 회사, 흑자 전환 임박","AI 회사 수익 = 기업에 AI 빌려주고 사용료 받기","칩 전략이 수익성을 결정 (Anthropic이 비용 절감 성공)","IPO = 주식시장 첫 상장 → 일반인도 투자 가능","AI 수요 증가 → SK하이닉스 HBM 수혜 연결고리 유지 🌱"],"nextNum":17,"nextTitle":"AI가 앱을 대신 써준다고?","nextPreview":"구글 AI가 내 대신 쇼핑도 하고\n식당 예약도 한다고요?!"}];
-
 const EP17=[{"type":"scene","illust":{"emoji":"📱","label":"삽화 1","desc":"스마트폰 앱 사용 장면","bg":"linear-gradient(135deg,#E8EAF6,#C5CAE9)"},"caption":"구글이 깜짝 발표를 했어요","bubbles":[{"char":"uno","text":"오! Google이 Gemini Spark를 발표했어. AI가 24시간 내 앱을 대신 써준대!","side":"right"},{"char":"pureun","text":"AI가 앱을 써요?! 어떻게요? 😲","side":"left"},{"char":"uno","text":"예를 들면 '저녁 식당 예약해줘' 하면 AI가 직접 예약 앱을 켜서 예약까지 해주는 거야.","side":"right"},{"char":"ojjang","text":"내가 앱을 직접 안 눌러도 되는 거네! 😮","side":"left"}]},{"type":"scene","illust":{"emoji":"🛒","label":"삽화 2","desc":"AI 에이전트 쇼핑 장면","bg":"linear-gradient(135deg,#E3F2FD,#BBDEFB)"},"caption":"AI 에이전트가 뭔지 알아봐요","bubbles":[{"char":"pureun","text":"그게 가능해요? 🤔","side":"left"},{"char":"uno","text":"이걸 'AI 에이전트'라고 해. 지금까지 AI는 대답만 했잖아. 이제는 직접 행동까지 해.","side":"right"},{"char":"pureun","text":"어떤 앱이랑 연결돼요?","side":"left"},{"char":"uno","text":"Canva로 디자인하고, Instacart로 장보고, OpenTable로 식당 예약까지. 거의 모든 앱이랑 연결될 거야.","side":"right"},{"char":"ojjang","text":"비서를 고용한 것 같은 느낌이네! 😄","side":"left"}]},{"type":"scene","illust":{"emoji":"🔄","label":"삽화 3","desc":"AI 에이전트 작동 구조","bg":"linear-gradient(135deg,#E8F5E9,#C8E6C9)"},"caption":"기존 AI vs AI 에이전트","bubbles":[{"char":"pureun","text":"그럼 지금 클로드 아빠랑 대화하는 거랑 달라요?","side":"left"},{"char":"uno","text":"지금 Claude는 대답해줘. 근데 에이전트는 직접 실행해. '피자 주문해줘' 하면 진짜 주문까지 해버리는 거야.","side":"right"},{"char":"ojjang","text":"대화 → 실행. 이 차이가 엄청난 거구나.","side":"right"},{"char":"pureun","text":"그럼 AI가 실수하면 어떡해요? 😅","side":"left"},{"char":"uno","text":"그게 지금 가장 큰 숙제야. 중요한 건 사람이 최종 확인하는 구조가 필요해.","side":"right"}]},{"type":"fact","facts":[{"icon":"🤖","color":"#5C6BC0","bg":"#E8EAF6","title":"AI 에이전트 = 대화 → 실행","text":"기존 AI: 질문하면 대답만. AI 에이전트: 말하면 직접 앱을 켜고 실행까지. Google Gemini Spark가 Canva·Instacart·OpenTable 등과 연동 시작. 수 주 내 출시 예정."},{"icon":"🔗","color":"#FF8C42","bg":"#FFF3E0","title":"MCP란 무엇인가?","text":"Model Context Protocol. AI가 외부 앱·서비스와 소통하는 표준 방식이에요. Anthropic이 만들었고 Google·Microsoft도 채택. AI 에이전트 시대의 공통 언어예요."},{"icon":"💼","color":"#5DBB63","bg":"#F0FFF0","title":"왜 이게 중요한 투자 신호인가?","text":"AI 에이전트 확산 → 더 많은 연산 필요 → GPU·HBM 수요 증가. AI가 대화에서 실행으로 진화할수록 반도체 인프라 수요는 더 빠르게 늘어요."}]},{"type":"quiz","quizIdx":0,"q":"AI 에이전트가 기존 AI 챗봇과 다른 핵심 차이는?","opts":["더 빠르게 대답해요","대화를 넘어 앱을 직접 실행하는 행동을 해요","더 많은 언어를 알아요","화면이 예뻐요"],"ans":1,"correct":"정확해요! 🎉 대답 → 실행. 이 한 단계가 AI 역사의 큰 전환점이에요.","wrong":"힌트: '피자 주문해줘' 하면 직접 ___까지 해버리는 게 에이전트예요 🛒"},{"type":"deep","illust":{"emoji":"🌍","label":"삽화 5","desc":"AI 에이전트 미래 세상","bg":"linear-gradient(135deg,#FFF3E0,#FFE0B2)"},"caption":"AI 에이전트가 만들 미래","bubbles":[{"char":"pureun","text":"앞으로 AI가 다 해주면 사람은 뭘 해요? 🤔","side":"left"},{"char":"uno","text":"좋은 질문이야! 반복적인 일은 AI가 하고, 사람은 더 창의적이고 감성적인 일을 하게 될 거야.","side":"right"},{"char":"ojjang","text":"의사 결정, 관계, 창의력... 이런 건 아직 사람이 더 잘하잖아.","side":"right"},{"char":"pureun","text":"그럼 나는 커서 뭘 해야 해요?","side":"left"},{"char":"uno","text":"AI를 잘 쓸 줄 아는 사람이 되면 돼. AI와 협력하는 능력이 미래 최고의 스킬이야.","side":"right"}],"deepNote":"📌 심화: AI 에이전트 보안 위험도 있어요. VS Code 플러그인 해킹으로 GitHub 3,800개 저장소가 탈취된 사건도 이번 주 발생. AI 도구 사용 시 보안 점검 필수예요."},{"type":"scene","illust":{"emoji":"💰","label":"삽화 4","desc":"AI 인프라 투자 흐름도","bg":"linear-gradient(135deg,#F3E5F5,#E1BEE7)"},"caption":"투자자 관점에서 보는 AI 에이전트","bubbles":[{"char":"pureun","text":"아빠, 이게 투자랑 관련 있어요?","side":"left"},{"char":"uno","text":"당연하지! AI 에이전트가 많아질수록 서버가 더 필요해. 서버엔 GPU가 필요하고, GPU 옆엔 HBM이 필요해.","side":"right"},{"char":"ojjang","text":"결국 반도체 수요가 계속 늘어나는 구조네.","side":"left"},{"char":"uno","text":"맞아. 그래서 Microsoft, Google, Amazon이 올해 각각 80조원씩 데이터센터에 투자하는 거야.","side":"right"},{"char":"pureun","text":"아빠가 SK하이닉스 산 이유가 다 연결되네요! 🌱","side":"left"}]},{"type":"quiz","quizIdx":1,"q":"MCP(Model Context Protocol)가 중요한 이유는?","opts":["새로운 반도체 이름이라서","AI가 외부 앱·서비스와 소통하는 표준이라서","구글의 새 스마트폰이라서","배터리 기술이라서"],"ans":1,"correct":"맞아요! 🎉 MCP는 AI 에이전트 시대의 공통 언어예요. Anthropic이 만들었어요.","wrong":"힌트: AI가 다른 앱들과 소통하는 ___방식이에요 🔗"},{"type":"quiz","quizIdx":2,"q":"AI 에이전트 확산이 반도체 수요에 미치는 영향은?","opts":["반도체 수요 감소","AI 연산 증가 → GPU·HBM 수요 증가","반도체와 무관해요","수요가 일정해요"],"ans":1,"correct":"정확해요! 🎉 AI가 더 많이 '실행'할수록 더 많은 반도체가 필요해요.","wrong":"힌트: AI가 대화에서 실행으로 진화할수록 ___수요가 늘어요 💻"},{"type":"complete","review":["AI 에이전트 = 대화를 넘어 앱을 직접 실행","Google Gemini Spark: Canva·Instacart·OpenTable 등과 연동","MCP = AI가 외부 앱과 소통하는 표준 (Anthropic 개발)","AI 에이전트 확산 → GPU·HBM 수요 지속 증가","미래 핵심 스킬 = AI와 협력하는 능력 🌱"],"nextNum":-1,"nextTitle":"","nextPreview":""}];
-
 const EP18=[{"type":"scene","illust":{"emoji":"🏭","label":"삽화 3","desc":"반도체 공장 외관","bg":"linear-gradient(135deg,#E0F7FA,#B2EBF2)"},"caption":"반도체가 만들어지는 과정이 궁금해요","bubbles":[{"char":"pureun","text":"아빠, 반도체가 어떻게 만들어져요? 모래에서 폰까지 중간 과정이 궁금해요! 🤔","side":"left"},{"char":"uno","text":"좋은 질문이야! 크게 두 단계야. 전공정이랑 후공정.","side":"right"},{"char":"ojjang","text":"전공정은 칩을 만드는 것, 후공정은 칩을 포장하는 거야.","side":"left"},{"char":"pureun","text":"요리처럼 재료 손질하고 포장하는 거네요! 😄","side":"left"}]},{"type":"scene","illust":{"emoji":"💿","label":"삽화 5","desc":"웨이퍼 공정 단계","bg":"linear-gradient(135deg,#F3E5F5,#E1BEE7)"},"caption":"전공정 1~3단계: 웨이퍼 준비","bubbles":[{"char":"uno","text":"전공정은 9단계야. 먼저 ①웨이퍼 제조. 모래에서 실리콘을 뽑아 동그란 판을 만들어.","side":"right"},{"char":"pureun","text":"그다음은요?","side":"left"},{"char":"uno","text":"②산화 공정. 웨이퍼 표면에 산화막을 입혀서 보호층을 만들어.","side":"right"},{"char":"ojjang","text":"③포토 공정이 제일 신기해. ASML EUV로 빛을 쏴서 회로 패턴을 그리는 거야.","side":"left"},{"char":"pureun","text":"3단계에서 ASML이 나오는 거구나! 😲","side":"left"}]},{"type":"scene","illust":{"emoji":"🔬","label":"삽화 7","desc":"식각·이온 주입 공정","bg":"linear-gradient(135deg,#E8EAF6,#C5CAE9)"},"caption":"전공정 4~6단계: 회로 새기기","bubbles":[{"char":"uno","text":"④식각 공정. 불필요한 부분을 화학적으로 깎아내. 조각칼로 새기는 거야.","side":"right"},{"char":"pureun","text":"정말 조각하는 거네요! ✏️","side":"left"},{"char":"uno","text":"⑤이온 주입. 특수 원소를 심어서 전기 특성을 바꿔. ⑥박막 증착은 아주 얇은 막을 입히는 거야.","side":"right"},{"char":"ojjang","text":"4~6단계를 수십 번 반복해서 층층이 회로를 쌓아.","side":"left"},{"char":"pureun","text":"케이크처럼 층층이 쌓는 거구나! 🎂","side":"left"}]},{"type":"scene","illust":{"emoji":"🧹","label":"삽화 4","desc":"클린룸 세정 공정","bg":"linear-gradient(135deg,#E8F5E9,#C8E6C9)"},"caption":"전공정 7~9단계: 완성과 검사","bubbles":[{"char":"uno","text":"⑦세정 공정. 각 단계마다 불순물을 제거해. 클린룸이 필요한 이유야.","side":"right"},{"char":"pureun","text":"그래서 우주복 입고 일하는 거구나! 👨‍🚀","side":"left"},{"char":"uno","text":"⑧금속 배선. 회로들을 전선으로 연결해. ⑨테스트로 정상 동작하는지 확인해.","side":"right"},{"char":"ojjang","text":"여기까지가 전공정이야. 웨이퍼 하나에 칩 수백 개가 동시에 만들어져.","side":"left"}]},{"type":"fact","facts":[{"icon":"⚙️","color":"#00ACC1","bg":"#E0F7FA","title":"전공정 9단계 요약","text":"①웨이퍼 제조 → ②산화 → ③포토(EUV) → ④식각 → ⑤이온주입 → ⑥박막증착 → ⑦세정 → ⑧금속배선 → ⑨테스트. 이 과정을 수십 번 반복해요."},{"icon":"⏱️","color":"#FF8C42","bg":"#FFF3E0","title":"전공정에 걸리는 시간","text":"웨이퍼 하나가 전공정을 거치는 데 약 3개월이 걸려요. 수백 개의 공정 단계, 수천 번의 검사. 그래서 반도체 공장이 수십조원인 거예요."},{"icon":"📊","color":"#5DBB63","bg":"#F0FFF0","title":"수율(Yield)이 핵심","text":"웨이퍼에서 정상 칩이 나오는 비율을 수율이라 해요. 수율 90% vs 70%는 수익성에 엄청난 차이. 삼성과 TSMC 경쟁의 핵심이에요."}]},{"type":"quiz","quizIdx":0,"q":"전공정에서 ASML EUV가 사용되는 단계는?","opts":["①웨이퍼 제조","③포토 공정 (회로 패턴 그리기)","⑦세정 공정","⑨테스트"],"ans":1,"correct":"정확해요! 🎉 EUV는 포토 공정에서 빛으로 웨이퍼에 회로를 그려요.","wrong":"힌트: ASML이 빛으로 회로 ___을 그리는 단계예요 ✏️"},{"type":"deep","illust":{"emoji":"🏆","label":"삽화 16","desc":"수율 경쟁 트로피","bg":"linear-gradient(135deg,#FFF8E1,#FFECB3)"},"caption":"수율 전쟁이 반도체 패권을 결정해요","bubbles":[{"char":"pureun","text":"수율이 왜 그렇게 중요해요?","side":"left"},{"char":"uno","text":"웨이퍼 하나에 칩 100개를 만들었는데 90개만 정상이면 수율 90%. 70개면 70%야.","side":"right"},{"char":"pureun","text":"10% 차이가 크게 느껴지지 않아요.","side":"left"},{"char":"uno","text":"웨이퍼 1만장 기준으로 수율 90%는 칩 90만개, 70%는 70만개야. 20만개 차이. 이게 곧 돈이야.","side":"right"},{"char":"ojjang","text":"삼성 파운드리가 TSMC에 뒤처지는 이유 중 하나가 수율 문제야.","side":"left"}],"deepNote":"📌 심화: TSMC 3nm 수율은 약 80% 이상으로 알려짐. 삼성 3nm GAA는 수율 개선 중. 수율 1% 차이가 연간 수천억원 매출 차이를 만들어요."},{"type":"quiz","quizIdx":1,"q":"반도체 전공정에서 '수율'이란?","opts":["공장 생산 속도","웨이퍼에서 정상 칩이 나오는 비율","전공정 단계 수","웨이퍼 크기"],"ans":1,"correct":"맞아요! 🎉 수율이 높을수록 같은 웨이퍼에서 더 많은 정상 칩이 나와요.","wrong":"힌트: 만든 칩 중에 ___하게 작동하는 비율이에요 📊"},{"type":"quiz","quizIdx":2,"q":"전공정 완료 후 웨이퍼 하나에서 동시에 만들어지는 것은?","opts":["칩 1개","칩 수백 개","웨이퍼 여러 장","HBM 메모리"],"ans":1,"correct":"정확해요! 🎉 웨이퍼 1장에 칩 수백 개를 동시에 만들어서 효율적이에요.","wrong":"힌트: 피자판 하나에서 조각을 여러 개 자르듯이 ___개를 동시에 만들어요 💿"},{"type":"complete","review":["전공정 = 웨이퍼에 칩을 만드는 9단계 과정","포토 공정에서 ASML EUV로 회로를 그려요","4~6단계를 수십 번 반복해 층층이 회로를 쌓아요","전공정에 약 3개월 소요, 수율이 수익성 핵심","수율 경쟁 = 삼성 vs TSMC 파운드리 전쟁의 본질"],"nextNum":19,"nextTitle":"칩이 완성되기까지","nextPreview":"전공정 후 후공정에서 어떻게\n칩이 완성되는지 알아봐요!"}];
-
 const EP19=[{"type":"scene","illust":{"emoji":"✂️","label":"삽화 5","desc":"웨이퍼 다이싱 장면","bg":"linear-gradient(135deg,#EFEBE9,#D7CCC8)"},"caption":"전공정 후 웨이퍼를 자르는 과정","bubbles":[{"char":"pureun","text":"아빠, 전공정 끝나고 그 다음은 뭐예요? 🤔","side":"left"},{"char":"uno","text":"후공정이야! 전공정에서 만든 칩을 실제로 쓸 수 있게 포장하는 과정이야.","side":"right"},{"char":"pureun","text":"포장이요? 왜 포장을 해요?","side":"left"},{"char":"uno","text":"웨이퍼 위 칩은 너무 약해. 충격·열·습기로부터 보호해야 하고, 다른 부품과 연결도 해야 해.","side":"right"},{"char":"ojjang","text":"달걀을 계란판에 담는 것처럼 보호하는 거야! 🥚","side":"left"}]},{"type":"scene","illust":{"emoji":"🔪","label":"삽화 5","desc":"다이싱 절단 공정","bg":"linear-gradient(135deg,#E0F7FA,#B2EBF2)"},"caption":"후공정 1단계: 웨이퍼를 잘라요","bubbles":[{"char":"uno","text":"후공정 첫 번째는 다이싱. 웨이퍼를 피자 자르듯 칩 하나하나로 잘라.","side":"right"},{"char":"pureun","text":"정말 피자처럼요? 🍕","side":"left"},{"char":"uno","text":"다이아몬드 톱날로 자르는 거야. 이렇게 잘린 칩 하나를 '다이'라고 해.","side":"right"},{"char":"ojjang","text":"이 단계에서도 불량이 나올 수 있어서 또 검사해.","side":"left"}]},{"type":"scene","illust":{"emoji":"🏗️","label":"삽화 17","desc":"첨단 패키징 적층 구조","bg":"linear-gradient(135deg,#E8EAF6,#C5CAE9)"},"caption":"후공정 2~3단계: 붙이고 연결해요","bubbles":[{"char":"uno","text":"두 번째는 다이 어태치. 잘린 칩을 기판 위에 붙여. 세 번째는 와이어 본딩. 금선으로 칩과 기판을 연결해.","side":"right"},{"char":"pureun","text":"금선이요?! 진짜 금이에요? 💛","side":"left"},{"char":"uno","text":"응! 아주 가는 금실로 연결해. 전기가 잘 흘러야 하거든.","side":"right"},{"char":"ojjang","text":"요즘은 금선 대신 구리선이나 솔더볼로도 연결해. 더 빠르거든.","side":"left"}]},{"type":"scene","illust":{"emoji":"📦","label":"삽화 18","desc":"몰딩·패키징 완성","bg":"linear-gradient(135deg,#FFF3E0,#FFE0B2)"},"caption":"후공정 4단계: 몰딩으로 완성해요","bubbles":[{"char":"pureun","text":"그다음은요?","side":"left"},{"char":"uno","text":"몰딩이야. 에폭시 수지로 칩 전체를 덮어서 보호해. 우리가 보는 검은 칩 형태가 이거야.","side":"right"},{"char":"pureun","text":"아, 그래서 반도체가 검은 색이에요! 😮","side":"left"},{"char":"uno","text":"맞아! 마지막으로 최종 테스트. 온도·전압을 다양하게 바꿔가며 이상 없는지 확인해.","side":"right"},{"char":"ojjang","text":"여기까지 통과해야 진짜 반도체 완성! 🎉","side":"left"}]},{"type":"fact","facts":[{"icon":"📦","color":"#795548","bg":"#EFEBE9","title":"후공정 4단계 요약","text":"①다이싱(웨이퍼 절단) → ②다이 어태치(기판에 부착) → ③와이어 본딩(금선 연결) → ④몰딩(에폭시 보호) → ⑤최종 테스트. 여기서 완성된 칩이 스마트폰·서버에 들어가요."},{"icon":"🏗️","color":"#4A90E2","bg":"#EEF4FF","title":"첨단 패키징이 새로운 전장","text":"HBM처럼 여러 칩을 수직 적층하거나(3D), 여러 칩을 하나로 묶는(CoWoS) 첨단 패키징이 각광받고 있어요. TSMC의 CoWoS가 NVIDIA GPU+HBM 결합에 핵심이에요."},{"icon":"🇰🇷","color":"#5DBB63","bg":"#F0FFF0","title":"한국의 패키징 경쟁력","text":"삼성·SK하이닉스가 HBM 적층 패키징에서 세계 최고 수준. 한미반도체의 TC본더 장비가 HBM 제조 필수 장비로 주목받고 있어요."}]},{"type":"quiz","quizIdx":0,"q":"후공정에서 웨이퍼를 칩 하나하나로 자르는 공정은?","opts":["몰딩","다이싱","와이어 본딩","이온 주입"],"ans":1,"correct":"정확해요! 🎉 다이싱은 웨이퍼를 다이아몬드 톱날로 자르는 과정이에요.","wrong":"힌트: 피자를 조각내듯 웨이퍼를 ___하는 공정이에요 🍕"},{"type":"deep","illust":{"emoji":"🔗","label":"삽화 21","desc":"CoWoS 첨단 패키징","bg":"linear-gradient(135deg,#E8F5E9,#C8E6C9)"},"caption":"첨단 패키징이 새로운 경쟁력이에요","bubbles":[{"char":"pureun","text":"HBM도 후공정이에요?","side":"left"},{"char":"uno","text":"맞아! HBM은 DRAM 칩을 수직으로 쌓아서 하나로 만드는 첨단 패키징이야.","side":"right"},{"char":"ojjang","text":"NVIDIA H100에 HBM이랑 GPU를 같이 묶는 CoWoS도 TSMC의 첨단 패키징 기술이야.","side":"left"},{"char":"pureun","text":"그럼 전공정만큼 후공정도 중요한 거네요!","side":"left"},{"char":"uno","text":"맞아! AI 시대엔 첨단 패키징이 새로운 경쟁력이 됐어. 한미반도체 같은 장비 회사도 주목받는 이유야.","side":"right"}],"deepNote":"📌 심화: CoWoS(Chip on Wafer on Substrate)는 GPU와 HBM을 하나의 패키지로 묶는 기술. TSMC 독점에 가까운 기술. 삼성도 I-Cube로 추격 중이에요."},{"type":"quiz","quizIdx":1,"q":"HBM이 첨단 패키징 기술의 대표적인 예인 이유는?","opts":["가격이 싸서","DRAM 칩을 수직으로 쌓아 하나로 만들기 때문에","전공정이 없어서","크기가 작아서"],"ans":1,"correct":"맞아요! 🎉 HBM은 레고처럼 쌓는 첨단 패키징 기술이에요.","wrong":"힌트: 레고처럼 DRAM을 ___으로 쌓는 게 핵심이에요 🏗️"},{"type":"quiz","quizIdx":2,"q":"반도체 완성품이 검은색인 이유는?","opts":["실리콘이 검은색이라서","몰딩(에폭시 수지)으로 덮어서","포토 공정 때 검게 됨","금속 배선이 검어서"],"ans":1,"correct":"정확해요! 🎉 몰딩 공정에서 에폭시 수지로 보호하면 검은 색이 돼요.","wrong":"힌트: 칩을 보호하기 위해 에폭시로 ___는 공정 때문이에요 📦"},{"type":"complete","review":["후공정 = 다이싱 → 부착 → 와이어 본딩 → 몰딩 → 테스트","검은 반도체 = 몰딩(에폭시 수지)으로 보호한 것","HBM = DRAM을 수직 적층하는 첨단 패키징","CoWoS = GPU+HBM을 묶는 TSMC 첨단 패키징","첨단 패키징이 AI 시대 새로운 반도체 경쟁력 🌱"],"nextNum":20,"nextTitle":"NVIDIA는 어떻게 세계 1등이 됐나?","nextPreview":"AI 시대 최대 수혜 기업\nNVIDIA의 성공 비결을 알아봐요!"}];
 const EPISODES=[
   {num:1,title:"모래로 폰을 만든다고?",emoji:"\ud83c\udfd6\ufe0f",color:"#FF8C42",pages:EP1},
@@ -244,49 +241,17 @@ const EPISODES=[
   {num:19,title:"칩이 완성되기까지",emoji:"\ud83d\udce6",color:"#795548",pages:EP19},
 ];
 
-
-// 색종이 컬러
-const CONFETTI_COLORS=['#FF8C42','#FF6B6B','#5DBB63','#4A90E2','#FFD700','#FF69B4','#9C27B0'];
+const CONFETTI=['#FF8C42','#FF6B6B','#5DBB63','#4A90E2','#FFD700','#FF69B4'];
 
 function Confetti(){
-  const dots=Array.from({length:25},(_,i)=>({
-    id:i,color:CONFETTI_COLORS[i%CONFETTI_COLORS.length],
-    left:Math.random()*100,delay:Math.random()*0.8,dur:1.2+Math.random()*0.8,
+  const dots=Array.from({length:20},(_,i)=>({
+    id:i,color:CONFETTI[i%6],
+    left:Math.random()*100,
+    delay:Math.random()*.8,
+    dur:1.2+Math.random()*.8
   }));
-  return e('div',{className:'confetti-wrap'},
-    dots.map(d=>e('div',{key:d.id,className:'confetti-dot',
-      style:{background:d.color,left:d.left+'%',top:'-10px',
-        animationDuration:d.dur+'s',animationDelay:d.delay+'s'}}))
-  );
-}
-
-
-
-
-function LockScreen({onUnlock}){
-  return e('div',{className:'tab-lock-screen'},
-    e('div',{className:'tab-lock-emoji'},'🔒'),
-    e('div',{className:'tab-lock-title'},'잠금 해제가 필요해요'),
-    e('div',{className:'tab-lock-desc'},'기초편이 마음에 드셨나요?
-심화편·뉴스편을 모두 즐겨보세요!'),
-    e('div',{className:'tab-lock-list'},
-      e('div',{className:'tab-lock-list-title'},'잠금 해제 시 이용 가능 ✅'),
-      [
-        {ico:'🏭',txt:'심화편 EP6~10 (5화)'},
-        {ico:'📰',txt:'뉴스편 EP11~17 (7화)'},
-        {ico:'🔄',txt:'뉴스 업데이트 에피소드'},
-        {ico:'📋',txt:'전체 수료증'},
-      ].map((item,i)=>e('div',{key:i,className:'tab-lock-item'},
-        e('span',null,item.ico),item.txt
-      ))
-    ),
-    e('div',{className:'tab-lock-price-box'},
-      e('div',{className:'tab-lock-price-label'},'평생 이용권'),
-      e('div',{className:'tab-lock-price-num'},'2,500원'),
-      e('div',{className:'tab-lock-price-desc'},'한 번 결제로 영구 이용')
-    ),
-    e('button',{className:'tab-lock-btn',onClick:onUnlock},'잠금 해제하기 🔓'),
-    e('button',{className:'tab-lock-btn2',onClick:()=>{}},'기초편으로 돌아가기')
+  return e('div',{style:{position:'absolute',top:0,left:0,width:'100%',height:'100%',pointerEvents:'none',overflow:'hidden'}},
+    dots.map(d=>e('div',{key:d.id,className:'confetti-dot',style:{background:d.color,left:d.left+'%',top:'-10px',animationDuration:d.dur+'s',animationDelay:d.delay+'s'}}))
   );
 }
 
@@ -297,42 +262,28 @@ function SeedCanvas(){
     if(!cv)return;
     const ctx=cv.getContext('2d');
     let raf;
-    function resize(){
-      cv.width=window.innerWidth*2;
-      cv.height=window.innerHeight*2;
-      ctx.scale(2,2);
-    }
-    resize();
-    const W=()=>window.innerWidth;
-    const H=()=>window.innerHeight;
+    const W=()=>cv.offsetWidth||320;
+    const H=()=>cv.offsetHeight||600;
+    cv.width=W()*2; cv.height=H()*2; ctx.scale(2,2);
     const CHARS=['🌱','🌿','✨','🌾','🍀','🌸'];
-    const seeds=Array.from({length:28},()=>({
-      x:Math.random()*W(),
-      y:H()+Math.random()*80,
-      size:4+Math.random()*5,
-      speed:0.25+Math.random()*0.6,
-      op:0.08+Math.random()*0.35,
-      wobble:Math.random()*Math.PI*2,
-      ws:0.015+Math.random()*0.02,
-      char:CHARS[Math.floor(Math.random()*CHARS.length)],
+    const seeds=Array.from({length:24},()=>({
+      x:Math.random()*W(),y:H()+Math.random()*60,
+      size:4+Math.random()*4,speed:.25+Math.random()*.5,
+      op:.06+Math.random()*.25,wobble:Math.random()*Math.PI*2,
+      ws:.015+Math.random()*.02,char:CHARS[Math.floor(Math.random()*CHARS.length)]
     }));
     function draw(){
       ctx.clearRect(0,0,W(),H());
       seeds.forEach(s=>{
-        s.y-=s.speed;
-        s.wobble+=s.ws;
-        s.op-=0.0005;
+        s.y-=s.speed; s.wobble+=s.ws; s.op-=.0004;
         if(s.y<-20||s.op<=0){
-          s.y=H()+20;
-          s.x=Math.random()*W();
-          s.op=0.1+Math.random()*0.3;
+          s.y=H()+20; s.x=Math.random()*W();
+          s.op=.08+Math.random()*.2;
           s.char=CHARS[Math.floor(Math.random()*CHARS.length)];
         }
-        ctx.save();
-        ctx.globalAlpha=Math.max(0,s.op);
-        ctx.font=(s.size*2)+'px serif';
-        ctx.textAlign='center';
-        ctx.fillText(s.char,s.x+Math.sin(s.wobble)*5,s.y);
+        ctx.save(); ctx.globalAlpha=Math.max(0,s.op);
+        ctx.font=(s.size*2)+'px serif'; ctx.textAlign='center';
+        ctx.fillText(s.char,s.x+Math.sin(s.wobble)*4,s.y);
         ctx.restore();
       });
       raf=requestAnimationFrame(draw);
@@ -345,105 +296,125 @@ function SeedCanvas(){
 
 function LottieAnim({size=80}){
   const ref=useRef(null);
-  const[loaded,setLoaded]=useState(false);
+  const[ok,setOk]=useState(false);
   useEffect(()=>{
     if(!ref.current)return;
     try{
       const anim=window.lottie&&window.lottie.loadAnimation({
-        container:ref.current,
-        renderer:'svg',
-        loop:true,
-        autoplay:true,
-        animationData:LOTTIE_DATA,
+        container:ref.current,renderer:'svg',loop:true,autoplay:true,
+        animationData:LOTTIE_DATA
       });
-      if(anim){setLoaded(true);return()=>anim.destroy();}
-    }catch(err){console.warn('lottie error',err);}
+      if(anim){setOk(true);return()=>anim.destroy();}
+    }catch(err){}
   },[]);
   return e('div',{style:{width:size,height:size,display:'flex',alignItems:'center',justifyContent:'center'}},
-    e('div',{ref,style:{width:size,height:size,display:loaded?'block':'none'}}),
-    !loaded&&e('div',{style:{fontSize:size*0.5}},'🌱')
+    e('div',{ref,style:{width:size,height:size,display:ok?'block':'none'}}),
+    !ok&&e('div',{style:{fontSize:size*.5}},'🌱')
+  );
+}
+
+function Avatar({ch}){
+  if(ch.img) return e('img',{src:ch.img,className:'avatar'});
+  return e('div',{className:'avatar-emoji',style:{background:ch.bg}},ch.emoji);
+}
+
+function BubbleRow({b}){
+  const ch=CHARS[b.char];
+  return e('div',{className:'brow'+(b.side==='right'?' right':'')},
+    e(Avatar,{ch}),
+    e('div',{className:'bubble '+(b.side==='left'?'left':'right'),
+      style:b.side==='right'?{background:ch.color}:{}},
+      e('div',{className:'bname'},ch.name),b.text)
+  );
+}
+
+function IllustPH({illust,caption}){
+  return e('div',{className:'illust-box'},
+    e('div',{className:'illust-ph',style:{background:illust.bg}},
+      e('div',{style:{fontSize:40}},illust.emoji),
+      e('div',{style:{fontSize:9,fontWeight:700,color:'#fff',background:'rgba(0,0,0,.25)',padding:'2px 8px',borderRadius:16}},illust.label)
+    ),
+    caption&&e('div',{className:'illust-caption'},caption)
   );
 }
 
 function App(){
-  const[screen,setScreen]=useState('splash');
+  const[onboarded,setOnboarded]=useState(()=>{try{return localStorage.getItem('p_ob')==='1';}catch{return false;}});
+  const[obStep,setObStep]=useState(0);
+  const[screen,setScreen]=useState('home');
+  const[homeTab,setHomeTab]=useState('basic');
   const[curEp,setCurEp]=useState(0);
   const[page,setPage]=useState(0);
-  const[quizSel,setQuizSel]=useState(null);
   const[quizSels,setQuizSels]=useState({});
-  const[doneEps,setDoneEps]=useState(()=>{
-    try{return new Set(JSON.parse(localStorage.getItem('p_done')||'[]'));}catch{return new Set();}
-  });
-  const[homeTab,setHomeTab]=useState('basic');
-  const[onboarded,setOnboarded]=useState(()=>{
-    try{return localStorage.getItem('p_ob')==='1';}catch{return false;}
-  });
-  const[obStep,setObStep]=useState(0);
-
-
-  // 학습 통계
+  const[doneEps,setDoneEps]=useState(()=>{try{return new Set(JSON.parse(localStorage.getItem('p_done')||'[]'));}catch{return new Set();}});
+  const[unlocked,setUnlocked]=useState(()=>{try{return localStorage.getItem('p_unlock')==='1';}catch{return false;}});
   const[streak,setStreak]=useState(()=>{
     try{
       const today=new Date().toDateString();
       const last=localStorage.getItem('p_last');
       const cnt=parseInt(localStorage.getItem('p_streak')||'0');
-      if(!last) return 0;
+      if(!last)return 0;
       const diff=(new Date(today)-new Date(last))/(1000*60*60*24);
       return diff<=1?cnt:0;
     }catch{return 0;}
   });
+
+  function finishOb(){try{localStorage.setItem('p_ob','1');}catch{}setOnboarded(true);}
+  function saveDone(s){try{localStorage.setItem('p_done',JSON.stringify([...s]));}catch{}}
+  function doUnlock(){try{localStorage.setItem('p_unlock','1');}catch{}setUnlocked(true);}
   function updateStreak(){
     try{
       const today=new Date().toDateString();
       const last=localStorage.getItem('p_last');
       const cnt=parseInt(localStorage.getItem('p_streak')||'0');
       const diff=last?(new Date(today)-new Date(last))/(1000*60*60*24):999;
-      const newCnt=diff<=1?cnt+1:1;
+      const n=diff<=1?cnt+1:1;
       localStorage.setItem('p_last',today);
-      localStorage.setItem('p_streak',String(newCnt));
-      setStreak(newCnt);
+      localStorage.setItem('p_streak',String(n));
+      setStreak(n);
     }catch{}
   }
+  function startEp(idx){
+    setCurEp(idx);setScreen('reader');setPage(0);setQuizSels({});updateStreak();
+  }
+  function goPage(n){setPage(n);}
 
-  function saveDone(s){try{localStorage.setItem('p_done',JSON.stringify([...s]));}catch{}}
-
-  // ── SPLASH (랜디톡 스타일) ──
   const SECTIONS=[
-    {id:'basic', label:'기초편', eps:[0,1,2,3,4],  locked:false},
-    {id:'deep',  label:'심화편', eps:[5,6,7,8,9,17,18], locked:true},
-    {id:'news',  label:'뉴스편', eps:[10,11,12,13,14,15,16], locked:true},
+    {id:'basic',label:'기초편',eps:[0,1,2,3,4],locked:false},
+    {id:'deep', label:'심화편',eps:[5,6,7,8,9,17,18],locked:true},
+    {id:'news', label:'뉴스편',eps:[10,11,12,13,14,15,16],locked:true},
   ];
-  const[unlocked,setUnlocked]=useState(()=>{try{return localStorage.getItem('p_unlock')==='1';}catch{return false;}});
-  function doUnlock(){try{localStorage.setItem('p_unlock','1');}catch{}setUnlocked(true);}
-  function finishOb(){try{localStorage.setItem('p_ob','1');}catch{}setOnboarded(true);}
-  function startEp(idx){setCurEp(idx);setScreen('reader');setPage(0);setQuizSel(null);setQuizSels({});updateStreak();}
-  function goPage(n){setPage(n);setQuizSel(null);}
-
+  const curSection=SECTIONS.find(s=>s.id===homeTab)||SECTIONS[0];
   const ep=EPISODES[curEp];
-  const EP=ep.pages;
-  const P=EP[page];
+  const EP=ep?ep.pages:[];
+  const P=EP[page]||{};
   const isLast=page===EP.length-1;
   const allDone=doneEps.size===EPISODES.length;
+  const quizCount=EP.filter(p=>p.type==='quiz').length;
+  const quizDone=Object.keys(quizSels).length;
+  const canNext=P.type!=='quiz'||(quizSels[P.quizIdx]!==undefined);
 
-  // ── ONBOARDING ──
+  // ── 온보딩 ──
   if(!onboarded) return e('div',{style:{flex:1,display:'flex',flexDirection:'column',overflow:'auto'}},
     e(SeedCanvas),
     obStep===0&&e('div',{key:'s0',className:'ob'},
       e(LottieAnim,{size:90}),
       e('div',{className:'ob-title'},'푸른시점'),
       e('div',{className:'ob-sub'},'산업편 · 반도체'),
-      e('div',{className:'ob-desc'},'처음 만나는 것들을 신선한 눈으로 바라봐요.\n모르는 게 당연한 그 시점에서, 함께 배워요.'),
+      e('div',{className:'ob-desc'},'처음 만나는 것들을 신선한 눈으로
+모르는 게 당연한 그 시점에서, 함께 배워요.'),
       e('div',{className:'ob-char-row'},
         [
-          {key:'uno',line:'반도체 공부 중!\n쉽게 설명해줄게 😄'},
-          {key:'pureun',line:'궁금한 게 많아!\n왜요? 어떻게요? 🤔'},
-          {key:'ojjang',line:'같이 배우면\n더 재미있어! 😊'},
+          {key:'uno',line:'반도체 공부 중!
+쉽게 설명해줄게 😄'},
+          {key:'pureun',line:'궁금한 게 많아!
+왜요? 어떻게요? 🤔'},
+          {key:'ojjang',line:'같이 배우면
+더 재미있어! 😊'},
         ].map(({key,line})=>{
           const ch=CHARS[key];
           return e('div',{key,className:'ob-char'},
-            ch.img
-              ? e('img',{src:ch.img,style:{width:52,height:52,borderRadius:'50%',objectFit:'cover',border:'2.5px solid rgba(0,0,0,.07)',marginBottom:4}})
-              : e('div',{className:'ob-char-emoji'},ch.emoji),
+            ch.img?e('img',{src:ch.img,style:{width:52,height:52,borderRadius:'50%',objectFit:'cover',border:'2.5px solid rgba(0,0,0,.07)',marginBottom:4}}):e('div',{className:'ob-char-emoji'},ch.emoji),
             e('div',{className:'ob-char-name'},ch.name),
             e('div',{className:'ob-char-role'},ch.role),
             e('div',{className:'ob-char-line'},line)
@@ -459,12 +430,14 @@ function App(){
     obStep===1&&e('div',{key:'s1',className:'ob'},
       e('div',{style:{fontSize:44,marginBottom:12}},'📖'),
       e('div',{className:'ob-title',style:{fontSize:20}},'이렇게 배워요'),
-      e('div',{className:'ob-desc',style:{marginBottom:14}},'가족의 대화로 자연스럽게\n복잡한 개념을 이해해요'),
+      e('div',{className:'ob-desc',style:{marginBottom:14}},'가족의 대화로 자연스럽게
+복잡한 개념을 이해해요'),
       e('div',{className:'ob-how'},
-        [{ico:'💬',t:'이야기 읽기',d:'우노짱·오짱·푸른이의 실제 대화로\n반도체를 자연스럽게 만나요'},
-         {ico:'✨',t:'핵심 사실 카드',d:'이야기 속 개념을 3개의 카드로\n정리해드려요'},
-         {ico:'🧩',t:'퀴즈로 확인',d:'배운 내용을 퀴즈로 점검해요\n틀려도 괜찮아요, 다시 도전!'},
-         {ico:'🌟',t:'에피소드 완료',d:'완료하면 ✅ 표시가 남아요\n5개를 모두 모아보세요'},
+        [{ico:'💬',t:'이야기 읽기',d:'우노짱·오짱·푸른이의 대화로
+자연스럽게 배워요'},
+         {ico:'✨',t:'핵심 정리',d:'이야기 속 개념을 카드로 정리해요'},
+         {ico:'🧩',t:'퀴즈 확인',d:'배운 내용을 퀴즈로 점검해요'},
+         {ico:'🌟',t:'에피소드 완료',d:'완료하면 ✅ 표시가 남아요'},
         ].map((item,i)=>e('div',{key:i,className:'ob-how-row'},
           e('div',{className:'ob-how-ico'},item.ico),
           e('div',null,e('div',{className:'ob-how-t'},item.t),e('div',{className:'ob-how-d'},item.d))
@@ -479,14 +452,15 @@ function App(){
     obStep===2&&e('div',{key:'s2',className:'ob'},
       e('div',{style:{fontSize:50,marginBottom:12}},'🚀'),
       e('div',{className:'ob-title',style:{fontSize:20}},'준비됐나요?'),
-      e('div',{className:'ob-desc',style:{marginBottom:14}},'반도체 이야기 5화가 기다리고 있어요'),
-      e('div',{className:'ob-ep-preview',style:{maxHeight:'none',overflowY:'visible'}},
+      e('div',{className:'ob-desc',style:{marginBottom:14}},'에피소드 '+EPISODES.length+'화가 기다리고 있어요'),
+      e('div',{className:'ob-ep-preview'},
         e('div',{className:'ob-ep-preview-title'},'에피소드 목록 ('+EPISODES.length+'화)'),
-        EPISODES.map((ep,i)=>e('div',{key:i,className:'ob-ep-row'},
-          e('span',{style:{fontSize:16}},ep.emoji),
+        EPISODES.slice(0,5).map((ep,i)=>e('div',{key:i,className:'ob-ep-row'},
+          e('span',{style:{fontSize:14}},ep.emoji),
           e('span',{style:{fontSize:11,fontWeight:700,color:ep.color,minWidth:28}},'EP'+ep.num),
           e('span',{style:{fontSize:11,color:'#3D2B1F'}},ep.title)
-        ))
+        )),
+        e('div',{style:{fontSize:10,color:'#C4A882',padding:'5px 0'}},`... 외 ${EPISODES.length-5}화 더`)
       ),
       e('div',{className:'ob-footer'},
         e('div',{className:'ob-dots'},[0,1,2].map(i=>e('div',{key:i,className:'ob-dot'+(obStep===i?' act':'')}))),
@@ -496,14 +470,11 @@ function App(){
     )
   );
 
-  // ── ALL COMPLETE ──
-  if(allDone&&screen==='all-complete') return e('div',{style:{flex:1,overflowY:'auto',background:'linear-gradient(160deg,#FFF8F0,#FFE8CC)'}},
-    e('div',{className:'all-complete'},
-      e('div',{style:{fontSize:52,marginBottom:12}},'🎉'),
-      e('div',{style:{fontSize:20,fontWeight:800,color:'#D4611A',marginBottom:4}},'반도체편 완주!'),
-      e('div',{style:{fontSize:13,color:'#8B6347',marginBottom:20,lineHeight:1.7}},
-        '5개의 에피소드를 모두 완료했어요.\n이제 반도체의 기초를 이해했어요!'
-      ),
+  // ── 수료증 ──
+  if(screen==='cert') return e('div',{style:{flex:1,display:'flex',flexDirection:'column',overflow:'hidden'}},
+    e('div',{className:'cert-screen'},
+      e('div',{style:{fontSize:52,textAlign:'center',marginBottom:12}},'🎉'),
+      e('div',{style:{fontSize:20,fontWeight:800,color:'#D4611A',textAlign:'center',marginBottom:4}},'반도체편 완주!'),
       e('div',{className:'cert-box'},
         e('div',{className:'cert-stamp'},'🌟'),
         e('div',{className:'cert-top'},'CERTIFICATE OF COMPLETION'),
@@ -520,232 +491,178 @@ function App(){
         ),
         e('div',{className:'cert-bottom'},'푸른시점 산업편 · UNO_DEYA')
       ),
-      e('button',{onClick:()=>setScreen('splash'),
-        style:{background:'linear-gradient(135deg,#FF8C42,#FF6B6B)',color:'#fff',border:'none',borderRadius:14,padding:'13px 32px',fontSize:14,fontWeight:800,cursor:'pointer',boxSizing:'border-box'}},
-        '다시 보기 🔄')
+      e('button',{className:'cert-restart-btn',onClick:()=>setScreen('home')},'홈으로 🏠')
     )
   );
 
-  // ── SPLASH ──
-
-  const curSection=SECTIONS.find(s=>s.id===homeTab)||SECTIONS[0];
-
-  // ── READER ──
-  // 퀴즈 답변 상태 (quizIdx별)
-  const quizCount=EP.filter(p=>p.type==='quiz').length;
-  const quizDone=Object.keys(quizSels).length;
-  const curQuizBlocked=P.type==='quiz'&&quizSels[P.quizIdx]===undefined;
-
-  // 삽화 플레이스홀더
-  function IllustPH({illust}){
-    return e('div',{style:{borderRadius:14,overflow:'hidden',marginBottom:12}},
-      e('div',{style:{height:150,background:illust.bg,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:6,border:'2px dashed var(--border)'}},
-        e('div',{style:{fontSize:40}},illust.emoji),
-        e('div',{style:{fontSize:9,fontWeight:700,color:'#fff',background:'rgba(0,0,0,.3)',padding:'3px 10px',borderRadius:20}},illust.label),
-        e('div',{style:{fontSize:8,color:'var(--text2)',textAlign:'center',lineHeight:1.4}},illust.desc)
-      )
-    );
-  }
-
-  function Bubbles({bubbles}){
-    return e('div',{className:'bubbles'},bubbles.map((b,i)=>{
-      const ch=CHARS[b.char];
-      return e('div',{key:i,className:'bubble-row'+(b.side==='right'?' right':'')},
-        ch.img
-  ? e('img',{src:ch.img,style:{width:36,height:36,borderRadius:'50%',objectFit:'cover',border:'2px solid rgba(0,0,0,.07)',flexShrink:0}})
-  : e('div',{className:'avatar',style:{background:ch.bg}},ch.emoji),
-        e('div',{className:'bubble '+(b.side==='left'?'left':'right'),style:b.side==='right'?{background:ch.color}:{}},
-          e('div',{className:'bname'},ch.name),b.text)
-      );
-    }));
-  }
-
-
-  if(screen==='splash') return e('div',{style:{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'#FFF8F0'}},
+  // ── 홈화면 ──
+  if(screen==='home') return e('div',{className:'home'},
     e(SeedCanvas),
-
-    // 헤더
-    e('div',{style:{padding:'14px 16px 10px',background:'#FFF8F0',borderBottom:'1px solid #FFE8CC',flexShrink:0}},
-      e('div',{style:{display:'flex',alignItems:'center',gap:10,marginBottom:10}},
-        e('div',{style:{cursor:'pointer'},onClick:()=>{try{localStorage.removeItem('p_ob');}catch{}setOnboarded(false);setObStep(0);}},e(LottieAnim,{size:40})),
-        e('div',{style:{flex:1}},
-          e('div',{style:{fontSize:18,fontWeight:900,color:'#D4611A',letterSpacing:'-.5px'}},'푸른시점'),
-          e('div',{style:{fontSize:10,color:'#E8934A',fontWeight:700,letterSpacing:'1px'}},'반도체편')
+    e('div',{className:'home-header'},
+      e('div',{className:'home-top'},
+        e('div',{className:'home-logo',onClick:()=>{try{localStorage.removeItem('p_ob');}catch{}setOnboarded(false);setObStep(0);}},
+          e(LottieAnim,{size:38})
         ),
-        e('div',{style:{display:'flex',gap:8,alignItems:'center'}},
-          e('div',{style:{display:'flex',gap:6}},
-            Object.values(CHARS).map(ch=>ch.img
-              ? e('img',{key:ch.name,src:ch.img,style:{width:30,height:30,borderRadius:'50%',objectFit:'cover',border:'2px solid rgba(0,0,0,.07)'}})
-              : e('div',{key:ch.name,style:{width:30,height:30,borderRadius:'50%',background:ch.bg,display:'flex',alignItems:'center',justifyContent:'center',fontSize:15,border:'2px solid rgba(0,0,0,.07)'}},ch.emoji)
-            )
+        e('div',{style:{flex:1}},
+          e('span',{className:'home-title'},'푸른시점'),
+          e('span',{className:'home-sub'},'반도체편')
+        ),
+        e('div',{style:{display:'flex',gap:4}},
+          Object.values(CHARS).map(ch=>ch.img
+            ?e('img',{key:ch.name,src:ch.img,style:{width:28,height:28,borderRadius:'50%',objectFit:'cover',border:'2px solid rgba(0,0,0,.07)'}})
+            :e('div',{key:ch.name,style:{width:28,height:28,borderRadius:'50%',background:ch.bg,display:'flex',alignItems:'center',justifyContent:'center',fontSize:14,border:'2px solid rgba(0,0,0,.07)'}},ch.emoji)
           )
         )
       ),
-      // 진행률 바
-      e('div',{style:{background:'#FFE8CC',borderRadius:8,height:5,overflow:'hidden'}},
-        e('div',{style:{height:'100%',width:(doneEps.size/EPISODES.length*100)+'%',background:'linear-gradient(90deg,#FF8C42,#FFB347)',borderRadius:8,transition:'width .4s'}})
-      ),
-      e('div',{style:{display:'flex',justifyContent:'space-between',marginTop:4}},
+      e('div',{className:'prog-track'},e('div',{className:'prog-fill',style:{width:(doneEps.size/EPISODES.length*100)+'%'}})),
+      e('div',{className:'prog-info'},
         e('span',{style:{fontSize:10,color:'#C4A882'}},'전체 진행률'),
-        e('div',{style:{display:'flex',gap:8,alignItems:'center'}},
-          streak>0&&e('span',{style:{fontSize:10,fontWeight:700,color:'#FF8C42',background:'#FF8C4215',padding:'2px 7px',borderRadius:10}},
-            '🔥 '+streak+'일 연속'),
-          e('span',{style:{fontSize:10,fontWeight:700,color:'#FF8C42'}},(doneEps.size)+'/'+EPISODES.length+'화 완료')
+        e('div',{style:{display:'flex',gap:6}},
+          streak>0&&e('span',{style:{fontSize:10,fontWeight:700,color:'#FF8C42',background:'#FF8C4215',padding:'2px 6px',borderRadius:8}},'🔥 '+streak+'일'),
+          e('span',{style:{fontSize:10,fontWeight:700,color:'#FF8C42'}},doneEps.size+'/'+EPISODES.length+'화')
         )
       )
     ),
-
-    // 섹션 탭
-    e('div',{style:{display:'flex',borderBottom:'2px solid #FFE8CC',background:'#FFF8F0',flexShrink:0}},
-      SECTIONS.map(sec=>e('div',{key:sec.id,
-        onClick:()=>setHomeTab(sec.id),
-        style:{flex:1,padding:'10px 4px',textAlign:'center',fontSize:12,fontWeight:700,
-          color:homeTab===sec.id?'#FF8C42':'#C4A882',
-          borderBottom:homeTab===sec.id?'2px solid #FF8C42':'2px solid transparent',
-          cursor:'pointer',marginBottom:-2,transition:'all .2s'}},
-        sec.label
+    e('div',{className:'tabs'},
+      SECTIONS.map(sec=>e('div',{key:sec.id,className:'tab'+(homeTab===sec.id?' act':''),onClick:()=>setHomeTab(sec.id)},
+        sec.label+(sec.locked&&!unlocked?' 🔒':'')
       ))
     ),
-
-    // 에피소드 리스트
     curSection.locked&&!unlocked
-      ? e(LockScreen,{onUnlock:doUnlock})
-      : e('div',{style:{flex:1,overflowY:'auto',WebkitOverflowScrolling:'touch',padding:'12px 14px 24px'}},
-      curSection.eps.map(i=>{
-        const ep=EPISODES[i];
-        const done=doneEps.has(i);
-        return e('div',{key:i,
-          onClick:()=>startEp(i),
-          style:{background:'#fff',borderRadius:16,marginBottom:10,overflow:'hidden',border:'1.5px solid '+(done?'#5DBB63':'#FFE0C0'),boxShadow:'0 2px 8px rgba(0,0,0,.05)',cursor:'pointer',display:'flex'}},
-
-          // 삽화 플레이스홀더
-          e('div',{style:{width:100,flexShrink:0,background:'linear-gradient(135deg,'+ep.color+'22,'+ep.color+'11)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:4,padding:'12px 8px',borderRight:'1px dashed '+ep.color+'40'}},
-            e('div',{style:{fontSize:28}},ep.emoji),
-            e('div',{style:{fontSize:7,color:ep.color,fontWeight:700,textAlign:'center',lineHeight:1.4,background:ep.color+'15',padding:'2px 6px',borderRadius:6}},
-              '삽화 '+ep.num+'\n(제미나이)')
-          ),
-
-          // 텍스트
-          e('div',{style:{flex:1,padding:'12px 13px',display:'flex',flexDirection:'column',justifyContent:'center'}},
-            e('div',{style:{display:'flex',gap:5,marginBottom:5,alignItems:'center'}},
-              e('span',{style:{fontSize:9,fontWeight:800,color:ep.color,background:ep.color+'15',padding:'2px 6px',borderRadius:6}},
-                'EP'+ep.num),
-              done&&e('span',{style:{fontSize:9,fontWeight:700,color:'#5DBB63',background:'#5DBB6315',padding:'2px 6px',borderRadius:6}},'완료 ✅'),
-              e('span',{style:{fontSize:9,color:'#C4A882',marginLeft:'auto'}},
-                i<5?'기초':i<10?'심화':'뉴스')
+      ?e('div',{className:'lock-screen'},
+        e('div',{style:{fontSize:48,marginBottom:12}},'🔒'),
+        e('div',{style:{fontSize:18,fontWeight:800,color:'#D4611A',marginBottom:6}},'잠금 해제가 필요해요'),
+        e('div',{style:{fontSize:12,color:'#8B6347',lineHeight:1.75,marginBottom:20}},
+          '기초편이 마음에 드셨나요?
+심화편·뉴스편을 모두 즐겨보세요!'),
+        e('div',{className:'lock-box'},
+          e('div',{className:'lock-list-title'},'잠금 해제 시 이용 가능 ✅'),
+          [{ico:'🏭',txt:'심화편 5화 + 공정편 2화'},
+           {ico:'📰',txt:'뉴스편 7화'},
+           {ico:'🔄',txt:'뉴스 업데이트 에피소드'},
+           {ico:'📋',txt:'전체 수료증'},
+          ].map((item,i)=>e('div',{key:i,className:'lock-item'},e('span',null,item.ico),item.txt))
+        ),
+        e('div',{className:'lock-price-box'},
+          e('div',{style:{fontSize:10,opacity:.85,marginBottom:4,letterSpacing:.5}},'평생 이용권'),
+          e('div',{style:{fontSize:28,fontWeight:900,marginBottom:2}},'2,500원'),
+          e('div',{style:{fontSize:10,opacity:.85}},'한 번 결제로 영구 이용')
+        ),
+        e('button',{className:'lock-btn',onClick:doUnlock},'잠금 해제하기 🔓'),
+        e('button',{className:'lock-btn2',onClick:()=>setHomeTab('basic')},'기초편으로 돌아가기')
+      )
+      :e('div',{className:'ep-list'},
+        curSection.eps.map(i=>{
+          const ep=EPISODES[i];
+          const done=doneEps.has(i);
+          return e('div',{key:i,className:'ep-card'+(done?' done':''),onClick:()=>startEp(i)},
+            e('div',{className:'ep-thumb',style:{borderRight:'1px dashed '+ep.color+'40'}},
+              e('div',{className:'ep-thumb-emoji'},ep.emoji),
+              e('div',{className:'ep-thumb-label',style:{color:ep.color,background:ep.color+'15'}},'삽화 '+ep.num)
             ),
-            e('div',{style:{fontSize:13,fontWeight:800,color:'#3D2B1F',lineHeight:1.4,marginBottom:4}},ep.title),
-            e('div',{style:{fontSize:10,color:'#C4A882'}},ep.pages.length-1+'장면 · 퀴즈 1개')
-          )
-        );
-      }),
-      allDone&&e('button',{onClick:()=>setScreen('all-complete'),
-        style:{background:'linear-gradient(135deg,#FFD700,#FF8C42)',color:'#fff',border:'none',borderRadius:14,padding:'12px',width:'100%',fontSize:13,fontWeight:800,cursor:'pointer',marginTop:4}},
-        '🎉 수료증 보기')
+            e('div',{className:'ep-body'},
+              e('div',{className:'ep-tags'},
+                e('div',{className:'ep-num-tag',style:{background:ep.color+'18',color:ep.color}},'EP'+ep.num),
+                done&&e('div',{className:'ep-num-tag',style:{background:'#5DBB6318',color:'#5DBB63'}},'✅'),
+                e('div',{className:'ep-section-tag'},ep.num<=5?'기초':ep.num<=10||ep.num>=18?'심화':'뉴스')
+              ),
+              e('div',{className:'ep-title'},ep.title),
+              e('div',{className:'ep-meta'},ep.pages.length+'페이지 · 퀴즈 '+ep.pages.filter(p=>p.type==='quiz').length+'개 · 약 8분')
+            )
+          );
+        }),
+        allDone&&e('button',{onClick:()=>setScreen('cert'),style:{background:'linear-gradient(135deg,#FFD700,#FF8C42)',color:'#fff',border:'none',borderRadius:14,padding:'12px',width:'100%',fontSize:13,fontWeight:800,cursor:'pointer',marginTop:4}},'🎉 수료증 보기')
       )
   );
 
+  // ── 리더 ──
   return e('div',{className:'reader'},
-    e('div',{className:'reader-header'},
-      e('button',{className:'back-btn',onClick:()=>setScreen('splash')},'←'),
-      e('div',{className:'ep-info'},
-        e('div',{className:'ep-num-hd',style:{color:ep.color}},'EP'+ep.num+' · 약 8분'),
-        e('div',{className:'ep-title-hd'},ep.title)
+    e('div',{className:'reader-hd'},
+      e('button',{className:'back-btn',onClick:()=>setScreen('home')},'←'),
+      e('div',{className:'ep-hd-info'},
+        e('div',{className:'ep-hd-num',style:{color:ep.color}},'EP'+ep.num+' · 약 8분'),
+        e('div',{className:'ep-hd-title'},ep.title)
       ),
       e('div',{style:{display:'flex',flexDirection:'column',alignItems:'flex-end',gap:3}},
-        e('div',{className:'prog-dots'},
-          EP.map((_,i)=>e('div',{key:i,className:'prog-dot'+(i===page?' act':''),style:i===page?{background:ep.color,width:14}:{}}))
-        ),
-        quizCount>0&&e('div',{style:{fontSize:8,color:'#C4A882'}},
-          '퀴즈 '+quizDone+'/'+quizCount)
+        e('div',{className:'prog-dots'},EP.map((_,i)=>e('div',{key:i,className:'prog-dot'+(i===page?' act':''),style:i===page?{background:ep.color,width:14}:{}}))),
+        e('div',{style:{fontSize:8,color:'#C4A882'}},'퀴즈 '+quizDone+'/'+quizCount)
       )
     ),
-    e('div',{className:'page-scroll'},e('div',{className:'page',key:page},
+    e('div',{className:'page-scroll'},
+      e('div',{className:'page',key:page,style:{animation:'slideIn .25s ease'}},
 
-      // SCENE
-      P.type==='scene'&&e(React.Fragment,null,
-        e(IllustPH,{illust:P.illust}),
-        e('div',{style:{fontSize:11,fontWeight:700,color:'var(--text2)',textAlign:'center',marginBottom:10,padding:'6px 12px',background:'rgba(0,0,0,.03)',borderRadius:8}},P.caption),
-        e(Bubbles,{bubbles:P.bubbles})
-      ),
-
-      // FACT
-      P.type==='fact'&&e(React.Fragment,null,
-        e('div',{className:'fact-title-row'},'✨ 핵심 정리'),
-        P.facts.map((f,i)=>e('div',{key:i,className:'fact-box',style:{background:f.bg,borderLeftColor:f.color}},
-          e('span',{className:'fact-ico'},f.icon),
-          e('div',{className:'fact-t',style:{color:f.color}},f.title),
-          e('div',{className:'fact-d'},f.text)
-        ))
-      ),
-
-      // DEEP
-      P.type==='deep'&&e(React.Fragment,null,
-        e(IllustPH,{illust:P.illust}),
-        e('div',{style:{fontSize:11,fontWeight:700,color:'var(--text2)',textAlign:'center',marginBottom:10,padding:'6px 12px',background:'rgba(0,0,0,.03)',borderRadius:8}},P.caption),
-        e(Bubbles,{bubbles:P.bubbles}),
-        e('div',{style:{background:'linear-gradient(135deg,#FFF3E0,#FFE8CC)',borderRadius:12,padding:'12px 14px',border:'1.5px solid var(--border)',marginTop:4}},
-          e('div',{style:{fontSize:11,fontWeight:800,color:'#FF8C42',marginBottom:6}},'🔍 더 깊이'),
-          e('div',{style:{fontSize:13,color:'var(--text)',lineHeight:1.75}},P.deepNote)
-        )
-      ),
-
-      // QUIZ
-      P.type==='quiz'&&e('div',null,
-        e('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:8}},
-          e('div',{className:'quiz-title-row',style:{margin:0}},'🧩 퀴즈 '+(P.quizIdx+1)+'/'+quizCount),
-          e('div',{style:{display:'flex',gap:4}},
-            Array.from({length:quizCount},(_,i)=>e('div',{key:i,style:{width:8,height:8,borderRadius:'50%',background:i<quizDone?'#5DBB63':i===P.quizIdx?'#D4467A':'var(--border)'}}))
-          )
+        P.type==='scene'&&e(React.Fragment,null,
+          e(IllustPH,{illust:P.illust,caption:P.caption}),
+          e('div',{className:'bubbles'},P.bubbles.map((b,i)=>e(BubbleRow,{key:i,b})))
         ),
-        e('div',{className:'quiz-box'},
-          e('div',{className:'quiz-q'},P.q),
-          e('div',{className:'quiz-opts'},P.opts.map((opt,i)=>
-            e('button',{key:i,
-              className:'quiz-opt'+(quizSels[P.quizIdx]===i?(i===P.ans?' correct':' wrong'):''),
-              onClick:()=>setQuizSels(prev=>({...prev,[P.quizIdx]:i})),
-              disabled:quizSels[P.quizIdx]!==undefined},opt)
-          )),
-          quizSels[P.quizIdx]!==undefined&&e('div',{className:'quiz-result',
-            style:{background:quizSels[P.quizIdx]===P.ans?'#E8F8E8':'#FFF0F0',
-              color:quizSels[P.quizIdx]===P.ans?'#2D7A32':'#CC3333'}},
-            quizSels[P.quizIdx]===P.ans?P.correct:P.wrong)
-        )
-      ),
 
-      // COMPLETE
-      P.type==='complete'&&e('div',{className:'complete-box'},
-        e(Confetti),
-        e('div',{className:'complete-star'},'🌟'),
-        e('div',{className:'complete-title'},'에피소드 '+ep.num+' 완료!'),
-        e('div',{className:'complete-sub'},'퀴즈 '+quizDone+'/'+quizCount+' 완료!\n오늘 배운 내용 정리해요 😊'),
-        e('div',{className:'complete-review'},
-          e('div',{className:'review-title'},'📋 핵심 요약'),
-          (P.review||[]).map((r,i)=>e('div',{key:i,className:'review-item'},
-            e('div',{style:{width:20,height:20,borderRadius:'50%',background:ep.color,color:'#fff',fontSize:9,fontWeight:800,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0,marginTop:1}},i+1),r
+        P.type==='fact'&&e(React.Fragment,null,
+          e('div',{className:'fact-title'},'✨ 핵심 정리'),
+          P.facts.map((f,i)=>e('div',{key:i,className:'fact-box',style:{background:f.bg,borderLeftColor:f.color}},
+            e('span',{className:'fact-ico'},f.icon),
+            e('div',{className:'fact-t',style:{color:f.color}},f.title),
+            e('div',{className:'fact-d'},f.text)
           ))
         ),
-        P.nextNum>0&&e('div',{style:{background:'linear-gradient(135deg,#4A90E2,#5C6BC0)',borderRadius:14,padding:14,color:'#fff',marginBottom:12,textAlign:'left'}},
-          e('div',{style:{fontSize:9,fontWeight:700,opacity:.75,marginBottom:4,letterSpacing:1}},'NEXT EPISODE'),
-          e('div',{style:{fontSize:14,fontWeight:800,marginBottom:5}},'EP'+P.nextNum+' · '+P.nextTitle),
-          e('div',{style:{fontSize:11,opacity:.85,lineHeight:1.5,whiteSpace:'pre-line'}},P.nextPreview),
-          e('button',{style:{marginTop:10,background:'rgba(255,255,255,.2)',border:'1px solid rgba(255,255,255,.3)',borderRadius:8,padding:'6px 12px',fontSize:11,fontWeight:700,color:'#fff',cursor:'pointer'},
-            onClick:()=>startEp(curEp+1)},'다음화 보기 →')
+
+        P.type==='deep'&&e(React.Fragment,null,
+          e(IllustPH,{illust:P.illust,caption:P.caption}),
+          e('div',{className:'bubbles'},P.bubbles.map((b,i)=>e(BubbleRow,{key:i,b}))),
+          e('div',{className:'deep-note'},
+            e('div',{className:'deep-note-title'},'🔍 더 깊이'),
+            e('div',{className:'deep-note-text'},P.deepNote)
+          )
         ),
-        P.nextNum<0&&e('button',{onClick:()=>setScreen('all-complete'),
-          style:{background:'linear-gradient(135deg,#FFD700,#FF8C42)',color:'#fff',border:'none',borderRadius:12,padding:'12px',width:'100%',fontSize:13,fontWeight:800,cursor:'pointer'}},
-          '🎉 수료증 받기!')
+
+        P.type==='quiz'&&e('div',null,
+          e('div',{className:'quiz-title'},'🧩 퀴즈 '+(P.quizIdx+1)+'/'+quizCount),
+          e('div',{className:'quiz-prog'},
+            Array.from({length:quizCount},(_,i)=>e('div',{key:i,className:'quiz-prog-dot'+(i<quizDone?' done':i===P.quizIdx?' curr':'')}))
+          ),
+          e('div',{className:'quiz-box'},
+            e('div',{className:'quiz-q'},P.q),
+            e('div',{className:'quiz-opts'},P.opts.map((opt,i)=>
+              e('button',{key:i,
+                className:'quiz-opt'+(quizSels[P.quizIdx]===i?(i===P.ans?' correct':' wrong'):''),
+                onClick:()=>setQuizSels(prev=>({...prev,[P.quizIdx]:i})),
+                disabled:quizSels[P.quizIdx]!==undefined},opt)
+            )),
+            quizSels[P.quizIdx]!==undefined&&e('div',{className:'quiz-result',
+              style:{background:quizSels[P.quizIdx]===P.ans?'#E8F8E8':'#FFF0F0',color:quizSels[P.quizIdx]===P.ans?'#2D7A32':'#CC3333'}},
+              quizSels[P.quizIdx]===P.ans?P.correct:P.wrong)
+          )
+        ),
+
+        P.type==='complete'&&e('div',{className:'complete-box'},
+          e(Confetti),
+          e('span',{className:'complete-star'},'🌟'),
+          e('div',{className:'complete-title'},'에피소드 '+ep.num+' 완료!'),
+          e('div',{className:'complete-sub'},'퀴즈 '+quizDone+'/'+quizCount+' 완료! 😊'),
+          e('div',{className:'review-card'},
+            e('div',{className:'review-card-title'},'📋 핵심 요약'),
+            (P.review||[]).map((r,i)=>e('div',{key:i,className:'review-item'},
+              e('div',{className:'review-num',style:{background:ep.color}},i+1),r
+            ))
+          ),
+          P.nextNum>0&&e('div',{className:'next-box',style:{background:'linear-gradient(135deg,#4A90E2,#5C6BC0)'}},
+            e('div',{className:'next-label'},'NEXT EPISODE'),
+            e('div',{className:'next-title'},'EP'+P.nextNum+' · '+P.nextTitle),
+            e('div',{className:'next-preview'},P.nextPreview),
+            e('button',{className:'next-btn',onClick:()=>startEp(curEp+1)},'다음화 보기 →')
+          ),
+          P.nextNum<0&&e('button',{onClick:()=>setScreen('cert'),style:{background:'linear-gradient(135deg,#FFD700,#FF8C42)',color:'#fff',border:'none',borderRadius:12,padding:'12px',width:'100%',fontSize:13,fontWeight:800,cursor:'pointer'}},'🎉 수료증 받기!')
+        )
       )
-    )),
+    ),
     e('div',{className:'page-nav'},
       e('button',{className:'nav-btn nav-prev',onClick:()=>goPage(page-1),disabled:page===0},'← 이전'),
       e('button',{className:'nav-btn nav-next',
-        style:{background:curQuizBlocked?'#ddd':'linear-gradient(135deg,'+ep.color+',#FF6B6B)'},
+        style:{background:canNext?'linear-gradient(135deg,'+ep.color+',#FF6B6B)':'#ddd'},
         onClick:()=>{
-          if(isLast){const nd=new Set(doneEps);nd.add(curEp);setDoneEps(nd);saveDone(nd);setScreen('splash');}
+          if(isLast){const nd=new Set(doneEps);nd.add(curEp);setDoneEps(nd);saveDone(nd);setScreen('home');}
           else goPage(page+1);
         },
-        disabled:curQuizBlocked
+        disabled:!canNext
       },isLast?'완료! 🌟':'다음 →')
     )
   );

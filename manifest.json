@@ -1,0 +1,18 @@
+{
+  "name": "푸른시점 반도체편",
+  "short_name": "푸른시점",
+  "description": "우노짱·오짱·푸른이 가족과 함께 배우는 반도체 이야기",
+  "start_url": "/pureun-app/",
+  "display": "standalone",
+  "background_color": "#FFF8F0",
+  "theme_color": "#FF8C42",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

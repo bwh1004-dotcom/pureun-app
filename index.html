@@ -338,11 +338,26 @@ const ILLUST_MAP={
   '삽화 19':'ep5-1.jpg','삽화 20':'ep5-2.jpg','삽화 21':'ep5-3.jpg',
 };
 function IllustPH({illust,caption,epNum,sceneIdx}){
-  const imgSrc=(epNum&&sceneIdx)?('./illust/ep'+epNum+'-'+sceneIdx+'.jpg')
+  const lower=(epNum&&sceneIdx)?('./illust/ep'+epNum+'-'+sceneIdx+'.jpg')
     :(ILLUST_MAP[illust.label]?('./illust/'+ILLUST_MAP[illust.label]):null);
+  const upper=(epNum&&sceneIdx)?('./illust/EP'+epNum+'-'+sceneIdx+'.jpg')
+    :(ILLUST_MAP[illust.label]?('./illust/'+ILLUST_MAP[illust.label]):null);
+  const[imgSrc,setImgSrc]=useState(lower);
   return e('div',{className:'illust-box'},
     imgSrc
-      ?e('img',{src:imgSrc,style:{width:'100%',borderRadius:14,display:'block'},onError:(ev)=>{ev.target.style.display='none';ev.target.nextSibling.style.display='flex';}})
+      ?e('img',{src:imgSrc,style:{width:'100%',borderRadius:14,display:'block'},
+        onError:(ev)=>{
+          if(ev.target.src.includes('/ep')&&!ev.target.dataset.tried){
+            ev.target.dataset.tried='1';
+            ev.target.src=ev.target.src.replace('/ep','/EP');
+          } else if(ev.target.src.includes('/EP')&&!ev.target.dataset.tried2){
+            ev.target.dataset.tried2='1';
+            ev.target.src=ev.target.src.replace('/EP','/ep');
+          } else {
+            ev.target.style.display='none';
+            ev.target.nextSibling&&(ev.target.nextSibling.style.display='flex');
+          }
+        }})
       :null,
     e('div',{className:'illust-ph',style:{background:illust.bg,display:imgSrc?'none':'flex'}},
       e('div',{style:{fontSize:40}},illust.emoji),
@@ -559,13 +574,16 @@ function App(){
                 src:'./illust/ep'+ep.num+'-1.jpg',
                 style:{width:88,height:88,objectFit:'cover',display:'block'},
                 onError:(ev)=>{
-                  ev.target.style.display='none';
-                  ev.target.parentNode.style.display='flex';
-                  ev.target.parentNode.style.alignItems='center';
-                  ev.target.parentNode.style.justifyContent='center';
-                  ev.target.parentNode.style.flexDirection='column';
-                  ev.target.parentNode.style.padding='10px 6px';
-                  ev.target.parentNode.innerHTML='<div style="font-size:32px">'+ep.emoji+'</div>';
+                  if(!ev.target.dataset.tried){
+                    ev.target.dataset.tried='1';
+                    ev.target.src='./illust/EP'+ep.num+'-1.jpg';
+                  } else if(!ev.target.dataset.tried2){
+                    ev.target.dataset.tried2='1';
+                    ev.target.src='./illust/EP'+ep.num+'-'+1+'.jpg';
+                  } else {
+                    ev.target.parentNode.style.cssText='display:flex;align-items:center;justify-content:center;flex-direction:column;padding:10px 6px;';
+                    ev.target.parentNode.innerHTML='<div style="font-size:32px">'+ep.emoji+'</div>';
+                  }
                 }
               })
             ),

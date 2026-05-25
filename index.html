@@ -328,9 +328,23 @@ function BubbleRow({b}){
   );
 }
 
+const ILLUST_MAP={
+  '삽화 1':'ep01.jpg','삽화 2':'ep02.jpg','삽화 3':'ep03.jpg',
+  '삽화 4':'ep04.jpg','삽화 5':'ep05.jpg','삽화 6':'ep06.jpg',
+  '삽화 7':'ep07.jpg','삽화 8':'ep08.jpg','삽화 9':'ep09.jpg',
+  '삽화 10':'ep010.jpg','삽화 11':'ep011.jpg','삽화 12':'ep012.jpg',
+  '삽화 13':'ep013.jpg','삽화 14':'ep014.jpg','삽화 15':'ep015.jpg',
+  '삽화 16':'ep016.jpg','삽화 17':'ep017.jpg','삽화 18':'ep018.jpg',
+  '삽화 19':'ep019.jpg','삽화 20':'ep020.jpg','삽화 21':'ep021.jpg',
+};
 function IllustPH({illust,caption}){
+  const imgFile=ILLUST_MAP[illust.label];
+  const imgSrc=imgFile?('./illust/'+imgFile):null;
   return e('div',{className:'illust-box'},
-    e('div',{className:'illust-ph',style:{background:illust.bg}},
+    imgSrc
+      ?e('img',{src:imgSrc,style:{width:'100%',borderRadius:14,display:'block'},onError:(ev)=>{ev.target.style.display='none';ev.target.nextSibling.style.display='flex';}})
+      :null,
+    e('div',{className:'illust-ph',style:{background:illust.bg,display:imgSrc?'none':'flex'}},
       e('div',{style:{fontSize:40}},illust.emoji),
       e('div',{style:{fontSize:9,fontWeight:700,color:'#fff',background:'rgba(0,0,0,.25)',padding:'2px 8px',borderRadius:16}},illust.label)
     ),
@@ -540,9 +554,20 @@ function App(){
           const ep=EPISODES[i];
           const done=doneEps.has(i);
           return e('div',{key:i,className:'ep-card'+(done?' done':''),onClick:()=>startEp(i)},
-            e('div',{className:'ep-thumb',style:{borderRight:'1px dashed '+ep.color+'40'}},
-              e('div',{className:'ep-thumb-emoji'},ep.emoji),
-              e('div',{className:'ep-thumb-label',style:{color:ep.color,background:ep.color+'15'}},'삽화 '+ep.num)
+            e('div',{className:'ep-thumb',style:{borderRight:'1px dashed '+ep.color+'40',overflow:'hidden',padding:0}},
+              e('img',{
+                src:'./illust/ep'+String(ep.num).padStart(2,'0')+'.jpg',
+                style:{width:88,height:88,objectFit:'cover',display:'block'},
+                onError:(ev)=>{
+                  ev.target.style.display='none';
+                  ev.target.parentNode.style.display='flex';
+                  ev.target.parentNode.style.alignItems='center';
+                  ev.target.parentNode.style.justifyContent='center';
+                  ev.target.parentNode.style.flexDirection='column';
+                  ev.target.parentNode.style.padding='10px 6px';
+                  ev.target.parentNode.innerHTML='<div style="font-size:32px">'+ep.emoji+'</div>';
+                }
+              })
             ),
             e('div',{className:'ep-body'},
               e('div',{className:'ep-tags'},

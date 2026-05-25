@@ -530,6 +530,37 @@ function App(){
 
   const curSection=SECTIONS.find(s=>s.id===homeTab)||SECTIONS[0];
 
+  // ── READER ──
+  // 퀴즈 답변 상태 (quizIdx별)
+  const quizCount=EP.filter(p=>p.type==='quiz').length;
+  const quizDone=Object.keys(quizSels).length;
+  const curQuizBlocked=P.type==='quiz'&&quizSels[P.quizIdx]===undefined;
+
+  // 삽화 플레이스홀더
+  function IllustPH({illust}){
+    return e('div',{style:{borderRadius:14,overflow:'hidden',marginBottom:12}},
+      e('div',{style:{height:150,background:illust.bg,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:6,border:'2px dashed var(--border)'}},
+        e('div',{style:{fontSize:40}},illust.emoji),
+        e('div',{style:{fontSize:9,fontWeight:700,color:'#fff',background:'rgba(0,0,0,.3)',padding:'3px 10px',borderRadius:20}},illust.label),
+        e('div',{style:{fontSize:8,color:'var(--text2)',textAlign:'center',lineHeight:1.4}},illust.desc)
+      )
+    );
+  }
+
+  function Bubbles({bubbles}){
+    return e('div',{className:'bubbles'},bubbles.map((b,i)=>{
+      const ch=CHARS[b.char];
+      return e('div',{key:i,className:'bubble-row'+(b.side==='right'?' right':'')},
+        ch.img
+  ? e('img',{src:ch.img,style:{width:36,height:36,borderRadius:'50%',objectFit:'cover',border:'2px solid rgba(0,0,0,.07)',flexShrink:0}})
+  : e('div',{className:'avatar',style:{background:ch.bg}},ch.emoji),
+        e('div',{className:'bubble '+(b.side==='left'?'left':'right'),style:b.side==='right'?{background:ch.color}:{}},
+          e('div',{className:'bname'},ch.name),b.text)
+      );
+    }));
+  }
+
+
   if(screen==='splash') return e('div',{style:{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'#FFF8F0'}},
     e(SeedCanvas),
 
@@ -613,36 +644,6 @@ function App(){
         '🎉 수료증 보기')
       )
   );
-
-  // ── READER ──
-  // 퀴즈 답변 상태 (quizIdx별)
-  const quizCount=EP.filter(p=>p.type==='quiz').length;
-  const quizDone=Object.keys(quizSels).length;
-  const curQuizBlocked=P.type==='quiz'&&quizSels[P.quizIdx]===undefined;
-
-  // 삽화 플레이스홀더
-  function IllustPH({illust}){
-    return e('div',{style:{borderRadius:14,overflow:'hidden',marginBottom:12}},
-      e('div',{style:{height:150,background:illust.bg,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:6,border:'2px dashed var(--border)'}},
-        e('div',{style:{fontSize:40}},illust.emoji),
-        e('div',{style:{fontSize:9,fontWeight:700,color:'#fff',background:'rgba(0,0,0,.3)',padding:'3px 10px',borderRadius:20}},illust.label),
-        e('div',{style:{fontSize:8,color:'var(--text2)',textAlign:'center',lineHeight:1.4}},illust.desc)
-      )
-    );
-  }
-
-  function Bubbles({bubbles}){
-    return e('div',{className:'bubbles'},bubbles.map((b,i)=>{
-      const ch=CHARS[b.char];
-      return e('div',{key:i,className:'bubble-row'+(b.side==='right'?' right':'')},
-        ch.img
-  ? e('img',{src:ch.img,style:{width:36,height:36,borderRadius:'50%',objectFit:'cover',border:'2px solid rgba(0,0,0,.07)',flexShrink:0}})
-  : e('div',{className:'avatar',style:{background:ch.bg}},ch.emoji),
-        e('div',{className:'bubble '+(b.side==='left'?'left':'right'),style:b.side==='right'?{background:ch.color}:{}},
-          e('div',{className:'bname'},ch.name),b.text)
-      );
-    }));
-  }
 
   return e('div',{className:'reader'},
     e('div',{className:'reader-header'},

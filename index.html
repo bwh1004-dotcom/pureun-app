@@ -339,25 +339,16 @@ function IllustPH({illust,caption}){
 }
 
 function App(){
-  const[onboarded,setOnboarded]=useState(()=>{try{return localStorage.getItem('p_ob')==='1';}catch{return false;}});
+  const[onboarded,setOnboarded]=useState(false);
   const[obStep,setObStep]=useState(0);
   const[screen,setScreen]=useState('home');
   const[homeTab,setHomeTab]=useState('basic');
   const[curEp,setCurEp]=useState(0);
   const[page,setPage]=useState(0);
   const[quizSels,setQuizSels]=useState({});
-  const[doneEps,setDoneEps]=useState(()=>{try{return new Set(JSON.parse(localStorage.getItem('p_done')||'[]'));}catch{return new Set();}});
-  const[unlocked,setUnlocked]=useState(()=>{try{return localStorage.getItem('p_unlock')==='1';}catch{return false;}});
-  const[streak,setStreak]=useState(()=>{
-    try{
-      const today=new Date().toDateString();
-      const last=localStorage.getItem('p_last');
-      const cnt=parseInt(localStorage.getItem('p_streak')||'0');
-      if(!last)return 0;
-      const diff=(new Date(today)-new Date(last))/(1000*60*60*24);
-      return diff<=1?cnt:0;
-    }catch{return 0;}
-  });
+  const[doneEps,setDoneEps]=useState(new Set());
+  const[unlocked,setUnlocked]=useState(false);
+  const[streak,setStreak]=useState(0);
 
   function finishOb(){try{localStorage.setItem('p_ob','1');}catch{}setOnboarded(true);}
   function saveDone(s){try{localStorage.setItem('p_done',JSON.stringify([...s]));}catch{}}

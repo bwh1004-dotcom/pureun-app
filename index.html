@@ -328,35 +328,9 @@ function BubbleRow({b}){
   );
 }
 
-const ILLUST_MAP={
-  '삽화 1':'ep1-1.jpg','삽화 2':'ep1-2.jpg','삽화 3':'ep1-3.jpg',
-  '삽화 4':'ep1-4.jpg','삽화 5':'ep1-5.jpg','삽화 6':'ep2-1.jpg',
-  '삽화 7':'ep2-2.jpg','삽화 8':'ep2-3.jpg','삽화 9':'ep2-4.jpg',
-  '삽화 10':'ep2-5.jpg','삽화 11':'ep3-1.jpg','삽화 12':'ep3-2.jpg',
-  '삽화 13':'ep3-3.jpg','삽화 14':'ep4-1.jpg','삽화 15':'ep4-2.jpg',
-  '삽화 16':'ep4-3.jpg','삽화 17':'ep4-4.jpg','삽화 18':'ep4-5.jpg',
-  '삽화 19':'ep5-1.jpg','삽화 20':'ep5-2.jpg','삽화 21':'ep5-3.jpg',
-};
-function IllustPH({illust,caption,epNum,sceneIdx}){
-  let imgSrc=null;
-  if(epNum&&sceneIdx){
-    imgSrc='./illust/ep'+epNum+'-'+sceneIdx+'.jpg';
-  } else if(ILLUST_MAP[illust.label]){
-    imgSrc='./illust/'+ILLUST_MAP[illust.label];
-  }
+function IllustPH({illust,caption}){
   return e('div',{className:'illust-box'},
-    imgSrc&&e('img',{src:imgSrc,style:{width:'100%',borderRadius:14,display:'block'},
-      onError:(ev)=>{
-        if(!ev.target.dataset.tried){
-          ev.target.dataset.tried='1';
-          ev.target.src=ev.target.src.replace('/ep','/EP');
-        } else {
-          ev.target.style.display='none';
-          ev.target.nextSibling&&(ev.target.nextSibling.style.display='flex');
-        }
-      }
-    }),
-    e('div',{className:'illust-ph',style:{background:illust.bg,display:imgSrc?'none':'flex'}},
+    e('div',{className:'illust-ph',style:{background:illust.bg}},
       e('div',{style:{fontSize:40}},illust.emoji),
       e('div',{style:{fontSize:9,fontWeight:700,color:'#fff',background:'rgba(0,0,0,.25)',padding:'2px 8px',borderRadius:16}},illust.label)
     ),
@@ -418,12 +392,16 @@ function App(){
       e(LottieAnim,{size:90}),
       e('div',{className:'ob-title'},'푸른시점'),
       e('div',{className:'ob-sub'},'산업편 · 반도체'),
-      e('div',{className:'ob-desc'},'처음 만나는 것들을 신선한 눈으로\n모르는 게 당연한 그 시점에서, 함께 배워요.'),
+      e('div',{className:'ob-desc'},'처음 만나는 것들을 신선한 눈으로
+모르는 게 당연한 그 시점에서, 함께 배워요.'),
       e('div',{className:'ob-char-row'},
         [
-          {key:'uno',line:'반도체 공부 중!\n쉽게 설명해줄게 😄'},
-          {key:'pureun',line:'궁금한 게 많아!\n왜요? 어떻게요? 🤔'},
-          {key:'ojjang',line:'같이 배우면\n더 재미있어! 😊'},
+          {key:'uno',line:'반도체 공부 중!
+쉽게 설명해줄게 😄'},
+          {key:'pureun',line:'궁금한 게 많아!
+왜요? 어떻게요? 🤔'},
+          {key:'ojjang',line:'같이 배우면
+더 재미있어! 😊'},
         ].map(({key,line})=>{
           const ch=CHARS[key];
           return e('div',{key,className:'ob-char'},
@@ -443,9 +421,11 @@ function App(){
     obStep===1&&e('div',{key:'s1',className:'ob'},
       e('div',{style:{fontSize:44,marginBottom:12}},'📖'),
       e('div',{className:'ob-title',style:{fontSize:20}},'이렇게 배워요'),
-      e('div',{className:'ob-desc',style:{marginBottom:14}},'가족의 대화로 자연스럽게\n복잡한 개념을 이해해요'),
+      e('div',{className:'ob-desc',style:{marginBottom:14}},'가족의 대화로 자연스럽게
+복잡한 개념을 이해해요'),
       e('div',{className:'ob-how'},
-        [{ico:'💬',t:'이야기 읽기',d:'우노짱·오짱·푸른이의 대화로\n자연스럽게 배워요'},
+        [{ico:'💬',t:'이야기 읽기',d:'우노짱·오짱·푸른이의 대화로
+자연스럽게 배워요'},
          {ico:'✨',t:'핵심 정리',d:'이야기 속 개념을 카드로 정리해요'},
          {ico:'🧩',t:'퀴즈 확인',d:'배운 내용을 퀴즈로 점검해요'},
          {ico:'🌟',t:'에피소드 완료',d:'완료하면 ✅ 표시가 남아요'},
@@ -544,7 +524,8 @@ function App(){
         e('div',{style:{fontSize:48,marginBottom:12}},'🔒'),
         e('div',{style:{fontSize:18,fontWeight:800,color:'#D4611A',marginBottom:6}},'잠금 해제가 필요해요'),
         e('div',{style:{fontSize:12,color:'#8B6347',lineHeight:1.75,marginBottom:20}},
-          '기초편이 마음에 드셨나요?\n심화편·뉴스편을 모두 즐겨보세요!'),
+          '기초편이 마음에 드셨나요?
+심화편·뉴스편을 모두 즐겨보세요!'),
         e('div',{className:'lock-box'},
           e('div',{className:'lock-list-title'},'잠금 해제 시 이용 가능 ✅'),
           [{ico:'🏭',txt:'심화편 5화 + 공정편 2화'},
@@ -602,9 +583,7 @@ function App(){
       e('div',{className:'page',key:page,style:{animation:'slideIn .25s ease'}},
 
         P.type==='scene'&&e(React.Fragment,null,
-          e(IllustPH,{illust:P.illust,caption:P.caption,
-            epNum:ep.num<=5?null:ep.num,
-            sceneIdx:ep.num<=5?null:EP.filter((p,i)=>i<=page&&(p.type==='scene'||p.type==='deep')).length}),
+          e(IllustPH,{illust:P.illust,caption:P.caption,epNum:ep.num,page}),
           e('div',{className:'bubbles'},P.bubbles.map((b,i)=>e(BubbleRow,{key:i,b})))
         ),
 
@@ -618,9 +597,7 @@ function App(){
         ),
 
         P.type==='deep'&&e(React.Fragment,null,
-          e(IllustPH,{illust:P.illust,caption:P.caption,
-            epNum:ep.num<=5?null:ep.num,
-            sceneIdx:ep.num<=5?null:EP.filter((p,i)=>i<=page&&(p.type==='scene'||p.type==='deep')).length}),
+          e(IllustPH,{illust:P.illust,caption:P.caption,epNum:ep.num,page}),
           e('div',{className:'bubbles'},P.bubbles.map((b,i)=>e(BubbleRow,{key:i,b}))),
           e('div',{className:'deep-note'},
             e('div',{className:'deep-note-title'},'🔍 더 깊이'),
@@ -682,6 +659,33 @@ function App(){
   );
 }
 
+
+const EP_SCENE_MAP={
+  1:{0:1,1:2,2:3,5:4,6:5},2:{0:1,1:2,2:3,5:4,6:5},3:{0:1,1:2,2:3,5:4,6:5},
+  4:{0:1,1:2,2:3,5:4,6:5},5:{0:1,1:2,2:3,5:4,6:5},6:{0:1,1:2,2:3,5:4,6:5},
+  7:{0:1,1:2,2:3,5:4,6:5},8:{0:1,1:2,2:3,5:4,6:5},9:{0:1,1:2,2:3,5:4,6:5},
+  10:{0:1,1:2,2:3,5:4,6:5},11:{0:1,1:2,2:3,5:4,6:5},12:{0:1,1:2,2:3,5:4,6:5},
+  13:{0:1,1:2,2:3,5:4,6:5},14:{0:1,1:2,2:3,5:4,6:5},15:{0:1,1:2,2:3,5:4,6:5},
+  16:{0:1,1:2,2:3,5:4,6:5},17:{0:1,1:2,2:3,5:4,6:5},
+  18:{0:1,1:2,2:3,3:4,6:5},19:{0:1,1:2,2:3,3:4,6:5},
+};
+function IllustPH({illust,caption,epNum,page}){
+  let src=null;
+  const sm=EP_SCENE_MAP[epNum];
+  if(sm&&sm[page]) src='./illust/ep'+epNum+'-'+sm[page]+'.jpg';
+  return e('div',{className:'illust-box'},
+    src&&e('img',{src,style:{width:'100%',borderRadius:14,display:'block'},
+      onError:(ev)=>{
+        if(!ev.target.dataset.tried){ev.target.dataset.tried='1';ev.target.src=ev.target.src.replace('/ep','/EP');}
+        else{ev.target.style.display='none';if(ev.target.nextSibling)ev.target.nextSibling.style.display='flex';}
+      }}),
+    e('div',{className:'illust-ph',style:{background:illust.bg,display:src?'none':'flex'}},
+      e('div',{style:{fontSize:40}},illust.emoji),
+      e('div',{style:{fontSize:9,fontWeight:700,color:'#fff',background:'rgba(0,0,0,.25)',padding:'2px 8px',borderRadius:16}},illust.label)
+    ),
+    caption&&e('div',{className:'illust-caption'},caption)
+  );
+}
 ReactDOM.render(e(App),document.getElementById('root'));
 </script>
 </body>

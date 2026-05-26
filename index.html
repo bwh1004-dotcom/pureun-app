@@ -183,6 +183,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 /* 배경 파티클 */
 .bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .ob,.home,.lock-screen,.cert-screen{position:relative;z-index:1}
+
+/* 로딩 화면 */
+@keyframes seedGrow{0%{transform:scale(0) rotate(-10deg);opacity:0}60%{transform:scale(1.1) rotate(3deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.loading-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(160deg,#FFF8F0,#FFE8CC);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s ease}
+.loading-screen.fade-out{opacity:0;pointer-events:none}
+.loading-seed{font-size:64px;animation:seedGrow .8s cubic-bezier(.34,1.56,.64,1) forwards}
+.loading-title{font-size:24px;font-weight:800;color:#D4611A;margin-top:16px;animation:fadeIn .6s .4s both}
+.loading-sub{font-size:12px;color:#E8934A;font-weight:700;margin-top:4px;letter-spacing:1px;animation:fadeIn .6s .6s both}
+.loading-bar{width:120px;height:4px;background:#FFD6A5;border-radius:2px;overflow:hidden;margin-top:24px;animation:fadeIn .6s .8s both}
+.loading-bar-fill{height:100%;background:linear-gradient(90deg,#FF8C42,#FFB347);border-radius:2px;animation:loadProgress 1.2s ease forwards}
+@keyframes loadProgress{0%{width:0%}100%{width:100%}}
 </style>
 </head>
 <body>
@@ -328,6 +340,22 @@ function BubbleRow({b}){
   );
 }
 
+
+function LoadingScreen({onDone}){
+  useEffect(()=>{
+    const t=setTimeout(()=>onDone(),1400);
+    return()=>clearTimeout(t);
+  },[]);
+  return e('div',{className:'loading-screen',id:'loadingScreen'},
+    e('div',{className:'loading-seed'},'🌱'),
+    e('div',{className:'loading-title'},'푸른시점'),
+    e('div',{className:'loading-sub'},'반도체편'),
+    e('div',{className:'loading-bar'},
+      e('div',{className:'loading-bar-fill'})
+    )
+  );
+}
+
 function IllustPH({illust,caption}){
   return e('div',{className:'illust-box'},
     e('div',{className:'illust-ph',style:{background:illust.bg}},
@@ -339,6 +367,7 @@ function IllustPH({illust,caption}){
 }
 
 function App(){
+  const[loading,setLoading]=useState(true);
   const[onboarded,setOnboarded]=useState(false);
   const[obStep,setObStep]=useState(0);
   const[screen,setScreen]=useState('home');
@@ -366,7 +395,10 @@ function App(){
     }catch{}
   }
   function startEp(idx){
-    setCurEp(idx);setScreen('reader');setPage(0);setQuizSels({});updateStreak();
+    const savedPage=parseInt(localStorage.getItem('p_page_'+idx)||'0');
+    setCurEp(idx);setScreen('reader');
+    setPage(savedPage);
+    setQuizSels({});updateStreak();
   }
   function goPage(n){setPage(n);}
 
@@ -386,6 +418,7 @@ function App(){
   const canNext=P.type!=='quiz'||(quizSels[P.quizIdx]!==undefined);
 
   // ── 온보딩 ──
+  if(loading) return e(LoadingScreen,{onDone:()=>setLoading(false)});
   if(!onboarded) return e('div',{style:{flex:1,display:'flex',flexDirection:'column',overflow:'auto'}},
     e(SeedCanvas),
     obStep===0&&e('div',{key:'s0',className:'ob'},
@@ -560,6 +593,7 @@ function App(){
               e('div',{className:'ep-tags'},
                 e('div',{className:'ep-num-tag',style:{background:ep.color+'18',color:ep.color}},'EP'+ep.num),
                 done&&e('div',{className:'ep-num-tag',style:{background:'#5DBB6318',color:'#5DBB63'}},'✅'),
+                !done&&(()=>{try{const p=localStorage.getItem('p_page_'+i);return p&&parseInt(p)>0?e('div',{className:'ep-num-tag',style:{background:'#FF8C4218',color:'#FF8C42'}},'이어보기 ▶'):null;}catch{return null;}})(),
                 e('div',{className:'ep-section-tag'},ep.num<=5?'기초':ep.num<=10||ep.num>=18?'심화':'뉴스')
               ),
               e('div',{className:'ep-title'},ep.title),
@@ -574,7 +608,10 @@ function App(){
   // ── 리더 ──
   return e('div',{className:'reader'},
     e('div',{className:'reader-hd'},
-      e('button',{className:'back-btn',onClick:()=>setScreen('home')},'←'),
+      e('button',{className:'back-btn',onClick:()=>{
+      try{if(page>0)localStorage.setItem('p_page_'+curEp,String(page));}catch{}
+      setScreen('home');
+    }},'←'),
       e('div',{className:'ep-hd-info'},
         e('div',{className:'ep-hd-num',style:{color:ep.color}},'EP'+ep.num+' · 약 8분'),
         e('div',{className:'ep-hd-title'},ep.title)
@@ -667,12 +704,22 @@ function App(){
       )
     ),
     e('div',{className:'page-nav'},
-      e('button',{className:'nav-btn nav-prev',onClick:()=>goPage(page-1),disabled:page===0},'← 이전'),
+      e('button',{className:'nav-btn nav-prev',onClick:()=>{
+        const prev=page-1;goPage(prev);
+        try{localStorage.setItem('p_page_'+curEp,String(prev));}catch{}
+      },disabled:page===0},'← 이전'),
       e('button',{className:'nav-btn nav-next',
         style:{background:canNext?'linear-gradient(135deg,'+ep.color+',#FF6B6B)':'#ddd'},
         onClick:()=>{
-          if(isLast){const nd=new Set(doneEps);nd.add(curEp);setDoneEps(nd);saveDone(nd);setScreen('home');}
-          else goPage(page+1);
+          if(isLast){
+            const nd=new Set(doneEps);nd.add(curEp);setDoneEps(nd);saveDone(nd);
+            try{localStorage.removeItem('p_page_'+curEp);}catch{}
+            setScreen('home');
+          } else {
+            const next=page+1;
+            goPage(next);
+            try{localStorage.setItem('p_page_'+curEp,String(next));}catch{}
+          }
         },
         disabled:!canNext
       },isLast?'완료! 🌟':'다음 →')
@@ -690,6 +737,22 @@ const EP_SCENE_MAP={
   16:{0:1,1:2,2:3,5:4,6:5},17:{0:1,1:2,2:3,5:4,6:5},
   18:{0:1,1:2,2:3,3:4,6:5},19:{0:1,1:2,2:3,3:4,6:5},
 };
+
+function LoadingScreen({onDone}){
+  useEffect(()=>{
+    const t=setTimeout(()=>onDone(),1400);
+    return()=>clearTimeout(t);
+  },[]);
+  return e('div',{className:'loading-screen',id:'loadingScreen'},
+    e('div',{className:'loading-seed'},'🌱'),
+    e('div',{className:'loading-title'},'푸른시점'),
+    e('div',{className:'loading-sub'},'반도체편'),
+    e('div',{className:'loading-bar'},
+      e('div',{className:'loading-bar-fill'})
+    )
+  );
+}
+
 function IllustPH({illust,caption,epNum,page}){
   let src=null;
   const sm=EP_SCENE_MAP[epNum];

@@ -540,9 +540,21 @@ function App(){
           const ep=EPISODES[i];
           const done=doneEps.has(i);
           return e('div',{key:i,className:'ep-card'+(done?' done':''),onClick:()=>startEp(i)},
-            e('div',{className:'ep-thumb',style:{borderRight:'1px dashed '+ep.color+'40'}},
-              e('div',{className:'ep-thumb-emoji'},ep.emoji),
-              e('div',{className:'ep-thumb-label',style:{color:ep.color,background:ep.color+'15'}},'삽화 '+ep.num)
+            e('div',{className:'ep-thumb',style:{borderRight:'1px dashed '+ep.color+'40',padding:0,overflow:'hidden'}},
+              e('img',{
+                src:'./illust/ep'+ep.num+'-1.jpg',
+                style:{width:88,height:88,objectFit:'cover',display:'block'},
+                onError:(ev)=>{
+                  if(!ev.target.dataset.tried){
+                    ev.target.dataset.tried='1';
+                    ev.target.src='./illust/EP'+ep.num+'-1.jpg';
+                  } else {
+                    ev.target.style.display='none';
+                    ev.target.parentNode.style.cssText='display:flex;align-items:center;justify-content:center;padding:10px 6px;';
+                    ev.target.parentNode.innerHTML='<div style="font-size:32px">'+ep.emoji+'</div>';
+                  }
+                }
+              })
             ),
             e('div',{className:'ep-body'},
               e('div',{className:'ep-tags'},

@@ -657,7 +657,7 @@ function App(){
             e('div',{className:'quiz-opts'},P.opts.map((opt,i)=>
               e('button',{key:i,
                 className:'quiz-opt'+(quizSels[P.quizIdx]===i?(i===P.ans?' correct':' wrong'):''),
-                onClick:()=>setQuizSels(prev=>({...prev,[P.quizIdx]:i})),
+                onClick:()=>{if(quizSels[P.quizIdx]===undefined){setQuizSels(prev=>({...prev,[P.quizIdx]:i}));playSound(i===P.ans?'correct':'wrong');}},
                 disabled:quizSels[P.quizIdx]!==undefined},opt)
             )),
             quizSels[P.quizIdx]!==undefined&&e('div',{className:'quiz-result',
@@ -714,10 +714,12 @@ function App(){
           if(isLast){
             const nd=new Set(doneEps);nd.add(curEp);setDoneEps(nd);saveDone(nd);
             try{localStorage.removeItem('p_page_'+curEp);}catch{}
+            playSound('complete');
             setScreen('home');
           } else {
             const next=page+1;
             goPage(next);
+            playSound('page');
             try{localStorage.setItem('p_page_'+curEp,String(next));}catch{}
           }
         },
@@ -770,6 +772,63 @@ function IllustPH({illust,caption,epNum,page}){
     caption&&e('div',{className:'illust-caption'},caption)
   );
 }
+
+// 효과음 (Web Audio API)
+const AudioCtx = window.AudioContext||window.webkitAudioContext;
+let audioCtx = null;
+function getCtx(){
+  if(!audioCtx) try{audioCtx=new AudioCtx();}catch{}
+  return audioCtx;
+}
+function playSound(type){
+  const ctx=getCtx();
+  if(!ctx) return;
+  try{
+    const o=ctx.createOscillator();
+    const g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    const t=ctx.currentTime;
+    if(type==='correct'){
+      // 정답: 밝고 상승하는 두 음
+      o.type='sine';
+      o.frequency.setValueAtTime(523,t);
+      o.frequency.setValueAtTime(659,t+0.12);
+      o.frequency.setValueAtTime(784,t+0.24);
+      g.gain.setValueAtTime(0.3,t);
+      g.gain.exponentialRampToValueAtTime(0.001,t+0.5);
+      o.start(t);o.stop(t+0.5);
+    } else if(type==='wrong'){
+      // 오답: 낮고 짧은 음
+      o.type='sawtooth';
+      o.frequency.setValueAtTime(200,t);
+      o.frequency.setValueAtTime(150,t+0.1);
+      g.gain.setValueAtTime(0.2,t);
+      g.gain.exponentialRampToValueAtTime(0.001,t+0.3);
+      o.start(t);o.stop(t+0.3);
+    } else if(type==='complete'){
+      // 완료: 밝은 팡파레
+      const notes=[523,659,784,1047];
+      notes.forEach((freq,i)=>{
+        const oi=ctx.createOscillator();
+        const gi=ctx.createGain();
+        oi.connect(gi);gi.connect(ctx.destination);
+        oi.type='sine';
+        oi.frequency.setValueAtTime(freq,t+i*0.1);
+        gi.gain.setValueAtTime(0.25,t+i*0.1);
+        gi.gain.exponentialRampToValueAtTime(0.001,t+i*0.1+0.4);
+        oi.start(t+i*0.1);oi.stop(t+i*0.1+0.4);
+      });
+    } else if(type==='page'){
+      // 페이지 넘기기: 부드러운 클릭
+      o.type='sine';
+      o.frequency.setValueAtTime(440,t);
+      g.gain.setValueAtTime(0.1,t);
+      g.gain.exponentialRampToValueAtTime(0.001,t+0.08);
+      o.start(t);o.stop(t+0.1);
+    }
+  }catch{}
+}
+
 ReactDOM.render(e(App),document.getElementById('root'));
 </script>
 </body>

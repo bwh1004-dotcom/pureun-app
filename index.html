@@ -640,6 +640,22 @@ function App(){
               e('div',{className:'review-num',style:{background:ep.color}},i+1),r
             ))
           ),
+          e('div',{className:'review-card',style:{marginBottom:14}},
+            e('div',{className:'review-card-title'},'🧩 퀴즈 결과'),
+            EP.filter(p=>p.type==='quiz').map((qp,i)=>{
+              const sel=quizSels[qp.quizIdx];
+              const correct=sel===qp.ans;
+              return e('div',{key:i,style:{padding:'7px 0',borderBottom:'1px dashed #FFE8CC',fontSize:12}},
+                e('div',{style:{display:'flex',alignItems:'flex-start',gap:6,marginBottom:3}},
+                  e('span',null,correct?'✅':'❌'),
+                  e('div',{style:{color:'#3D2B1F',fontWeight:600,lineHeight:1.5}},qp.q)
+                ),
+                !correct&&e('div',{style:{fontSize:11,color:'#4A90E2',paddingLeft:20,marginTop:2}},
+                  '정답: '+qp.opts[qp.ans]
+                )
+              );
+            })
+          ),
           P.nextNum>0&&e('div',{className:'next-box',style:{background:'linear-gradient(135deg,#4A90E2,#5C6BC0)'}},
             e('div',{className:'next-label'},'NEXT EPISODE'),
             e('div',{className:'next-title'},'EP'+P.nextNum+' · '+P.nextTitle),

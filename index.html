@@ -406,8 +406,8 @@ function App(){
 
   const SECTIONS=[
     {id:'basic',label:'기초편',eps:[0,1,2,3,4],locked:false},
-    {id:'deep', label:'심화편',eps:[5,6,7,8,9,17,18],locked:true},
-    {id:'news', label:'뉴스편',eps:[10,11,12,13,14,15,16],locked:true},
+    {id:'deep', label:'심화편',eps:[5,6,7,8,9,17,18],locked:false},
+    {id:'news', label:'뉴스편',eps:[10,11,12,13,14,15,16],locked:false},
   ];
   const curSection=SECTIONS.find(s=>s.id===homeTab)||SECTIONS[0];
   const ep=EPISODES[curEp];
@@ -558,10 +558,10 @@ function App(){
     ),
     e('div',{className:'tabs'},
       SECTIONS.map(sec=>e('div',{key:sec.id,className:'tab'+(homeTab===sec.id?' act':''),onClick:()=>setHomeTab(sec.id)},
-        sec.label+(sec.locked&&!unlocked?' 🔒':'')
+        sec.label
       ))
     ),
-    curSection.locked&&!unlocked
+    false
       ?e('div',{className:'lock-screen'},
         e('div',{style:{fontSize:48,marginBottom:12}},'🔒'),
         e('div',{style:{fontSize:18,fontWeight:800,color:'#D4611A',marginBottom:6}},'잠금 해제가 필요해요'),
